@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx66jmclju6jf"]
+
+[ext_resource type="PackedScene" uid="uid://d31ixio2lciiu" path="res://scenes/test_2d/character_body_2d.tscn" id="1_b7hpd"]
+[ext_resource type="Script" path="res://scenes/test_2d/looping_2d.gd" id="1_nwxdl"]
+[ext_resource type="PackedScene" uid="uid://bwy22skas4n6o" path="res://scenes/test_2d/static_body_2d.tscn" id="2_0car7"]
+[ext_resource type="Script" path="res://scenes/test_2d/camera_2d.gd" id="3_squ1j"]
+[ext_resource type="Texture2D" uid="uid://ddko8073t3tfb" path="res://scenes/test_2d/pixel.png" id="5_0wqm1"]
+[ext_resource type="PackedScene" uid="uid://cmakmhb5fo0lu" path="res://scenes/test_2d/area_2d.tscn" id="6_dmrod"]
+
+[node name="Looping2d" type="Node2D"]
+script = ExtResource("1_nwxdl")
+
+[node name="Player" parent="." instance=ExtResource("1_b7hpd")]
+unique_name_in_owner = true
+position = Vector2(43, 594)
+
+[node name="Floor" parent="." instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(783, 689)
+scale = Vector2(50, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(587, 370)
+script = ExtResource("3_squ1j")
+
+[node name="Elements" type="Node2D" parent="."]
+
+[node name="Blocked" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.6, 1, 0.443137)
+position = Vector2(1736, 194)
+collision_layer = 0
+
+[node name="StaticBody2D" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(1335, 329)
+
+[node name="StaticBody2D11" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(2172, 446)
+
+[node name="StaticBody2D2" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(893, 434)
+
+[node name="StaticBody2D8" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(2116, 122)
+
+[node name="StaticBody2D10" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(1744, 447)
+
+[node name="StaticBody2D9" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(2569, 129)
+
+[node name="StaticBody2D5" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(50, 163)
+
+[node name="Pixel2" type="Sprite2D" parent="Elements/StaticBody2D5"]
+modulate = Color(0.396078, 1, 0.466667, 1)
+position = Vector2(-2, -72)
+scale = Vector2(84, 96)
+texture = ExtResource("5_0wqm1")
+
+[node name="StaticBody2D6" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(489, 517)
+
+[node name="StaticBody2D7" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(47, 375)
+
+[node name="Area2D" parent="Elements" instance=ExtResource("6_dmrod")]
+position = Vector2(2484, 307)
+
+[connection signal="body_entered" from="Elements/Area2D" to="." method="_on_area_2d_body_entered"]
