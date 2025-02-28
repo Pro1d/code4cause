@@ -2,8 +2,8 @@ extends Node
 
 enum Volume { LOW=1, HIGH=2 }
 
-const menu_music := preload("res://assets/musics/TownTheme.ogg")
-const game_music := preload("res://assets/musics/snow_city.ogg")
+#const menu_music := preload("res://assets/musics/TownTheme.ogg")
+#const game_music := preload("res://assets/musics/snow_city.ogg")
 
 var _vol := Volume.HIGH
 var _mute := false
@@ -36,15 +36,15 @@ func set_volume(level: Volume) -> void:
 		Volume.LOW:
 			AudioServer.set_bus_volume_db(_music_bus, _default_volume_db - 9.0)
 
-func start_menu_music() -> void:
-	if _player.stream != menu_music or not _player.playing:
-		_player.stream = menu_music
-		_player.play()
-
-func start_game_music() -> void:
-	if _player.stream != game_music or not _player.playing:
-		_player.stream = game_music
-		_player.play()
+#func start_menu_music() -> void:
+	#if _player.stream != menu_music or not _player.playing:
+		#_player.stream = menu_music
+		#_player.play()
+#
+#func start_game_music() -> void:
+	#if _player.stream != game_music or not _player.playing:
+		#_player.stream = game_music
+		#_player.play()
 
 func stop_music() -> void:
 	_player.stop()
