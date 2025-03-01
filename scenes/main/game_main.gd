@@ -48,7 +48,7 @@ func change_to_next_tiles() -> void:
 	tween.tween_property(last_holder, "modulate:a", 0.0, 0.2) \
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	tween.tween_callback(func() -> void:
-		last_holder.new_tile(next_tiles[0])
+		last_holder.new_tile(next_tiles[next_tiles_length - 1])
 		next_tiles_holders.move_child(last_holder, 0)
 		bottom_offset.custom_minimum_size.y = last_holder.custom_minimum_size.y
 	)
