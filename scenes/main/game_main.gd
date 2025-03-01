@@ -51,7 +51,7 @@ func change_to_next_tiles() -> void:
 		last_holder.new_tile(next_tiles[next_tiles_length - 1])
 		next_tiles_holders.move_child(last_holder, 0)
 		bottom_offset.custom_minimum_size.y = last_holder.custom_minimum_size.y
-	)
+	) 
 	tween.tween_callback(func() -> void:
 		next_holder.is_focus = true
 	)

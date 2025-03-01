@@ -9,13 +9,13 @@ var is_predrawn := false
 
 var current_tile_scene: PackedScene
 
-func _ready() -> void:
+func _ready() -> void: 
 	highlight_hint.visible = false
 
 func highlight(enable:bool) -> void:
 	highlight_hint.visible = enable
 
-func predraw(scene: PackedScene, rad: float) -> void:
+func predraw(scene: PackedScene, rad: float = 0.) -> void:
 	highlight_hint.visible = true
 	if not is_set and scene != null:
 		var child : Node3D = scene.instantiate()

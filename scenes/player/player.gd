@@ -14,3 +14,6 @@ func _ready() -> void:
 func set_current_cell(c: PlacementCell) -> void:
 	current_cell = c
 	cell_changed.emit(c)
+
+func _process(_delta: float) -> void:
+	print(global_position)

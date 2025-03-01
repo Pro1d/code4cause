@@ -12,12 +12,13 @@ func _ready() -> void:
 	path_follow.loop = false
 	path_follow.rotation_mode = PathFollow3D.ROTATION_NONE
 	
-	player.global_position.x = 1
-	player.global_position.z = -1.5
+	player.global_position.x = -0.5
+	player.global_position.z = -2 
 	find_path()
 
 func _process(delta: float) -> void:
-	if(path_follow != player.get_parent()):
+	if(path_follow.get_parent() != null and path_follow != player.get_parent()):
+		print(path_follow.get_path())
 		player.reparent(path_follow)
 	if (
 		(current_direction == 1 and path_follow.progress_ratio >= 1) 
@@ -28,14 +29,21 @@ func _process(delta: float) -> void:
 	path_follow.progress_ratio += delta*current_direction*player.speed*speed_factor
 
 func find_path() -> void:
+	print("Finding path")
 	for path in get_tree().get_nodes_in_group(Config.PATH_GROUP):
-		#print("Having a path: %s" % path.get_path())
+		
 		if path == path_follow.get_parent():
 			continue
 		var position_in_tile := (path as Node3D).global_transform.inverse() * player.global_position
 		var curve := (path as Path3D).curve
 
 		var next_parent : Path3D = null
+		
+		if true:
+			print("Distance:")
+			print("  0: %s" % curve.get_point_position(0).distance_squared_to(position_in_tile))
+			print("  1: %s" % curve.get_point_position(1).distance_squared_to(position_in_tile))
+			
 
 		if curve.get_point_position(0).distance_squared_to(position_in_tile) < 0.1:
 			next_parent = path
