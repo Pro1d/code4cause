@@ -20,16 +20,14 @@ var camera_offset_x :float = 0
 var grid_rotation: float
 
 func _ready() -> void:
-	
-	InitializeGrid()
+	initialize_grid()
 	current_pos = Vector2(1,2)
 	current_cell = cells[current_pos.x][current_pos.y]
 	current_cell.predraw(placing_tile_scene, grid_rotation)
 	highlighted_cell = current_cell
 	highlighted_cell.highlight(true)
-	
 
-func InitializeGrid() -> void:
+func initialize_grid() -> void:
 	for i:int in width:
 		_generate_row()
 		
@@ -60,14 +58,6 @@ func rotate_cell(rad: float) -> void:
 	grid_rotation += rad
 	current_cell.rotate_cell(rad)
 
-func _place_tile(tile: Node3D, coord: Vector2i) -> void:
-	var old :Node3D = cells[coord.x][coord.y]
-	remove_child(old)
-	add_child(tile)
-	tile.global_position = grid_offset + Vector3(
-		coord.x * cell_size + cell_size / 2.0, 0.0, 
-	 	-coord.y * cell_size + cell_size / 2.0)
-
 func place_tile() -> void:
 	if(not current_cell.is_set):
 		current_cell.place()
@@ -75,14 +65,14 @@ func place_tile() -> void:
 		highlighted_cell = (cells[current_pos.x][current_pos.y] as PlacementCell)
 		tile_placed.emit()
 	
-	
 func add_row()->void:
+	_generate_row()
+	await  get_tree().create_timer(0.5).timeout
 	_delete_first_row()
 	current_pos += Vector2i.LEFT
 	if(current_pos.x < 0):
 		current_pos.x = 0
 		move(Vector2i.ZERO)
-	_generate_row()
 	
 func _delete_first_row() -> void:
 	for i in (cells[0] as Array[PlacementCell]):
