@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5j3nkd57dwpk"]
+[gd_scene load_steps=9 format=3 uid="uid://5j3nkd57dwpk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
 [ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/prototype/grid_movement_controller.gd" id="3_usuh6"]
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
+[ext_resource type="AudioStream" uid="uid://clybhvggs3fwa" path="res://assets/musics/Combat Orchestral - Low (Menu).wav" id="7_kp3rl"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
@@ -25,6 +26,7 @@ fog_depth_begin = 5.0
 fog_depth_end = 12.0
 
 [node name="GameScene" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_x51h5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -58,7 +60,14 @@ script = ExtResource("3_usuh6")
 unique_name_in_owner = true
 
 [node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
+enabled = false
 bpm = 80.0
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kp3rl")
+volume_db = 6.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
 [connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]

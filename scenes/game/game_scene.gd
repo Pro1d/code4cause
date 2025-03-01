@@ -36,3 +36,5 @@ func add_row() -> void:
 
 func _process(_delta: float) -> void:
 	camera.global_position.x = camera_offset_x + metronome.time()
+
+	
