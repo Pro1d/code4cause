@@ -1,26 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfxnn5sgl8knh"]
+[gd_scene load_steps=4 format=3 uid="uid://dfxnn5sgl8knh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0b1kw"]
-[ext_resource type="Texture2D" uid="uid://cucutvurot55x" path="res://assets/textures/player_v0_.png" id="2_f6uci"]
+[ext_resource type="ArrayMesh" uid="uid://4na4em0pfltx" path="res://assets/meshes/player.obj" id="2_i5hgk"]
 [ext_resource type="Script" path="res://scenes/player/player_movement.gd" id="3_42uji"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_waxj5"]
-top_radius = 0.22
-bottom_radius = 0.25
-height = 0.1
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_0b1kw")
 
 [node name="Mesh" type="Node3D" parent="."]
 
-[node name="Base" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.999943, -0.0106289, 0, 0.0106289, 0.999943, 0, 0, 0)
-mesh = SubResource("CylinderMesh_waxj5")
-
-[node name="Sprite3D" type="Sprite3D" parent="Mesh"]
-transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0.251785, 0)
-texture = ExtResource("2_f6uci")
+[node name="Player" type="MeshInstance3D" parent="Mesh"]
+mesh = ExtResource("2_i5hgk")
 
 [node name="player_movement" type="Node" parent="."]
 script = ExtResource("3_42uji")
