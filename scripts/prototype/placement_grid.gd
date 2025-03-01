@@ -7,7 +7,6 @@ signal tile_placed
 @export var cell_size: float = 1.0
 
 @export var tile_scene: PackedScene
-@onready var camera: Camera3D
 var placing_tile_scene: PackedScene
 
 var cells: Array
@@ -17,21 +16,17 @@ var grid_offset: Vector3 = Vector3(0,0,0)
 var camera_offset_x :float = 0
 
 func _ready() -> void:
-	camera = get_parent().find_child("Camera3D")
-	grid_offset.z = -cell_size*height/2
-	camera_offset_x = -(3*cell_size)/2
 	
 	InitializeGrid()
 	current_pos = Vector2(2,0)
 	current_cell = cells[current_pos.x][current_pos.y]
 	current_cell.highlight(placing_tile_scene)
-	camera.global_position.x = grid_offset.x + camera_offset_x
 	
 
 func InitializeGrid() -> void:
 	print(cell_size)
 	for i:int in width:
-		generate_row()
+		_generate_row()
 
 func move(dir: Vector2i) -> void:
 	current_cell.reset()
@@ -57,16 +52,15 @@ func place_tile() -> void:
 		tile_placed.emit()
 	
 	
-func draw_next()->void:
-	delete_first_row()
+func add_row()->void:
+	_delete_first_row()
 	current_pos += Vector2i.LEFT
 	if(current_pos.x < 0):
 		current_pos.x = 0
 		move(Vector2i.ZERO)
-	#shift_back()
-	generate_row()
+	_generate_row()
 	
-func delete_first_row() -> void:
+func _delete_first_row() -> void:
 	for i in (cells[0] as Array[PlacementCell]):
 		i.delete()
 	cells.pop_front()
@@ -79,7 +73,7 @@ func shift_back() -> void:
 			(cells[i][j-1] as PlacementCell).redraw_child(old_cell.is_set, old_cell.current_tile_scene)
 			old_cell.delete()
 	
-func generate_row()->void:
+func _generate_row()->void:
 	cells.append([])
 	var i := len(cells) - 1
 	grid_offset.x += cell_size
@@ -87,12 +81,6 @@ func generate_row()->void:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
-			
-		# Set 3D position
 		cell.global_position = grid_offset + Vector3(cell_size / 2.0, 0.0, -j * cell_size + cell_size / 2.0)
-			
+		
 		(cells[i] as Array).append(cell)
-		print("%d: %s" % [get_child_count(), cell.global_position])
-	
-func _process(delta: float) -> void:
-	camera.global_position.x = lerpf(camera.global_position.x, grid_offset.x + camera_offset_x, delta)

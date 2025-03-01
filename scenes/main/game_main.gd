@@ -1,7 +1,7 @@
 extends MarginContainer
 
 @onready var next_tiles_holders : Container = %NextTiles
-@onready var grid: PlacementGrid = %GridPlacementScene/TileGrid
+@onready var game_scene : GameScene = %GameScene
 
 var all_tiles_scene : Array[PackedScene] = [
 	preload("res://resources/placeholder/tile_straight.tscn"),
@@ -15,9 +15,8 @@ func _ready() -> void:
 	for i in next_tiles_length:
 		add_next_tile()
 	update_all_tiles()
-	grid.placing_tile_scene = next_tiles[0]
-	grid.tile_placed.connect(_on_tile_placed)
-	grid.move(Vector2i(0,0))
+	game_scene.tile_placed.connect(_on_tile_placed)
+	game_scene.next_tile = next_tiles[0]
 
 func add_next_tile() -> void:
 	next_tiles.append(all_tiles_scene.pick_random())
@@ -26,7 +25,7 @@ func _on_tile_placed() -> void:
 	add_next_tile()
 	next_tiles.pop_front()
 	change_to_next_tiles()
-	grid.placing_tile_scene = next_tiles[0]
+	game_scene.next_tile = next_tiles[0]
 	
 func update_all_tiles() -> void:
 	for i in range(next_tiles_holders.get_child_count() - 1):

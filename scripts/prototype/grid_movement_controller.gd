@@ -1,14 +1,8 @@
-class_name grid_movement_controller
-extends Node3D
+class_name InputController
+extends Node
+signal add_row
 
-@onready var tile_grid: PlacementGrid = $"../TileGrid"
-
-var input_direction: Vector2 = Vector2.ZERO
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
+var tile_grid: PlacementGrid
 
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("move_up")):
@@ -26,4 +20,4 @@ func _input(event: InputEvent) -> void:
 	elif(event.is_action_pressed("ui_accept")):
 		tile_grid.place_tile()
 	elif(event.is_action_pressed("ui_focus_next")):
-		tile_grid.draw_next()
+		add_row.emit()

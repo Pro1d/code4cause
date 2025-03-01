@@ -37,6 +37,11 @@ func place() -> void:
 	
 func delete() -> void:
 	is_set = false
+	var tween := create_tween()
+	tween.tween_interval(0.1 - global_position.z/3)
+	tween.tween_property(self, "global_position:y", -30.0, 1.0) \
+		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	tween.tween_callback(queue_free)
 	reset()
 	
 func redraw_child(new_is_set:bool, scene: PackedScene) -> void:
