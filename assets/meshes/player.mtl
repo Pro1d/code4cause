@@ -8,5 +8,5 @@ Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 illum 2
-map_Kd /home/fbessou/dev/priv/code4cause/assets/textures/player_v1_opaque.png
-map_d /home/fbessou/dev/priv/code4cause/assets/textures/player_v1_opaque.png
+map_Kd ../textures/player_v1_opaque.png
+map_d ../textures/player_v1_opaque.png
