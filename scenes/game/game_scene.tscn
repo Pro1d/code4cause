@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/prototype/grid_movement_controller.gd" id="3_usuh6"]
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
-[ext_resource type="PackedScene" path="res://scenes/game/background.tscn" id="7_jw0xs"]
+[ext_resource type="PackedScene" uid="uid://c02g2aiybdtkw" path="res://scenes/game/background.tscn" id="7_jw0xs"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
@@ -34,19 +34,8 @@ environment = SubResource("Environment_f4h1w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.474924, 0.68513, 0.552309, -0.729416, -0.044657, 0.682612, 0.492342, -0.727051, 0.478536, 0.226314, -2.38419e-07, 0.159626)
-visible = false
 light_energy = 0.35
 light_cull_mask = 4294967293
-shadow_enabled = true
-directional_shadow_mode = 0
-directional_shadow_fade_start = 1.0
-directional_shadow_max_distance = 12.0
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.827481, -0.22046, 0.516404, -0.269955, -0.650226, -0.710162, 0.492342, -0.727051, 0.478536, 0.226314, -2.38419e-07, 0.159626)
-layers = 2
-light_energy = 0.35
-light_cull_mask = 4294966274
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_fade_start = 1.0

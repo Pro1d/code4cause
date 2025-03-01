@@ -12,7 +12,7 @@ script = ExtResource("1_ydrvs")
 
 [node name="Middle" type="Sprite3D" parent="MiddleHolder"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -4.3)
-layers = 4
+layers = 2
 centered = false
 offset = Vector2(-2048, -512)
 shaded = true
@@ -23,14 +23,14 @@ texture = ExtResource("4_dhhjg")
 
 [node name="Near" type="Sprite3D" parent="NearHolder"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -4.20117)
-layers = 4
+layers = 2
 shaded = true
 alpha_cut = 1
 texture = ExtResource("5_608hd")
 
 [node name="Far" type="Sprite3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 1.49012e-08, 0, -1.49012e-08, 0.3, 0, 0, -4.39308)
-layers = 4
+layers = 2
 centered = false
 offset = Vector2(-2048, -512)
 shaded = true
