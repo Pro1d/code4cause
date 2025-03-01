@@ -7,13 +7,13 @@ var all_tiles_scene : Array[PackedScene] = [
 	preload("res://resources/placeholder/tile_straight.tscn"),
 	preload("res://resources/placeholder/tile_turn.tscn"),
 ]
-
+ 
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
 
 func _ready() -> void:
 	for i in next_tiles_length:
-		add_next_tile()
+		add_next_tile() 
 	update_all_tiles()
 	game_scene.tile_placed.connect(_on_tile_placed)
 	game_scene.next_tile = next_tiles[0]
@@ -24,7 +24,7 @@ func add_next_tile() -> void:
 func _on_tile_placed() -> void:
 	add_next_tile()
 	next_tiles.pop_front()
-	change_to_next_tiles()
+	change_to_next_tiles() 
 	game_scene.next_tile = next_tiles[0]
 	
 func update_all_tiles() -> void:
