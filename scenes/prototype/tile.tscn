@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://depdfa24xcvji"]
+[gd_scene load_steps=6 format=3 uid="uid://depdfa24xcvji"]
 
 [ext_resource type="Script" path="res://scripts/prototype/placement_cell.gd" id="1_2xaup"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t48uj"]
+albedo_color = Color(0.52549, 0.52549, 0.52549, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_g23p7"]
+material = SubResource("StandardMaterial3D_t48uj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpw7o"]
 transparency = 1

@@ -5,6 +5,7 @@ signal cell_changed(c: PlacementCell)
 
 const cell_size : float = 1
 
+var speed : float = 100
 var current_cell : PlacementCell : set = set_current_cell
 
 func _ready() -> void:

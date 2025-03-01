@@ -5,7 +5,7 @@ var path_follow := PathFollow3D.new()
 var current_direction := 1
 @onready var player : Player = get_parent()
 
-var speed_factor := 0.5
+var speed_factor := 0.0065 
 func _ready() -> void:
 	
 	# $Player.global_position = transform * curve.get_point_position(0)
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		):
 		find_path()
 		
-	path_follow.progress_ratio += delta*current_direction*speed_factor
+	path_follow.progress_ratio += delta*current_direction*player.speed*speed_factor
 
 func find_path() -> void:
 	for path in get_tree().get_nodes_in_group(Config.PATH_GROUP):

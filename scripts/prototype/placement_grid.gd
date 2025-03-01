@@ -21,7 +21,7 @@ var camera_offset_x :float = 0
 func _ready() -> void:
 	
 	InitializeGrid()
-	current_pos = Vector2(0,2)
+	current_pos = Vector2(1,2)
 	current_cell = cells[current_pos.x][current_pos.y]
 	current_cell.predraw(placing_tile_scene)
 	highlighted_cell = current_cell
@@ -35,7 +35,6 @@ func InitializeGrid() -> void:
 		
 	var initial_cell : PlacementCell = cells[0][2]
 	initial_cell.predraw(packed_straight)
-	initial_cell.rotate_cell(PI/2)
 	initial_cell.place()
 	initial_cell.reset()
 
