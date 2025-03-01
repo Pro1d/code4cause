@@ -1,5 +1,7 @@
 extends Node
 
+const PATH_GROUP = "player_path"
+
 #const CursorArrowIcon := preload("res://assets/images/ui/cursor_arrow2.atlastex")
 #const CursorIBeamIcon := preload("res://assets/images/ui/cursor_ibeam.atlastex")
 #const CursorAimIcon := preload("res://assets/images/ui/cursor_aim1.atlastex")

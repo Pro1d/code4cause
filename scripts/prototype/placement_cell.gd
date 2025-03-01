@@ -34,6 +34,11 @@ func reset() -> void:
 
 func place() -> void:
 	is_set = true
+	var path : Path3D = child_scene.get_child(0).get_node_or_null("Path3D")
+	if path != null: 
+		path.add_to_group(Config.PATH_GROUP)
+	else:
+		print("Error, tile with null path")
 	
 func delete() -> void:
 	is_set = false

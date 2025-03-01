@@ -2,6 +2,8 @@ class_name PlacementGrid
 extends Node
 signal tile_placed
 
+var packed_straight : PackedScene = preload("res://resources/placeholder/tile_straight.tscn")
+
 @export var width: int = 5
 @export var height: int = 5
 @export var cell_size: float = 1.0
@@ -27,6 +29,24 @@ func InitializeGrid() -> void:
 	print(cell_size)
 	for i:int in width:
 		_generate_row()
+		
+	var initial_cell : PlacementCell = cells[0][2]
+	initial_cell.highlight(packed_straight)
+	initial_cell.rotate_cell(PI/2)
+	initial_cell.place()
+	initial_cell.reset()
+	
+	initial_cell  = cells[1][2]
+	initial_cell.highlight(packed_straight)
+	initial_cell.rotate_cell(PI/2)
+	initial_cell.place()
+	initial_cell.reset()
+	
+	initial_cell  = cells[2][2]
+	initial_cell.highlight(packed_straight)
+	initial_cell.rotate_cell(PI/2)
+	initial_cell.place()
+	initial_cell.reset()
 
 func move(dir: Vector2i) -> void:
 	current_cell.reset()
