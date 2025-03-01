@@ -5,10 +5,10 @@ extends MarginContainer
 @onready var pause_menu: Control = $PauseMenu
 
 var all_tiles_scene : Array[PackedScene] = [
-	preload("res://resources/placeholder/tile_straight.tscn"),
-	preload("res://resources/placeholder/tile_turn.tscn"),
+	preload("res://resources/placeholder/tile_straight.tscn")#,
+	#preload("res://resources/placeholder/tile_turn.tscn"),
 ]
-
+ 
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
 
@@ -17,8 +17,8 @@ var is_paused := false
 func _ready() -> void:
 	pause_menu.visible = false
 	for i in next_tiles_length:
-		add_next_tile()
-	update_all_tiles()
+		add_next_tile() 
+	update_all_tiles()  
 	game_scene.tile_placed.connect(_on_tile_placed)
 	game_scene.next_tile = next_tiles[0]
 
@@ -28,7 +28,7 @@ func add_next_tile() -> void:
 func _on_tile_placed() -> void:
 	add_next_tile()
 	next_tiles.pop_front()
-	change_to_next_tiles()
+	change_to_next_tiles() 
 	game_scene.next_tile = next_tiles[0]
 	
 func update_all_tiles() -> void:

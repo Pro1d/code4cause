@@ -29,7 +29,6 @@ func _process(delta: float) -> void:
 	path_follow.progress_ratio += delta*current_direction*player.speed*speed_factor
 
 func find_path() -> void:
-	print("Finding path")
 	for path in get_tree().get_nodes_in_group(Config.PATH_GROUP):
 		
 		if path == path_follow.get_parent():
@@ -39,7 +38,7 @@ func find_path() -> void:
 
 		var next_parent : Path3D = null
 		
-		if true:
+		if false:
 			print("Distance:")
 			print("  0: %s" % curve.get_point_position(0).distance_squared_to(position_in_tile))
 			print("  1: %s" % curve.get_point_position(1).distance_squared_to(position_in_tile))
@@ -56,9 +55,6 @@ func find_path() -> void:
 		if next_parent != null:
 			if path_follow.get_parent() == null:
 				next_parent.add_child(path_follow)
-				print(path_follow.get_path())
-				print(player.get_parent())
-				print(path_follow.global_position.distance_to((path as Node3D).global_position))
 			else:
 				path_follow.reparent(next_parent, false)
 				

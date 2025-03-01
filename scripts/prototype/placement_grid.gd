@@ -17,14 +17,14 @@ var highlighted_cell: PlacementCell
 var current_pos: Vector2i
 var grid_offset: Vector3 = Vector3(0,0,0)
 var camera_offset_x :float = 0
-var rotation: float
+var grid_rotation: float
 
 func _ready() -> void:
 	
 	InitializeGrid()
 	current_pos = Vector2(1,2)
 	current_cell = cells[current_pos.x][current_pos.y]
-	current_cell.predraw(placing_tile_scene, rotation)
+	current_cell.predraw(placing_tile_scene, grid_rotation)
 	highlighted_cell = current_cell
 	highlighted_cell.highlight(true)
 	
@@ -44,7 +44,6 @@ func move(dir: Vector2i) -> void:
 
 func set_current_cell(pos: Vector2i) -> void:
 	current_pos = pos.clamp(Vector2i.ZERO, Vector2i(width - 1, height - 1))
-	print(current_pos)
 	highlighted_cell = cells[current_pos.x][current_pos.y] as PlacementCell
 	highlighted_cell.highlight(true)
 	
@@ -55,10 +54,10 @@ func set_current_cell(pos: Vector2i) -> void:
 	current_cell.reset()
 	current_cell = cells[current_pos.x][current_pos.y]
 	if("predraw" in current_cell):
-		current_cell.predraw(placing_tile_scene, rotation)
+		current_cell.predraw(placing_tile_scene, grid_rotation)
 
 func rotate_cell(rad: float) -> void:
-	rotation += rad
+	grid_rotation += rad
 	current_cell.rotate_cell(rad)
 
 func _place_tile(tile: Node3D, coord: Vector2i) -> void:
@@ -134,7 +133,7 @@ func get_closest_available_cell(x:int, y:int) -> Vector2i:
 		visited[current] = true
 
 		# Return the position if it's False
-		if not (cells[cx][cy] as PlacementCell).is_set:
+		if not (cells[cx][cy] as PlacementCell).is_set :
 			return current  # Found the closest false value!
 
 		# Add neighbors to the queue
@@ -148,4 +147,5 @@ func get_closest_available_cell(x:int, y:int) -> Vector2i:
 
 
 func animate_predrawn_cell() -> void:
-	current_cell.predraw_anim()
+	if not current_cell.is_queued_for_deletion():
+		current_cell.predraw_anim()

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c02g2aiybdtkw"]
+
+[ext_resource type="Script" path="res://scenes/game/background.gd" id="1_ydrvs"]
+[ext_resource type="Texture2D" uid="uid://cu8gie8tsfnl1" path="res://assets/textures/background.png" id="3_7ee7e"]
+[ext_resource type="Texture2D" uid="uid://d0p61w2l0j7kv" path="res://assets/textures/background_middle.png" id="4_dhhjg"]
+[ext_resource type="Texture2D" uid="uid://d1b0hnab42fb1" path="res://assets/textures/background_close.png" id="5_608hd"]
+
+[node name="Background" type="Node3D"]
+script = ExtResource("1_ydrvs")
+
+[node name="MiddleHolder" type="Node3D" parent="."]
+
+[node name="Middle" type="Sprite3D" parent="MiddleHolder"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, -4.3)
+centered = false
+offset = Vector2(-2048, -512)
+double_sided = false
+texture = ExtResource("4_dhhjg")
+
+[node name="NearHolder" type="Node3D" parent="."]
+visible = false
+
+[node name="Near" type="Sprite3D" parent="NearHolder"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, -4.05)
+texture = ExtResource("5_608hd")
+
+[node name="Far" type="Sprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 1.49012e-08, 0, -1.49012e-08, 0.3, 0, 1, -4.61427)
+centered = false
+offset = Vector2(-2048, -512)
+texture = ExtResource("3_7ee7e")

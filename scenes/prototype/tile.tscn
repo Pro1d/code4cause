@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/prototype/placement_cell.gd" id="1_2xaup"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t48uj"]
-albedo_color = Color(0.52549, 0.52549, 0.52549, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayvf"]
+transparency = 1
+albedo_color = Color(0.489622, 0.489622, 0.489622, 0.666667)
 
-[sub_resource type="BoxMesh" id="BoxMesh_g23p7"]
-material = SubResource("StandardMaterial3D_t48uj")
+[sub_resource type="PlaneMesh" id="PlaneMesh_qhy06"]
+material = SubResource("StandardMaterial3D_wayvf")
+size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpw7o"]
 transparency = 1
@@ -22,8 +24,8 @@ script = ExtResource("1_2xaup")
 highlight_hint = NodePath("Hint")
 
 [node name="cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.957067, 0, 0, 0, 0.360643, 0, 0, 0, 0.957067, 0, -0.200948, 0)
-mesh = SubResource("BoxMesh_g23p7")
+transform = Transform3D(0.957067, 0, 0, 0, 0.360643, 0, 0, 0, 0.957067, 0, -0.1, 0)
+mesh = SubResource("PlaneMesh_qhy06")
 skeleton = NodePath("../..")
 
 [node name="Hint" type="Node3D" parent="."]
