@@ -61,3 +61,4 @@ unique_name_in_owner = true
 bpm = 80.0
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
+[connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]

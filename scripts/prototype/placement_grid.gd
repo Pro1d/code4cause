@@ -30,12 +30,11 @@ func _ready() -> void:
 	
 
 func InitializeGrid() -> void:
-	print(cell_size)
 	for i:int in width:
 		_generate_row()
 		
 	var initial_cell : PlacementCell = cells[0][2]
-	initial_cell.predraw(packed_straight)
+	initial_cell.predraw(packed_straight, 0.0)
 	initial_cell.place()
 	initial_cell.reset()
 
@@ -146,3 +145,7 @@ func get_closest_available_cell(x:int, y:int) -> Vector2i:
 				queue.append(Vector2i(nx, ny))
 
 	return Vector2i(-1, -1)  # No false value found
+
+
+func animate_predrawn_cell() -> void:
+	current_cell.predraw_anim()
