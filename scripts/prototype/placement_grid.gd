@@ -52,8 +52,9 @@ func _place_tile(tile: Node3D, coord: Vector2i) -> void:
 	 	-coord.y * cell_size + cell_size / 2.0)
 
 func place_tile() -> void:
-	current_cell.place()
-	tile_placed.emit()
+	if(not current_cell.is_set):
+		current_cell.place()
+		tile_placed.emit()
 	
 	
 func draw_next()->void:
