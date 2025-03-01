@@ -1,8 +1,8 @@
 extends Node
 
-#const CursorArrowIcon := preload("res://assets/images/ui/cursor_arrow2.atlastex")
-#const CursorIBeamIcon := preload("res://assets/images/ui/cursor_ibeam.atlastex")
-#const CursorAimIcon := preload("res://assets/images/ui/cursor_aim1.atlastex")
+const PATH_GROUP = "player_path"
+
+var score := 0
 
 func _enter_tree() -> void:
 #	Input.set_custom_mouse_cursor(

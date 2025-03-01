@@ -28,8 +28,13 @@ func set_next_tile(nt: PackedScene) -> void:
 	grid.move(Vector2i.ZERO)
 	
 func add_row() -> void:
+	if player.current_cell in grid.cells[0]:
+		get_tree().change_scene_to_file("res://scenes/menu/LooserMenu.tscn")
+		
 	grid.add_row()
 	camera_offset_x += cell_size
+	
+	
 
 func _process(delta: float) -> void:
 	camera.global_position.x = lerpf(camera.global_position.x, camera_offset_x, delta)

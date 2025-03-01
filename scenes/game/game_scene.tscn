@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://depdfa24xcvji" path="res://scenes/prototype/tile.tscn" id="2_aevgb"]
 [ext_resource type="Script" path="res://scripts/prototype/grid_movement_controller.gd" id="3_usuh6"]
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
+[ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
@@ -55,3 +56,8 @@ script = ExtResource("3_usuh6")
 
 [node name="Player" parent="." instance=ExtResource("5_sok4i")]
 unique_name_in_owner = true
+
+[node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
+enabled = false
+
+[connection signal="on_bar_start" from="Metronome" to="." method="add_row"]

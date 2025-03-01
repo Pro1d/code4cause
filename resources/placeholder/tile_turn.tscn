@@ -31,7 +31,7 @@ size = Vector3(0.3, 0.1, 1)
 
 [node name="TileTurn" type="Node3D"]
 
-[node name="Path" type="Path3D" parent="."]
+[node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_c1f6f")
 
 [node name="Mesh" type="Node3D" parent="."]
