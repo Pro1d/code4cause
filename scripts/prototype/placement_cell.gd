@@ -15,9 +15,11 @@ func _ready() -> void:
 func highlight(enable:bool) -> void:
 	highlight_hint.visible = enable
 
-func predraw(scene: PackedScene) -> void:
+func predraw(scene: PackedScene, rad: float) -> void:
+	highlight_hint.visible = true
 	if not is_set and scene != null:
 		var child : Node3D = scene.instantiate()
+		child.rotate_y(rad)
 		child_scene.add_child(child)
 		current_tile_scene = scene
 		is_predrawn = true
@@ -25,8 +27,8 @@ func predraw(scene: PackedScene) -> void:
 func rotate_cell(rad: float) -> void:
 	if is_set:
 		return
-		
-	child_scene.rotate_y(rad)
+
+	(child_scene.get_child(0) as Node3D).rotate_y(rad)
 	
 func reset() -> void:
 	highlight_hint.visible = false

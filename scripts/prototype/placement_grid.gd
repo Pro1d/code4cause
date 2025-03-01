@@ -4,8 +4,8 @@ signal tile_placed
 
 var packed_straight : PackedScene = preload("res://resources/placeholder/tile_straight.tscn")
 
-@export var width: int = 5
-@export var height: int = 5
+@export var width: int = 6
+@export var height: int = 4
 @export var cell_size: float = 1.0
 
 @export var tile_scene: PackedScene
@@ -17,13 +17,14 @@ var highlighted_cell: PlacementCell
 var current_pos: Vector2i
 var grid_offset: Vector3 = Vector3(0,0,0)
 var camera_offset_x :float = 0
+var rotation: float
 
 func _ready() -> void:
 	
 	InitializeGrid()
 	current_pos = Vector2(1,2)
 	current_cell = cells[current_pos.x][current_pos.y]
-	current_cell.predraw(placing_tile_scene)
+	current_cell.predraw(placing_tile_scene, rotation)
 	highlighted_cell = current_cell
 	highlighted_cell.highlight(true)
 	
@@ -40,7 +41,10 @@ func InitializeGrid() -> void:
 
 func move(dir: Vector2i) -> void:
 	highlighted_cell.highlight(false)
-	current_pos = (current_pos + dir).clamp(Vector2i.ZERO, Vector2i(width - 1, height - 1))
+	set_current_cell(current_pos + dir)
+
+func set_current_cell(pos: Vector2i) -> void:
+	current_pos = pos.clamp(Vector2i.ZERO, Vector2i(width - 1, height - 1))
 	print(current_pos)
 	highlighted_cell = cells[current_pos.x][current_pos.y] as PlacementCell
 	highlighted_cell.highlight(true)
@@ -52,9 +56,10 @@ func move(dir: Vector2i) -> void:
 	current_cell.reset()
 	current_cell = cells[current_pos.x][current_pos.y]
 	if("predraw" in current_cell):
-		current_cell.predraw(placing_tile_scene)
+		current_cell.predraw(placing_tile_scene, rotation)
 
 func rotate_cell(rad: float) -> void:
+	rotation += rad
 	current_cell.rotate_cell(rad)
 
 func _place_tile(tile: Node3D, coord: Vector2i) -> void:
@@ -86,7 +91,6 @@ func _delete_first_row() -> void:
 		i.delete()
 	cells.pop_front()
 		
-
 func shift_back() -> void:
 	for i:int in width:
 		for j:int in range(1, height):
@@ -97,14 +101,14 @@ func shift_back() -> void:
 func _generate_row()->void:
 	cells.append([])
 	var i := len(cells) - 1
-	grid_offset.x += cell_size
 	for j:int in height:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
-		cell.global_position = grid_offset + Vector3(cell_size / 2.0, 0.0, -j * cell_size + cell_size / 2.0)
+		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
 		
 		(cells[i] as Array).append(cell)
+	grid_offset.x += cell_size
 
 
 func get_closest_available_cell(x:int, y:int) -> Vector2i:

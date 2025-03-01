@@ -1,3 +1,4 @@
+class_name Metronome
 extends Node
 
 @export var enabled: bool = true
@@ -33,12 +34,12 @@ func on_timeout() -> void:
 	on_pulse.emit()
 	is_bar = false
 	
-	if(pulse_count == 0 and not first_beat):
+	if(pulse_count % bar == 0 and not first_beat):
 		on_bar_start.emit()
 		is_bar = true
 		
 	first_beat = false
-	pulse_count = (pulse_count + 1) % bar
+	pulse_count += 1
 	play_sfx()
 	
 func play_sfx() -> void:
@@ -53,3 +54,6 @@ func play_sfx() -> void:
 	
 func pause() -> void:
 	pass
+
+func time() -> float:
+	return float(pulse_count + (1.0 - beat_timer.time_left / beat_timer.wait_time)) / bar

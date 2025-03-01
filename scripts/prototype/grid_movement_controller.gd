@@ -1,6 +1,6 @@
 class_name InputController
 extends Node
-signal add_row
+
 
 var tile_grid: PlacementGrid
 
@@ -19,5 +19,6 @@ func _input(event: InputEvent) -> void:
 		tile_grid.rotate_cell(-PI/2)
 	elif(event.is_action_pressed("ui_accept")):
 		tile_grid.place_tile()
-	elif(event.is_action_pressed("ui_focus_next")):
-		add_row.emit()
+
+#func _process(delta: float) -> void:
+	#get_viewport().get_mouse_position()
