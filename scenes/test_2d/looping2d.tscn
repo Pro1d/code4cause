@@ -44,7 +44,8 @@ position = Vector2(893, 434)
 
 [node name="StaticBody2D8" parent="Elements" instance=ExtResource("2_0car7")]
 modulate = Color(1, 0.513726, 1, 1)
-position = Vector2(2116, 122)
+position = Vector2(2197, 132)
+scale = Vector2(2, 1)
 
 [node name="StaticBody2D10" parent="Elements" instance=ExtResource("2_0car7")]
 modulate = Color(1, 0.513726, 1, 1)
@@ -52,11 +53,17 @@ position = Vector2(1744, 447)
 
 [node name="StaticBody2D9" parent="Elements" instance=ExtResource("2_0car7")]
 modulate = Color(1, 0.513726, 1, 1)
-position = Vector2(2569, 129)
+position = Vector2(2811, 129)
+scale = Vector2(4, 1)
+
+[node name="StaticBody2D12" parent="Elements" instance=ExtResource("2_0car7")]
+modulate = Color(1, 0.513726, 1, 1)
+position = Vector2(751, -59)
+scale = Vector2(4, 1)
 
 [node name="StaticBody2D5" parent="Elements" instance=ExtResource("2_0car7")]
 modulate = Color(1, 0.513726, 1, 1)
-position = Vector2(50, 163)
+position = Vector2(162, 23)
 
 [node name="Pixel2" type="Sprite2D" parent="Elements/StaticBody2D5"]
 modulate = Color(0.396078, 1, 0.466667, 1)
