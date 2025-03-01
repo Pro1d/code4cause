@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://7ay52xa54u75"]
+[gd_scene load_steps=9 format=3 uid="uid://7ay52xa54u75"]
+
+[ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_no04y"]
 
 [sub_resource type="Curve3D" id="Curve3D_c1f6f"]
 _data = {
@@ -30,6 +32,7 @@ material = SubResource("StandardMaterial3D_kgwnp")
 size = Vector3(0.3, 0.1, 1)
 
 [node name="TileTurn" type="Node3D"]
+script = ExtResource("1_no04y")
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_c1f6f")
