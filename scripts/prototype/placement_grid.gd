@@ -17,13 +17,14 @@ var highlighted_cell: PlacementCell
 var current_pos: Vector2i
 var grid_offset: Vector3 = Vector3(0,0,0)
 var camera_offset_x :float = 0
+var rotation: float
 
 func _ready() -> void:
 	
 	InitializeGrid()
 	current_pos = Vector2(0,2)
 	current_cell = cells[current_pos.x][current_pos.y]
-	current_cell.predraw(placing_tile_scene)
+	current_cell.predraw(placing_tile_scene, rotation)
 	highlighted_cell = current_cell
 	highlighted_cell.highlight(true)
 	
@@ -34,7 +35,7 @@ func InitializeGrid() -> void:
 		_generate_row()
 		
 	var initial_cell : PlacementCell = cells[0][2]
-	initial_cell.predraw(packed_straight)
+	initial_cell.predraw(packed_straight, rotation)
 	initial_cell.rotate_cell(PI/2)
 	initial_cell.place()
 	initial_cell.reset()
@@ -53,9 +54,10 @@ func move(dir: Vector2i) -> void:
 	current_cell.reset()
 	current_cell = cells[current_pos.x][current_pos.y]
 	if("predraw" in current_cell):
-		current_cell.predraw(placing_tile_scene)
+		current_cell.predraw(placing_tile_scene, rotation)
 
 func rotate_cell(rad: float) -> void:
+	rotation += rad
 	current_cell.rotate_cell(rad)
 
 func _place_tile(tile: Node3D, coord: Vector2i) -> void:
@@ -87,7 +89,6 @@ func _delete_first_row() -> void:
 		i.delete()
 	cells.pop_front()
 		
-
 func shift_back() -> void:
 	for i:int in width:
 		for j:int in range(1, height):
