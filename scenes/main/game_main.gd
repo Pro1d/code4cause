@@ -16,7 +16,7 @@ func _ready() -> void:
 		add_next_tile() 
 	update_all_tiles()  
 	game_scene.tile_placed.connect(_on_tile_placed)
-	game_scene.next_tile = next_tiles[0]
+	game_scene.next_tile = next_tiles[0] 
 
 func add_next_tile() -> void:
 	next_tiles.append(all_tiles_scene.pick_random())
@@ -26,7 +26,7 @@ func _on_tile_placed() -> void:
 	next_tiles.pop_front()
 	change_to_next_tiles() 
 	game_scene.next_tile = next_tiles[0]
-	
+	 
 func update_all_tiles() -> void:
 	for i in range(next_tiles_holders.get_child_count() - 1):
 		var current_holder : TileViewportContainer = next_tiles_holders.get_child(i)
