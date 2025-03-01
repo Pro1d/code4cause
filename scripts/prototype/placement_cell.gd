@@ -75,6 +75,8 @@ func place() -> void:
 		
 	cube_node.visible = false
 	
+	(child_scene.get_child(0) as GameTile).draw_props()
+
 	var path : Path3D = child_scene.get_child(0).get_node_or_null("Path3D")
 	if path != null: 
 		path.add_to_group(Config.PATH_GROUP)
