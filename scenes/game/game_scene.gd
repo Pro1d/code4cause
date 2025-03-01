@@ -20,20 +20,21 @@ func _ready() -> void:
 	camera.global_position.x = camera_offset_x
 
 	grid.tile_placed.connect(on_tile_placed)
+	
+	player.died.connect(on_death)
 
 func on_tile_placed() -> void:
-	tile_placed.emit()
+	tile_placed.emit() 
+	
+func on_death() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu/LooserMenu.tscn")
 
 func set_next_tile(nt: PackedScene) -> void:
 	grid.placing_tile_scene = nt
 	grid.move(Vector2i.ZERO)
 	
 func add_row() -> void:
-	if player.current_cell in grid.cells[0]:
-		get_tree().change_scene_to_file("res://scenes/menu/LooserMenu.tscn")
-		
 	grid.add_row()
-	
 
 func _process(_delta: float) -> void:
 	camera.global_position.x = camera_offset_x + metronome.time()

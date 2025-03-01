@@ -67,7 +67,7 @@ func place_tile() -> void:
 	
 func add_row()->void:
 	_generate_row(true)
-	await  get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	_delete_first_row()
 	current_pos += Vector2i.LEFT
 	if(current_pos.x < 0):

@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var game_scene : GameScene = %GameScene
 @onready var pause_menu: Control = $PauseMenu
 
-var all_tiles_scene : Array[PackedScene] = [
+var all_tiles_scene : Array[PackedScene] = [ 
 	preload("res://resources/placeholder/tile_straight.tscn"),
 	preload("res://resources/placeholder/tile_turn.tscn"),
 ]

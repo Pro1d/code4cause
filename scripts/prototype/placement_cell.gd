@@ -1,5 +1,6 @@
 class_name PlacementCell
 extends Node3D
+signal out
 
 @export var highlight_hint: Node3D
 @onready var child_scene: Node3D = $Scene
@@ -111,6 +112,8 @@ func delete() -> void:
 		shake_offset = shake_offset.rotated(Vector3.UP, deg_to_rad(180.0 + randf_range(-20.0, 20.0)))
 	tween.parallel().tween_property(self, "global_position:y", -5.0, 1.0) \
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(shake_count * shake_duration * .85)
+	tween.tween_callback(out.emit)
+	tween.tween_interval(0.5)
 	tween.tween_callback(queue_free)
 	
 func redraw_child(new_is_set:bool, scene: PackedScene) -> void:

@@ -29,6 +29,7 @@ buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"
 Config="*res://scripts/singleton/Config.gd"
 MusicManager="*res://scripts/singleton/MusicManager.gd"
 SoundFxManager="*res://scripts/singleton/SoundFxManager.gd"
+SceneManager="*res://scripts/singleton/SceneManager.gd"
 
 [debug]
 

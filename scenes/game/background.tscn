@@ -12,7 +12,7 @@ script = ExtResource("1_ydrvs")
 
 [node name="Middle" type="Sprite3D" parent="MiddleHolder"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -4.3)
-layers = 2
+layers = 3
 centered = false
 offset = Vector2(-2048, -512)
 shaded = true
