@@ -1,8 +1,11 @@
 extends Node
 
+@export var enabled: bool = true
+@export_group("Rythm")
 @export var bpm: float = 120.0
 @export var bar: int = 4
 
+@export_group("Sound")
 @export var sfx_on: bool = true
 @export var beat_sfx: AudioStream
 @export var bar_sfx: AudioStream
@@ -19,8 +22,9 @@ var is_bar: bool = false
 @onready var beat_timer: Timer = $Timer
 
 func _ready() -> void:
-	beat_timer.wait_time = 60.0 / bpm
-	start()
+	if(enabled):
+		beat_timer.wait_time = 60.0 / bpm
+		start()
 
 func start() -> void:
 	beat_timer.start()
