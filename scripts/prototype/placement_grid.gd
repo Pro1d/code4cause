@@ -30,7 +30,6 @@ func _ready() -> void:
 	
 
 func InitializeGrid() -> void:
-	print(cell_size)
 	for i:int in width:
 		_generate_row()
 		
@@ -43,7 +42,6 @@ func InitializeGrid() -> void:
 func move(dir: Vector2i) -> void:
 	highlighted_cell.highlight(false)
 	current_pos = (current_pos + dir).clamp(Vector2i.ZERO, Vector2i(width - 1, height - 1))
-	print(current_pos)
 	highlighted_cell = cells[current_pos.x][current_pos.y] as PlacementCell
 	highlighted_cell.highlight(true)
 	
@@ -144,3 +142,7 @@ func get_closest_available_cell(x:int, y:int) -> Vector2i:
 				queue.append(Vector2i(nx, ny))
 
 	return Vector2i(-1, -1)  # No false value found
+
+
+func animate_predrawn_cell() -> void:
+	current_cell.predraw_anim()

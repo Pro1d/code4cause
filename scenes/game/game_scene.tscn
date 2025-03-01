@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5j3nkd57dwpk"]
+[gd_scene load_steps=8 format=3 uid="uid://5j3nkd57dwpk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
 [ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
@@ -61,3 +61,4 @@ unique_name_in_owner = true
 bpm = 80.0
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
+[connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]
