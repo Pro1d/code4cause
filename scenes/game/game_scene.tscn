@@ -49,7 +49,7 @@ size = 5.0
 
 [node name="Background" parent="Camera3D" instance=ExtResource("7_jw0xs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, -0.332648, -5.30956)
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, -0.413551, -5.36834)
 
 [node name="TileGrid" type="Node3D" parent="."]
 unique_name_in_owner = true

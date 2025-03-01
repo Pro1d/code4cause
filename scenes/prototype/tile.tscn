@@ -24,7 +24,7 @@ script = ExtResource("1_2xaup")
 highlight_hint = NodePath("Hint")
 
 [node name="cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.957067, 0, 0, 0, 0.360643, 0, 0, 0, 0.957067, 0, -0.1, 0)
+transform = Transform3D(0.957067, 0, 0, 0, 0.360643, 0, 0, 0, 0.957067, 0, -0.2, 0)
 mesh = SubResource("PlaneMesh_qhy06")
 skeleton = NodePath("../..")
 
@@ -32,6 +32,7 @@ skeleton = NodePath("../..")
 
 [node name="sphere" type="MeshInstance3D" parent="Hint"]
 transform = Transform3D(0.392576, 0, 0, 0, 0.392576, 0, 0, 0, 0.392576, 0, 0.232699, 0)
+visible = false
 mesh = SubResource("SphereMesh_edhu6")
 skeleton = NodePath("../..")
 

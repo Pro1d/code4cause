@@ -36,8 +36,10 @@ func predraw(scene: PackedScene, rad: float = 0.) -> void:
 		child.rotate_y(rad)
 		child.target_rot_y += rad
 		child_scene.add_child(child)
+		child.scale = 0.9*Vector3.ONE
 		current_tile_scene = scene
 		is_predrawn = true
+		child_scene.position.y = 0.1
 		
 func rotate_cell(rad: float) -> void:
 	if is_set:
@@ -70,7 +72,6 @@ func reset() -> void:
 	if(child_scene.get_children().size() == 0):
 		return
 		
-		
 	if not is_set:
 		child_scene.remove_child(child_scene.get_child(0))
 		is_predrawn = false
@@ -81,12 +82,13 @@ func place() -> void:
 	
 	if(predraw_tween):
 		predraw_tween.stop()
-		(child_scene.get_child(0) as Node3D).scale = Vector3.ONE
+	(child_scene.get_child(0) as Node3D).scale = Vector3.ONE
 		
 	cube_node.visible = false
 	
 	(child_scene.get_child(0) as GameTile).draw_props()
-
+	child_scene.position.y = 0.0
+ 
 	var path : Path3D = child_scene.get_child(0).get_node_or_null("Path3D")
 	if path != null: 
 		path.add_to_group(Config.PATH_GROUP)
@@ -132,9 +134,9 @@ func predraw_anim() -> void:
 	if is_predrawn:
 		var child: Node3D = child_scene.get_child(0)
 		predraw_tween = create_tween()
-		predraw_tween.tween_property(child, "scale", Vector3(0.9, 0.9, 0.9), 0.1) \
+		predraw_tween.tween_property(child, "scale", 0.8 *Vector3.ONE, 0.1) \
 			.set_trans(Tween.TRANS_BACK) \
 			.set_ease(Tween.EASE_OUT) 
-		predraw_tween.tween_property(child, "scale", Vector3(1.0, 1.0, 1.0), 0.1) \
+		predraw_tween.tween_property(child, "scale",  0.9*Vector3.ONE, 0.1) \
 			.set_trans(Tween.TRANS_BACK) \
 			.set_ease(Tween.EASE_IN)
