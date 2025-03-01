@@ -10,18 +10,19 @@ var current_tile_scene: PackedScene
 func _ready() -> void:
 	highlight_hint.visible = false
 
-func highlight(scene: PackedScene) -> void:
+func highlight(scene: PackedScene, rad: float) -> void:
 	highlight_hint.visible = true
 	if not is_set and scene != null:
 		var child : Node3D = scene.instantiate()
+		child.rotate_y(rad)
 		child_scene.add_child(child)
 		current_tile_scene = scene
 		
 func rotate_cell(rad: float) -> void:
 	if is_set:
 		return
-		
-	child_scene.rotate_y(rad)
+
+	(child_scene.get_child(0) as Node3D).rotate_y(rad)
 	
 func reset() -> void:
 	highlight_hint.visible = false
