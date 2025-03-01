@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://xiiuhs2xgxi5"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/metronome.gd" id="1_6gibu"]
+[ext_resource type="AudioStream" uid="uid://ccj1sekflrm5f" path="res://assets/sounds/metronome/metronome_beat.mp3" id="2_nc8a0"]
+[ext_resource type="AudioStream" uid="uid://cfjovhoo75qp5" path="res://assets/sounds/metronome/metronome_bar.mp3" id="3_a32gj"]
+
+[node name="Metronome" type="Node3D"]
+script = ExtResource("1_6gibu")
+beat_sfx = ExtResource("2_nc8a0")
+bar_sfx = ExtResource("3_a32gj")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -18.0
+
+[connection signal="timeout" from="Timer" to="." method="on_timeout"]

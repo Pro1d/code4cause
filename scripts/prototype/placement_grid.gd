@@ -13,6 +13,7 @@ var placing_tile_scene: PackedScene
 
 var cells: Array
 var current_cell: PlacementCell
+var highlighted_cell: PlacementCell
 var current_pos: Vector2i
 var grid_offset: Vector3 = Vector3(0,0,0)
 var camera_offset_x :float = 0
@@ -20,9 +21,11 @@ var camera_offset_x :float = 0
 func _ready() -> void:
 	
 	InitializeGrid()
-	current_pos = Vector2(2,0)
+	current_pos = Vector2(0,2)
 	current_cell = cells[current_pos.x][current_pos.y]
-	current_cell.highlight(placing_tile_scene)
+	current_cell.predraw(placing_tile_scene)
+	highlighted_cell = current_cell
+	highlighted_cell.highlight(true)
 	
 
 func InitializeGrid() -> void:
@@ -31,17 +34,26 @@ func InitializeGrid() -> void:
 		_generate_row()
 		
 	var initial_cell : PlacementCell = cells[0][2]
-	initial_cell.highlight(packed_straight)
+	initial_cell.predraw(packed_straight)
 	initial_cell.rotate_cell(PI/2)
 	initial_cell.place()
 	initial_cell.reset()
 
 func move(dir: Vector2i) -> void:
-	current_cell.reset()
+	highlighted_cell.highlight(false)
 	current_pos = (current_pos + dir).clamp(Vector2i.ZERO, Vector2i(width - 1, height - 1))
+	print(current_pos)
+	highlighted_cell = cells[current_pos.x][current_pos.y] as PlacementCell
+	highlighted_cell.highlight(true)
+	
+	# Forbid placement if cell is occupied
+	if((cells[current_pos.x][current_pos.y] as PlacementCell).is_set):
+		return
+		
+	current_cell.reset()
 	current_cell = cells[current_pos.x][current_pos.y]
-	if("highlight" in current_cell):
-		current_cell.highlight(placing_tile_scene)
+	if("predraw" in current_cell):
+		current_cell.predraw(placing_tile_scene)
 
 func rotate_cell(rad: float) -> void:
 	current_cell.rotate_cell(rad)
@@ -57,6 +69,8 @@ func _place_tile(tile: Node3D, coord: Vector2i) -> void:
 func place_tile() -> void:
 	if(not current_cell.is_set):
 		current_cell.place()
+		current_pos = get_closest_available_cell(current_pos.x, current_pos.y)
+		highlighted_cell = (cells[current_pos.x][current_pos.y] as PlacementCell)
 		tile_placed.emit()
 	
 	
@@ -92,3 +106,40 @@ func _generate_row()->void:
 		cell.global_position = grid_offset + Vector3(cell_size / 2.0, 0.0, -j * cell_size + cell_size / 2.0)
 		
 		(cells[i] as Array).append(cell)
+
+
+func get_closest_available_cell(x:int, y:int) -> Vector2i:
+	# Directions for 4-way movement (up, down, left, right)
+	var directions := [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
+
+	# Queue for BFS (stores (x, y) positions)
+	var queue := [Vector2i(x, y)]
+	var visited := {}
+
+	# Start BFS
+	while queue:
+		var current:Vector2i = queue.pop_front()
+		var cx:int = current.x
+		var cy:int = current.y
+
+		# Check bounds
+		if cx < 0 or cy < 0 or cx >= width or cy >= height:
+			continue
+
+		# Skip already visited positions
+		if visited.has(current):
+			continue
+		visited[current] = true
+
+		# Return the position if it's False
+		if not (cells[cx][cy] as PlacementCell).is_set:
+			return current  # Found the closest false value!
+
+		# Add neighbors to the queue
+		for direction:Vector2i in directions:
+			var nx:int = cx + direction.x
+			var ny:int = cy + direction.y
+			if nx >= 0 and ny >= 0 and nx < width and ny < height:
+				queue.append(Vector2i(nx, ny))
+
+	return Vector2i(-1, -1)  # No false value found
