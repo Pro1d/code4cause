@@ -57,3 +57,23 @@ func place_tile() -> void:
 	current_cell.place()
 	tile_placed.emit()
 	
+	
+func draw_next()->void:
+	delete_first_row()
+	shift_back()
+	generate_row(height - 1)
+	
+func delete_first_row() -> void:
+	for i in (cells[0] as Array[PlacementCell]):
+		i.delete()
+		
+
+func shift_back() -> void:
+	for i:int in width:
+		for j:int in range(1, height):
+			var old_cell: PlacementCell = cells[i][j]
+			(cells[i][j-1] as PlacementCell).redraw_child(old_cell.is_set, old_cell.current_tile_scene)
+			old_cell.delete()
+	
+func generate_row(_row_index:int)->void:
+	pass

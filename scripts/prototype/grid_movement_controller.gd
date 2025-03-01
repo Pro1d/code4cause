@@ -25,3 +25,5 @@ func _input(event: InputEvent) -> void:
 		tile_grid.rotate_cell(-PI/2)
 	elif(event.is_action_pressed("ui_accept")):
 		tile_grid.place_tile()
+	elif(event.is_action_pressed("ui_focus_next")):
+		tile_grid.draw_next()
