@@ -15,6 +15,7 @@ var rotate_tween: Tween
 func _ready() -> void: 
 	highlight_hint.visible = false
 	
+func appear() -> void:
 	scale = Vector3.ZERO
 	var appear_tween := create_tween()
 	var appear_duration := 0.5

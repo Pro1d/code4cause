@@ -38,7 +38,7 @@ func find_path() -> void:
 
 		var next_parent : Path3D = null
 		
-		if false:
+		if true:
 			print("Distance:")
 			print("  0: %s" % curve.get_point_position(0).distance_squared_to(position_in_tile))
 			print("  1: %s" % curve.get_point_position(1).distance_squared_to(position_in_tile))

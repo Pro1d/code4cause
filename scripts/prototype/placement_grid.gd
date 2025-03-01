@@ -66,7 +66,7 @@ func place_tile() -> void:
 		tile_placed.emit()
 	
 func add_row()->void:
-	_generate_row()
+	_generate_row(true)
 	await  get_tree().create_timer(0.5).timeout
 	_delete_first_row()
 	current_pos += Vector2i.LEFT
@@ -86,13 +86,15 @@ func shift_back() -> void:
 			(cells[i][j-1] as PlacementCell).redraw_child(old_cell.is_set, old_cell.current_tile_scene)
 			old_cell.delete()
 	
-func _generate_row()->void:
+func _generate_row(appear_animation: bool = false)->void:
 	cells.append([])
 	var i := len(cells) - 1
 	for j:int in height:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
+		if appear_animation:
+			cell.appear() 
 		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
 		
 		(cells[i] as Array).append(cell)
