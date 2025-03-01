@@ -5,6 +5,7 @@ signal tile_placed
 @onready var grid: PlacementGrid = %TileGrid
 @onready var camera: Camera3D = %Camera3D
 @onready var input_controller: InputController = %InputController
+@onready var player: Player = %Player
 
 var next_tile: PackedScene : set = set_next_tile
 var cell_size: float= 0
