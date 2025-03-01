@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://btlhmdbpe6gqk"]
+
+[ext_resource type="Script" path="res://scenes/main/tile_viewport.gd" id="1_vb2ps"]
+[ext_resource type="World3D" uid="uid://b055unhwgqihy" path="res://scenes/main/preview_world.tres" id="2_lnodh"]
+
+[node name="TileViewportContainer" type="SubViewportContainer"]
+custom_minimum_size = Vector2(200, 200)
+size_flags_stretch_ratio = 1.2
+stretch = true
+script = ExtResource("1_vb2ps")
+metadata/_edit_use_anchors_ = true
+
+[node name="TileViewport" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("2_lnodh")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="TileViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.810574, 0.585637, 0, -0.585637, 0.810574, 0, 1.04608, 2)

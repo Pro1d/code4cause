@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func highlight(scene: PackedScene) -> void:
 	highlight_hint.visible = true
-	if not is_set:
+	if not is_set and scene != null:
 		var child : Node3D = scene.instantiate()
 		child_scene.add_child(child)
 		

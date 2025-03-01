@@ -1,14 +1,13 @@
 class_name PlacementGrid
 extends Node
+signal tile_placed
 
 @export var width: int = 5
 @export var height: int = 5
 @export var cell_size: float = 1.0
 
 @export var tile_scene: PackedScene
-@export var all_tiles_scenes: Array[PackedScene]
 var placing_tile_scene: PackedScene
-var placing_tile_index: int = 0
 
 var cells: Array
 var current_cell: PlacementCell
@@ -16,7 +15,6 @@ var current_pos: Vector2i
 var offset: Vector3 = Vector3(0,0,0)
 
 func _ready() -> void:
-	placing_tile_scene = all_tiles_scenes[0]
 	offset = Vector3(width,0,height)*(-cell_size)/2
 	InitializeGrid()
 	current_pos = Vector2(2,0)
@@ -57,6 +55,5 @@ func _place_tile(tile: Node3D, coord: Vector2i) -> void:
 
 func place_tile() -> void:
 	current_cell.place()
-	placing_tile_index = (placing_tile_index+1) % len(all_tiles_scenes)
-	placing_tile_scene = all_tiles_scenes[placing_tile_index]
+	tile_placed.emit()
 	

@@ -20,8 +20,8 @@ func _input(event: InputEvent) -> void:
 	elif(event.is_action_pressed("move_right")):
 		tile_grid.move(Vector2i.RIGHT)
 	elif(event.is_action_pressed("rotate_left")):
-		tile_grid.rotate_cell(-PI/2)
-	elif(event.is_action_pressed("rotate_right")):
 		tile_grid.rotate_cell(PI/2)
+	elif(event.is_action_pressed("rotate_right")):
+		tile_grid.rotate_cell(-PI/2)
 	elif(event.is_action_pressed("ui_accept")):
 		tile_grid.place_tile()
