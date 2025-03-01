@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bt1qh1ca164wi"
+path="res://.godot/imported/road-angle.obj-8597a38fdbc761436da1014486cfc694.mesh"
+
+[deps]
+
+files=["res://.godot/imported/road-angle.obj-8597a38fdbc761436da1014486cfc694.mesh"]
+
+source_file="res://assets/meshes/road-angle.obj"
+dest_files=["res://.godot/imported/road-angle.obj-8597a38fdbc761436da1014486cfc694.mesh", "res://.godot/imported/road-angle.obj-8597a38fdbc761436da1014486cfc694.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -2,6 +2,7 @@ extends MarginContainer
 
 @onready var next_tiles_holders : Container = %NextTiles
 @onready var game_scene : GameScene = %GameScene
+@onready var pause_menu: Control = $PauseMenu
 
 var all_tiles_scene : Array[PackedScene] = [
 	preload("res://resources/placeholder/tile_straight.tscn")#,
@@ -11,7 +12,10 @@ var all_tiles_scene : Array[PackedScene] = [
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
 
+var is_paused := false
+
 func _ready() -> void:
+	pause_menu.visible = false
 	for i in next_tiles_length:
 		add_next_tile() 
 	update_all_tiles()  
@@ -59,3 +63,15 @@ func change_to_next_tiles() -> void:
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(last_holder, "modulate:a", 1.0, .5).from(0.0) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+
+
+func _input(event: InputEvent) -> void:
+	if(event.is_action_pressed("ui_cancel")):
+		pause()
+
+
+func pause() -> void:
+	is_paused = !is_paused
+	print("is_paused: "+str(is_paused))
+	pause_menu.visible = is_paused
+	get_tree().paused = is_paused

@@ -1,21 +1,11 @@
 extends Node
 
-enum Volume { LOW=1, HIGH=2 }
-
-#const menu_music := preload("res://assets/musics/TownTheme.ogg")
-#const game_music := preload("res://assets/musics/snow_city.ogg")
-
-var _vol := Volume.HIGH
 var _mute := false
-@onready var _player := AudioStreamPlayer.new()
+@onready var player :AudioStreamPlayer
 @onready var _music_bus := AudioServer.get_bus_index(&"Music")
-@onready var _default_volume_db := AudioServer.get_bus_volume_db(_music_bus)
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
-	_player.bus = &"Music"
-	set_volume(_vol)
-	add_child(_player)
 
 func toggle_mute() -> void:
 	set_mute(not _mute)
@@ -27,24 +17,9 @@ func set_mute(m: bool) -> void:
 func is_mute() -> bool:
 	return _mute
 
-func set_volume(level: Volume) -> void:
+func set_volume(level: float) -> void:
 	set_mute(false)
-	_vol = level
-	match level:
-		Volume.HIGH:
-			AudioServer.set_bus_volume_db(_music_bus, _default_volume_db)
-		Volume.LOW:
-			AudioServer.set_bus_volume_db(_music_bus, _default_volume_db - 9.0)
-
-#func start_menu_music() -> void:
-	#if _player.stream != menu_music or not _player.playing:
-		#_player.stream = menu_music
-		#_player.play()
-#
-#func start_game_music() -> void:
-	#if _player.stream != game_music or not _player.playing:
-		#_player.stream = game_music
-		#_player.play()
+	AudioServer.set_bus_volume_db(_music_bus, linear_to_db(level))
 
 func stop_music() -> void:
-	_player.stop()
+	player.stop()

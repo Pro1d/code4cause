@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dup7r0nrptxj"]
+[gd_scene load_steps=10 format=3 uid="uid://dup7r0nrptxj"]
 
 [ext_resource type="PackedScene" uid="uid://5j3nkd57dwpk" path="res://scenes/game/game_scene.tscn" id="1_5yrsn"]
 [ext_resource type="Script" path="res://scenes/main/game_main.gd" id="1_uhk2i"]
 [ext_resource type="PackedScene" uid="uid://btlhmdbpe6gqk" path="res://scenes/main/tile_viewport_container.tscn" id="3_f2sao"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="4_osjqf"]
+[ext_resource type="Theme" uid="uid://e2qgxo4dwns7" path="res://resources/themes/hud.theme" id="4_sfmvd"]
+[ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="6_5pjwo"]
+[ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="6_vqqcm"]
+[ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="7_iaqjs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vvsm"]
+shader = ExtResource("6_5pjwo")
+shader_parameter/speed = 0.5
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/tint_color = Color(0.360784, 0.109804, 0.0745098, 1)
+shader_parameter/tiling = Vector2(3, 3)
 
 [node name="GameMain" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +37,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(1170, 768)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="GameScene" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_5yrsn")]
@@ -71,3 +84,224 @@ is_focus = true
 [node name="BottomOffset" type="Control" parent="HBoxContainer/MarginContainer/ColorRect/NextTiles"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("4_osjqf")
+
+[node name="Background" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0, 0, 0.705882)
+
+[node name="Panel" type="Control" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_right = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Panel"]
+modulate = Color(0.397578, 0.128034, 0.0905271, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = -372.0
+offset_right = 366.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.370072
+texture = ExtResource("6_vqqcm")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -276.0
+offset_top = -151.0
+offset_right = 40.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_sfmvd")
+theme_override_font_sizes/font_size = 36
+text = "Resume"
+
+[node name="MusicSlider" type="Control" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -36.0
+offset_right = 186.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SliderLabel" type="Label" parent="PauseMenu/Panel/MusicSlider"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -39.0
+offset_right = -49.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music volume"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/Panel/MusicSlider"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -8.0
+offset_right = 169.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_sfmvd")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="SfxSlider" type="Control" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = 40.0
+offset_right = 139.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SliderLabel" type="Label" parent="PauseMenu/Panel/SfxSlider"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -39.0
+offset_right = -49.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX volume
+"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/Panel/SfxSlider"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -8.0
+offset_right = 169.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_sfmvd")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="Banner" type="TextureRect" parent="PauseMenu"]
+modulate = Color(0.996078, 0.960784, 0.901961, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -962.0
+offset_top = -53.0
+offset_right = 806.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.292033
+texture = ExtResource("6_vqqcm")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="PauseMenu/Banner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.207843, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopStripe" type="TextureRect" parent="PauseMenu/Banner"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4vvsm")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.387865
+offset_top = 8.23705
+offset_right = -0.387817
+offset_bottom = 52.2371
+grow_horizontal = 2
+texture = ExtResource("7_iaqjs")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="BottomStripe" type="TextureRect" parent="PauseMenu/Banner"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4vvsm")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.272081
+offset_top = 139.842
+offset_right = -0.272095
+offset_bottom = 183.842
+grow_horizontal = 2
+texture = ExtResource("7_iaqjs")
+expand_mode = 2
+stretch_mode = 1
+flip_h = true
+
+[connection signal="pressed" from="PauseMenu/Panel/ResumeButton" to="." method="pause"]
+[connection signal="value_changed" from="PauseMenu/Panel/MusicSlider/HSlider" to="PauseMenu" method="set_music_volume"]
