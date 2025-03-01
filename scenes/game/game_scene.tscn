@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5j3nkd57dwpk"]
+[gd_scene load_steps=8 format=3 uid="uid://5j3nkd57dwpk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
 [ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
@@ -40,7 +40,7 @@ directional_shadow_max_distance = 12.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4.2)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 3.4)
 current = true
 fov = 35.0
 size = 5.0
