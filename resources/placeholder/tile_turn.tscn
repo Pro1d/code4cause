@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://7ay52xa54u75"]
+[gd_scene load_steps=10 format=3 uid="uid://7ay52xa54u75"]
 
 [ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_no04y"]
+[ext_resource type="ArrayMesh" uid="uid://bt1qh1ca164wi" path="res://assets/meshes/road-angle.obj" id="2_iqjvb"]
 
 [sub_resource type="Curve3D" id="Curve3D_c1f6f"]
 _data = {
@@ -37,7 +38,11 @@ script = ExtResource("1_no04y")
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_c1f6f")
 
+[node name="Road-angle" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_iqjvb")
+
 [node name="Mesh" type="Node3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
