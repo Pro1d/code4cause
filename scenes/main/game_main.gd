@@ -2,6 +2,7 @@ extends MarginContainer
 
 @onready var next_tiles_holders : Container = %NextTiles
 @onready var game_scene : GameScene = %GameScene
+@onready var pause_menu: Control = $PauseMenu
 
 var all_tiles_scene : Array[PackedScene] = [
 	preload("res://resources/placeholder/tile_straight.tscn")#,
@@ -11,12 +12,15 @@ var all_tiles_scene : Array[PackedScene] = [
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
 
+var is_paused := false
+
 func _ready() -> void:
+	pause_menu.visible = false
 	for i in next_tiles_length:
 		add_next_tile() 
 	update_all_tiles()  
 	game_scene.tile_placed.connect(_on_tile_placed)
-	game_scene.next_tile = next_tiles[0]
+	game_scene.next_tile = next_tiles[0] 
 
 func add_next_tile() -> void:
 	next_tiles.append(all_tiles_scene.pick_random())
@@ -26,7 +30,7 @@ func _on_tile_placed() -> void:
 	next_tiles.pop_front()
 	change_to_next_tiles() 
 	game_scene.next_tile = next_tiles[0]
-	
+	 
 func update_all_tiles() -> void:
 	for i in range(next_tiles_holders.get_child_count() - 1):
 		var current_holder : TileViewportContainer = next_tiles_holders.get_child(i)
@@ -59,3 +63,15 @@ func change_to_next_tiles() -> void:
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(last_holder, "modulate:a", 1.0, .5).from(0.0) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+
+
+func _input(event: InputEvent) -> void:
+	if(event.is_action_pressed("ui_cancel")):
+		pause()
+
+
+func pause() -> void:
+	is_paused = !is_paused
+	print("is_paused: "+str(is_paused))
+	pause_menu.visible = is_paused
+	get_tree().paused = is_paused

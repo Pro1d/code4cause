@@ -18,7 +18,7 @@ tonemap_mode = 2
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.184314, 0, 0, 1)
-fog_density = 1.0
+fog_density = 0.0
 fog_height = -0.5
 fog_height_density = 3.0
 fog_depth_curve = 1.56917
@@ -26,6 +26,7 @@ fog_depth_begin = 5.0
 fog_depth_end = 12.0
 
 [node name="GameScene" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_x51h5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -34,6 +35,7 @@ environment = SubResource("Environment_f4h1w")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0612423, 0.989597, 0.130181, -0.752726, -0.0398615, 0.657126, 0.655479, -0.138235, 0.742454, 0.226314, 0.3763, 0.808842)
 light_energy = 0.35
+light_cull_mask = 4294967293
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_fade_start = 1.0
@@ -45,6 +47,10 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, 0.587785, 0, -0.587785, 0.809017, 
 current = true
 fov = 35.0
 size = 5.0
+
+[node name="Background" parent="Camera3D" instance=ExtResource("7_jw0xs")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, -0.332648, -5.30956)
 
 [node name="TileGrid" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -61,8 +67,6 @@ unique_name_in_owner = true
 [node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
 bpm = 80.0
 sfx_on = false
-
-[node name="Background" parent="." instance=ExtResource("7_jw0xs")]
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
 [connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]
