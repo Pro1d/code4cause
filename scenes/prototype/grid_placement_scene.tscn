@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5j3nkd57dwpk"]
+
+[ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
+[ext_resource type="PackedScene" uid="uid://depdfa24xcvji" path="res://scenes/prototype/tile.tscn" id="2_aevgb"]
+[ext_resource type="Script" path="res://scripts/prototype/grid_movement_controller.gd" id="3_usuh6"]
+
+[node name="GridPlacementScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="TileGrid" type="Node3D" parent="."]
+script = ExtResource("1_xpw66")
+tile_scene = ExtResource("2_aevgb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.863879, -0.0264756, 0.503002, -0.503699, -0.0454077, 0.862685, 0, -0.998618, -0.0525625, 0, 0, 0)
+
+[node name="GridMovementController" type="Node3D" parent="."]
+script = ExtResource("3_usuh6")

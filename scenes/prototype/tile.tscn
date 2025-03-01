@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://depdfa24xcvji"]
+
+[ext_resource type="Script" path="res://scripts/prototype/placement_cell.gd" id="1_2xaup"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g23p7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_edhu6"]
+
+[node name="Cell" type="Node3D" node_paths=PackedStringArray("highlight_hint")]
+script = ExtResource("1_2xaup")
+highlight_hint = NodePath("Hint")
+
+[node name="cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.957067, 0, 0, 0, 0.360643, 0, 0, 0, 0.957067, 0, -0.200948, 0)
+mesh = SubResource("BoxMesh_g23p7")
+skeleton = NodePath("../..")
+
+[node name="Hint" type="Node3D" parent="."]
+
+[node name="sphere" type="MeshInstance3D" parent="Hint"]
+transform = Transform3D(0.392576, 0, 0, 0, 0.392576, 0, 0, 0, 0.392576, 0, 0.232699, 0)
+mesh = SubResource("SphereMesh_edhu6")
+skeleton = NodePath("../..")
