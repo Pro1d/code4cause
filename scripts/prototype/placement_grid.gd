@@ -35,18 +35,6 @@ func InitializeGrid() -> void:
 	initial_cell.rotate_cell(PI/2)
 	initial_cell.place()
 	initial_cell.reset()
-	
-	initial_cell  = cells[1][2]
-	initial_cell.highlight(packed_straight)
-	initial_cell.rotate_cell(PI/2)
-	initial_cell.place()
-	initial_cell.reset()
-	
-	initial_cell  = cells[2][2]
-	initial_cell.highlight(packed_straight)
-	initial_cell.rotate_cell(PI/2)
-	initial_cell.place()
-	initial_cell.reset()
 
 func move(dir: Vector2i) -> void:
 	current_cell.reset()

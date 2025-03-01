@@ -3,6 +3,7 @@ extends Node3D
 
 @export var highlight_hint: Node3D
 @onready var child_scene: Node3D = $Scene
+
 var is_set := false
 
 var current_tile_scene: PackedScene
