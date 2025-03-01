@@ -1,0 +1,8 @@
+[gd_resource type="World3D" load_steps=2 format=3 uid="uid://b055unhwgqihy"]
+
+[sub_resource type="Environment" id="Environment_m1c5e"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 0.968627, 1)
+
+[resource]
+environment = SubResource("Environment_m1c5e")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://5j3nkd57dwpk"]
+
+[ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
+[ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
+[ext_resource type="PackedScene" uid="uid://depdfa24xcvji" path="res://scenes/prototype/tile.tscn" id="2_aevgb"]
+[ext_resource type="Script" path="res://scripts/prototype/grid_movement_controller.gd" id="3_usuh6"]
+[ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
+
+[node name="GameScene" type="Node3D"]
+script = ExtResource("1_x51h5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4.2)
+current = true
+fov = 35.0
+size = 5.0
+
+[node name="TileGrid" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_xpw66")
+tile_scene = ExtResource("2_aevgb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.863879, -0.0264756, 0.503002, -0.503699, -0.0454077, 0.862685, 0, -0.998618, -0.0525625, 0, 0, 0)
+
+[node name="InputController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_usuh6")
+
+[node name="Player" parent="." instance=ExtResource("5_sok4i")]
+unique_name_in_owner = true

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn3y8ibk3d1r8"]
+
+[sub_resource type="Curve3D" id="Curve3D_lnhvg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4u8o"]
+albedo_color = Color(0.767163, 0.57365, 0.464367, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hsro6"]
+material = SubResource("StandardMaterial3D_o4u8o")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgwnp"]
+albedo_color = Color(0, 0.505882, 0.180392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bvomk"]
+material = SubResource("StandardMaterial3D_kgwnp")
+size = Vector3(0.3, 0.1, 1)
+
+[node name="TileStraight" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_lnhvg")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_hsro6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.05, 0)
+mesh = SubResource("BoxMesh_bvomk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.05, 0)
+mesh = SubResource("BoxMesh_bvomk")
+skeleton = NodePath("../..")
