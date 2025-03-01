@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfxnn5sgl8knh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0b1kw"]
-[ext_resource type="ArrayMesh" uid="uid://4na4em0pfltx" path="res://assets/meshes/player.obj" id="2_i5hgk"]
+[ext_resource type="ArrayMesh" uid="uid://cu3jckjcmy5i6" path="res://assets/meshes/player.obj" id="2_i5hgk"]
 [ext_resource type="Script" path="res://scenes/player/player_movement.gd" id="3_42uji"]
 
 [node name="Player" type="Node3D"]
