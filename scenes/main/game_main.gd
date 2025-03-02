@@ -11,7 +11,6 @@ var all_tiles_scene : Array[PackedScene] = [
 ]
 var inventory: Array[PackedScene] = []
 
- 
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
 

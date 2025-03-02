@@ -1,0 +1,398 @@
+[gd_scene load_steps=31 format=3 uid="uid://cyds62x7xt74i"]
+
+[ext_resource type="Script" path="res://scenes/game/Boss/boss.gd" id="1_rmxyp"]
+[ext_resource type="Texture2D" uid="uid://cdx2vso0rd1x2" path="res://assets/textures/boss/BossAnimation/frame0000.png" id="2_uoki7"]
+[ext_resource type="Texture2D" uid="uid://du7hjhonp236o" path="res://assets/textures/boss/BossAnimation/frame0001.png" id="3_kghbg"]
+[ext_resource type="Texture2D" uid="uid://c0i6c2g126gjb" path="res://assets/textures/boss/BossAnimation/frame0002.png" id="4_s7kr8"]
+[ext_resource type="Texture2D" uid="uid://c30d02he84ufy" path="res://assets/textures/boss/BossAnimation/frame0003.png" id="5_edovv"]
+[ext_resource type="Texture2D" uid="uid://dp4kl728d1da5" path="res://assets/textures/boss/BossAnimation/frame0004.png" id="6_luwnu"]
+[ext_resource type="Texture2D" uid="uid://cc73dmknf2lhp" path="res://assets/textures/boss/BossAnimation/frame0005.png" id="7_ivdju"]
+[ext_resource type="Texture2D" uid="uid://itt8a052poxy" path="res://assets/textures/boss/BossAnimation/frame0006.png" id="8_6s3l0"]
+[ext_resource type="Texture2D" uid="uid://cy3msgweqhj3h" path="res://assets/textures/boss/BossAnimation/frame0007.png" id="9_ewfcd"]
+[ext_resource type="Texture2D" uid="uid://2sa8wyndha13" path="res://assets/textures/boss/BossAnimation/frame0008.png" id="10_8a4b2"]
+[ext_resource type="Script" path="res://scenes/game/Boss/boss_animator.gd" id="11_kc1wn"]
+[ext_resource type="Texture2D" uid="uid://dc00p70idnpc7" path="res://assets/textures/boss/BossParts/boss_top_hand.png" id="11_p0ecn"]
+[ext_resource type="Texture2D" uid="uid://cqh83mhqvg0fc" path="res://assets/textures/boss/BossParts/boss_bottom_hand.png" id="12_ctyqm"]
+[ext_resource type="Texture2D" uid="uid://cf5u2vxgfk7vf" path="res://assets/textures/boss/BossParts/boss_head.png" id="13_gylu7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmb52"]
+atlas = ExtResource("2_uoki7")
+region = Rect2(0, 0, 2048, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06gnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmb52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kghbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s7kr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_edovv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_luwnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ivdju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6s3l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ewfcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8a4b2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qrib5"]
+animation = &"boss_damage"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5pajp"]
+animation = &"boss_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d1tsk"]
+animation = &"boss_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fauqt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ofxa"]
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2feal"]
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_18pe6"]
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t86bb"]
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yvq40"]
+states/boss_damage/node = SubResource("AnimationNodeAnimation_qrib5")
+states/boss_damage/position = Vector2(501, 195)
+states/boss_death/node = SubResource("AnimationNodeAnimation_5pajp")
+states/boss_death/position = Vector2(750, 100)
+states/boss_idle/node = SubResource("AnimationNodeAnimation_d1tsk")
+states/boss_idle/position = Vector2(501, 100)
+transitions = ["Start", "boss_idle", SubResource("AnimationNodeStateMachineTransition_fauqt"), "boss_idle", "boss_damage", SubResource("AnimationNodeStateMachineTransition_5ofxa"), "boss_damage", "boss_idle", SubResource("AnimationNodeStateMachineTransition_2feal"), "boss_damage", "boss_death", SubResource("AnimationNodeStateMachineTransition_18pe6"), "boss_idle", "boss_death", SubResource("AnimationNodeStateMachineTransition_t86bb")]
+
+[sub_resource type="Animation" id="Animation_c41m4"]
+resource_name = "boss_damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parts/LHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.541), Vector3(0.303788, -0.0116039, -1.541), Vector3(0.276163, -0.313652, -1.541), Vector3(0, 0, -1.541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.685397), Vector3(0.198516, 0.29967, 0.685397), Vector3(0, 0, 0.685397)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.08428, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts/RHand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.430189), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mo1kf"]
+resource_name = "boss_death"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parts/LHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.933333, 1.2, 1.43333, 2.26667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.541), Vector3(-0.82408, 0.462094, -1.541), Vector3(-0.371326, 0.251574, -1.541), Vector3(-1.23544, -0.0900747, -1.541), Vector3(-0.709185, -0.0820128, -1.541), Vector3(-1.66848, -0.290362, -1.541), Vector3(-2.56205, -1.80369, -1.541), Vector3(-3.80175, -3.8047, -1.541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.566667, 0.8, 1.16667, 1.76667, 2.63333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.685397), Vector3(-0.243819, 0.234358, 0.685397), Vector3(0.119073, 0.490085, 0.685397), Vector3(4.6134e-05, 0.18367, 0.685397), Vector3(-0.581057, 0.375118, 0.685397), Vector3(-1.55613, 0.086465, 0.685397), Vector3(-3.10054, -1.76639, 0.685397), Vector3(-3.81824, -2.99194, 0.685397)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.35673, -0.192525, 0), Vector3(-1.35673, -0.262746, 0), Vector3(-1.43265, -0.291337, 0), Vector3(-1.34895, -0.219952, 0), Vector3(-1.44026, -0.348395, 0), Vector3(-1.30266, -0.269878, 0), Vector3(-1.41625, -0.428118, 0), Vector3(-1.3701, -0.554932, 0), Vector3(-1.51827, -0.677187, 0), Vector3(-1.40796, -0.662047, 0), Vector3(-1.58902, -0.816358, 0), Vector3(-1.43012, -0.769476, 0), Vector3(-1.47877, -1.10963, 0), Vector3(-2.39308, -3.69918, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts/LHand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.566667, 0.933333, 1.2, 1.43333, 2.26667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.803916), Vector3(0, 0, 0.0104546), Vector3(0, 0, 0.926456), Vector3(0, 0, 0.0951554), Vector3(0, 0, 0.627271), Vector3(0, 0, 1.47276), Vector3(0, 0, 1.84439)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.79889), Vector3(0, 0, 0.79889), Vector3(0, 0, 1.27371)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Parts/RHand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.566667, 0.8, 1.16667, 1.76667, 2.63333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.313531), Vector3(0, 0, 0.141756), Vector3(0, 0, 0.0166155), Vector3(0, 0, 0.437187), Vector3(0, 0, 1.16148), Vector3(0, 0, 1.76664), Vector3(0, 0, 2.13096)]
+}
+
+[sub_resource type="Animation" id="Animation_r0nsg"]
+resource_name = "boss_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parts/LHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.541), Vector3(0.303788, -0.0116039, -1.541), Vector3(0.276163, -0.313652, -1.541), Vector3(0, 0, -1.541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.685397), Vector3(0.198516, 0.29967, 0.685397), Vector3(0.36376, -0.00573902, 0.685397), Vector3(0, 0, 0.685397)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0329027, 0.208165, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6hbtq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parts/LHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.685397)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts/RHand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Parts/LHand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nksuc"]
+_data = {
+"RESET": SubResource("Animation_6hbtq"),
+"boss_damage": SubResource("Animation_c41m4"),
+"boss_death": SubResource("Animation_mo1kf"),
+"boss_idle": SubResource("Animation_r0nsg")
+}
+
+[node name="Boss" type="Node3D" node_paths=PackedStringArray("animator")]
+script = ExtResource("1_rmxyp")
+health = 10
+animator = NodePath("AnimationTree")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.242299, 0, 0, 0, 0.242299, 0, 0, 0, 0.242299, 0, 0, 0)
+visible = false
+sprite_frames = SubResource("SpriteFrames_06gnt")
+frame = 3
+frame_progress = 0.723861
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_yvq40")
+anim_player = NodePath("../BossAnimator")
+parameters/conditions/damage = false
+parameters/conditions/death = false
+parameters/conditions/idle = false
+script = ExtResource("11_kc1wn")
+
+[node name="Parts" type="Node3D" parent="."]
+
+[node name="LHand" type="Node3D" parent="Parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.541)
+
+[node name="Sprite3D" type="Sprite3D" parent="Parts/LHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.555066, 0, 0)
+texture = ExtResource("11_p0ecn")
+
+[node name="RHand" type="Node3D" parent="Parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.685397)
+
+[node name="Sprite3D" type="Sprite3D" parent="Parts/RHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.574813, 0)
+texture = ExtResource("12_ctyqm")
+
+[node name="Head" type="Node3D" parent="Parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Parts/Head"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = ExtResource("13_gylu7")
+
+[node name="BossAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nksuc")
+}
