@@ -2,16 +2,14 @@ class_name PlacementGrid
 extends Node
 signal tile_placed
 
-var packed_straight : PackedScene = preload("res://resources/placeholder/tile_straight.tscn")
-
 @export var width: int = 5
 @export var extra_width: int = 1
 @export var height: int = 4
 @export var initial_column : int = 1
-@export var initial_cells_length : int = 2
 @export var cell_size: float = 1.0
-
 @export var tile_scene: PackedScene
+
+@onready var row_generator : RowGenerator = RowGenerator.new()
 var placing_tile_scene: PackedScene
 
 var cells: Array
@@ -24,7 +22,7 @@ var grid_rotation: float
 
 func _ready() -> void:
 	initialize_grid()
-	current_pos = Vector2(initial_cells_length,initial_column)
+	current_pos = Vector2(row_generator.initial_cells_length,initial_column)
 	current_cell = cells[current_pos.x][current_pos.y]
 	current_cell.predraw(placing_tile_scene, grid_rotation)
 	highlighted_cell = current_cell
@@ -33,13 +31,7 @@ func _ready() -> void:
 func initialize_grid() -> void:
 	for i:int in (width+extra_width):
 		_generate_row()
-		
-	for i in range(initial_cells_length):
-		var initial_cell : PlacementCell = cells[i][initial_column]
-		initial_cell.predraw(packed_straight, 0.0)
-		initial_cell.place(false)
-		initial_cell.reset()
-
+	
 func move(dir: Vector2i) -> void:
 	highlighted_cell.highlight(false)
 	set_current_cell(current_pos + dir)
@@ -86,13 +78,24 @@ func _delete_first_row() -> void:
 func _generate_row(appear_animation: bool = false)->void:
 	cells.append([])
 	var i := len(cells) - 1
+	
+	var rows_elements := row_generator.get_row(height)
+	
 	for j:int in height:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
+		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
+		
+		if(rows_elements[j] != null):
+			cell.predraw(rows_elements[j], 0.0)
+			cell.place(false)
+			cell.reset() 
+			cell.placeable = false
+			print(rows_elements[j], "->", cell.get_path())
+			
 		if appear_animation:
 			cell.appear() 
-		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
 		
 		(cells[i] as Array).append(cell)
 	grid_offset.x += cell_size
