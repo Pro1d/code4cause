@@ -30,6 +30,7 @@ Config="*res://scripts/singleton/Config.gd"
 MusicManager="*res://scripts/singleton/MusicManager.gd"
 SoundFxManager="*res://scripts/singleton/SoundFxManager.gd"
 SceneManager="*res://scripts/singleton/SceneManager.gd"
+GameManager="*res://scripts/singleton/GameManager.gd"
 
 [debug]
 
@@ -78,6 +79,10 @@ shader_language/warnings/treat_warnings_as_errors=true
 window/size/viewport_width=1366
 window/size/viewport_height=768
 window/stretch/mode="viewport"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 

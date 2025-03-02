@@ -12,6 +12,7 @@ var packed_straight : PackedScene = preload("res://resources/placeholder/tile_st
 @export var cell_size: float = 1.0
 
 @export var tile_scene: PackedScene
+
 var placing_tile_scene: PackedScene
 
 var cells: Array
@@ -90,6 +91,7 @@ func _generate_row(appear_animation: bool = false)->void:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
+		
 		if appear_animation:
 			cell.appear() 
 		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
