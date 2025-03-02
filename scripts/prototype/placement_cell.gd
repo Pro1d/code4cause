@@ -25,6 +25,7 @@ var on_player_elevation := 0.90
 
 func _ready() -> void: 
 	highlight_hint.visible = false
+	display_bomb()
 	
 func appear() -> void:
 	scale = Vector3.ZERO

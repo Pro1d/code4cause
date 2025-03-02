@@ -13,9 +13,6 @@ var packed_straight : PackedScene = preload("res://resources/placeholder/tile_st
 
 @export var tile_scene: PackedScene
 
-@export_group("Debug: bomb proba")
-@export_range(0.0, 1.0) var bomb_proba: float = 1.0
-
 var placing_tile_scene: PackedScene
 
 var cells: Array
@@ -94,12 +91,6 @@ func _generate_row(appear_animation: bool = false)->void:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
-		
-		# Decide on spawning a bomb
-		var r: float = randf()
-		if(r <= bomb_proba):
-			cell.has_bomb = true
-		cell.display_bomb()
 		
 		if appear_animation:
 			cell.appear() 
