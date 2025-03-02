@@ -10,6 +10,7 @@ signal out
 
 @onready var animations : CellAnimations = %CellAnimations
 
+@export var placeable := true
 var has_player := false : set = set_has_player
 var has_bomb := false
 var is_set := false
@@ -77,7 +78,7 @@ func predraw(scene: PackedScene, rad: float = 0.) -> void:
 		new_candidate.scale = 0.9*Vector3.ONE
 		
 		is_predrawn = true
-		set_holder_elevation()
+		set_holder_elevation() 
 		
 func rotate_cell(rad: float) -> void:
 	if not placing_available():
@@ -100,7 +101,7 @@ func reset() -> void:
 	cube_node.visible = true
 
 func place(show_animation: bool = true) -> bool:
-	if has_player:
+	if has_player or not placeable:
 		return false
 	
 	cube_node.visible = false
