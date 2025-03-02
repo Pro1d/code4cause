@@ -14,7 +14,7 @@ func _ready() -> void:
 	path_follow.rotation_mode = PathFollow3D.ROTATION_NONE
 	
 	player.global_position.x = -0.5
-	player.global_position.z = -2 
+	player.global_position.z = -1 
 	find_player_path()
 
 func _process(delta: float) -> void:
