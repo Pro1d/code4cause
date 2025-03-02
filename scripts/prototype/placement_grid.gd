@@ -83,13 +83,6 @@ func _delete_first_row() -> void:
 		i.delete()
 	cells.pop_front()
 		
-func shift_back() -> void:
-	for i:int in width:
-		for j:int in range(1, height):
-			var old_cell: PlacementCell = cells[i][j]
-			(cells[i][j-1] as PlacementCell).redraw_child(old_cell.is_set, old_cell.current_tile_scene)
-			old_cell.delete()
-	
 func _generate_row(appear_animation: bool = false)->void:
 	cells.append([])
 	var i := len(cells) - 1
