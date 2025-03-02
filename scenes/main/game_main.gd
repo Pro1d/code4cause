@@ -39,10 +39,6 @@ func update_all_tiles() -> void:
 		current_holder.new_tile(tile_scene)
 
 func change_to_next_tiles() -> void:
-	#for i in next_tiles_holders.get_child_count():
-		#var current_holder : TileViewportContainer = next_tiles_holders.get_child(i)
-		#var tile_scene : PackedScene = next_tiles[next_tiles_length - 1 - i]
-		#current_holder.new_tile(tile_scene)
 	var bottom_offset := %BottomOffset as Control
 	var last_holder : TileViewportContainer = next_tiles_holders.get_child(next_tiles_length - 1)
 	var next_holder : TileViewportContainer = next_tiles_holders.get_child(next_tiles_length - 2)
