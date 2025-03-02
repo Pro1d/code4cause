@@ -24,7 +24,7 @@ static func random_prefab(indicator: int) -> Array[Array]:
 		all_prefab = [canyon, single_block, double_blocks, double_blocks_side]
 	else:
 		# evil ones
-		all_prefab = [canyon, dead_end, double_blocks, double_blocks_side, uturn, corner_top, corner_bottom]
+		all_prefab = [canyon, dead_end, double_blocks, double_blocks_side, uturn, bomb_hard, corner_top, corner_bottom]
 	return (all_prefab.pick_random() as Callable).call()
 
 static func canyon() -> Array[Array]:
@@ -90,4 +90,13 @@ static func corner_bottom() -> Array[Array]:
 	return [
 		[null, PrefabTile.new(tile_block)],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
+	]
+
+static func bomb_hard() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	return [
+		[PrefabTile.new(tile_turn,PI), null, null, null],
+		[null, PrefabTile.new(tile_turn), null , null],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
 	]
