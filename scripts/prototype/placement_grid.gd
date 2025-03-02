@@ -92,7 +92,6 @@ func _generate_row(appear_animation: bool = false)->void:
 			cell.place(false)
 			cell.reset() 
 			cell.placeable = false
-			print(rows_elements[j], "->", cell.get_path())
 			
 		
 		if appear_animation:

@@ -10,12 +10,10 @@ var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 
 
 func get_row(height: int) -> Array[PackedScene]:
-	print("Generating: %d" % total_rows)
 	var blocks : Array[PackedScene] = []
 	blocks.resize(height)
 	
 	if total_rows < initial_cells_length:
-		print("-> blocks %s" % tile_straight)
 		blocks[1] = tile_straight
 	
 	if total_rows > 3 and total_rows % 3 == 1:
@@ -30,6 +28,4 @@ func get_row(height: int) -> Array[PackedScene]:
 			blocks[i] = tile_block
 	
 	total_rows += 1
-	
-	print(blocks)
 	return blocks
