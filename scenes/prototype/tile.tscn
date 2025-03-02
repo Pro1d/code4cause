@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://depdfa24xcvji"]
+[gd_scene load_steps=7 format=3 uid="uid://depdfa24xcvji"]
 
 [ext_resource type="Script" path="res://scripts/prototype/placement_cell.gd" id="1_2xaup"]
+[ext_resource type="PackedScene" uid="uid://7wh1pc2cmwnt" path="res://scenes/game/bomb.tscn" id="2_gdixw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayvf"]
 transparency = 1
@@ -18,11 +19,6 @@ emission = Color(0.756863, 0.792157, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_edhu6"]
 material = SubResource("StandardMaterial3D_dpw7o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cahu"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_pbkbh"]
 
 [node name="Cell" type="Node3D" node_paths=PackedStringArray("highlight_hint")]
 script = ExtResource("1_2xaup")
@@ -43,9 +39,4 @@ skeleton = NodePath("../..")
 
 [node name="Scene" type="Node3D" parent="."]
 
-[node name="Bomb" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bomb"]
-transform = Transform3D(0.416665, 0, 0, 0, 0.416665, 0, 0, 0, 0.416665, 0, 0.398311, 0)
-material_override = SubResource("StandardMaterial3D_5cahu")
-mesh = SubResource("SphereMesh_pbkbh")
+[node name="Bomb" parent="." instance=ExtResource("2_gdixw")]

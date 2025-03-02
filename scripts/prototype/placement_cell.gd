@@ -5,7 +5,7 @@ signal out
 @export var highlight_hint: Node3D
 @onready var child_scene: Node3D = $Scene
 @onready var cube_node: Node3D = $cube
-@onready var bomb: Node3D = $Bomb
+@onready var bomb: Bomb = $Bomb
 
 var has_bomb := false
 var is_set := false
@@ -99,6 +99,9 @@ func place() -> void:
 	
 func delete() -> void:
 	is_set = false 
+	
+	if(has_bomb):
+		bomb.explode()
 	
 	var shake_magnitude := 0.07 # m
 	var shake_duration := 0.1 # s
