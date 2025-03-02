@@ -20,9 +20,7 @@ func set_current_cell(c: PlacementCell) -> void:
 	current_cell = c
 	
 	if(current_cell.has_bomb):
-		current_cell.has_bomb = false
-		current_cell.display_bomb()
-		print("Bomb collected")
+		current_cell.bomb.lit_up()
 		bomb_collected.emit()
 		
 	cell_changed.emit(c)
