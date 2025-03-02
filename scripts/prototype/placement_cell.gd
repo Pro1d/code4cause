@@ -24,10 +24,10 @@ var normal_placing_elevation := 0.15
 var replacing_elevation := 0.65
 var on_player_elevation := 0.90
 
-func _ready() -> void: 
+func _ready() -> void:
 	highlight_hint.visible = false
 	display_bomb()
-	
+
 func appear() -> void:
 	scale = Vector3.ZERO
 	var appear_tween := create_tween()
@@ -41,12 +41,12 @@ func get_candidate_or_null() -> GameTile:
 	if candidate_tile_holder.get_child_count() == 0:
 		return null
 	return (candidate_tile_holder.get_child(0) as GameTile)
-	
+
 func get_current_or_null() -> GameTile:
 	if current_tile_holder.get_child_count() == 0:
 		return null
 	return (current_tile_holder.get_child(0) as GameTile)
-	
+
 func placing_available() -> bool:
 	return (not is_set) and (placing_tween == null or (not placing_tween.is_running()))
 
@@ -56,7 +56,7 @@ func highlight(enable:bool) -> void:
 
 func set_has_player(s: bool) -> void:
 	has_player = s
-	
+
 	if get_candidate_or_null() != null:
 		set_holder_elevation()
 
@@ -76,26 +76,26 @@ func predraw(scene: PackedScene, rad: float = 0.) -> void:
 		new_candidate.target_rot_y += rad
 		candidate_tile_holder.add_child(new_candidate)
 		new_candidate.scale = 0.9*Vector3.ONE
-		
+
 		is_predrawn = true
-		set_holder_elevation() 
-		
+		set_holder_elevation()
+
 func rotate_cell(rad: float) -> void:
 	if not placing_available():
 		return
-		
+
 	if abs(rad) > 0:
 		if rotate_tween != null:
 			rotate_tween.kill()
-			
+
 		rotate_tween = animations.block_rotation(self, rad)
-	
+
 func reset() -> void:
 	highlight_hint.visible = false
-	
+
 	if(candidate_tile_holder.get_child_count() == 0):
 		return
-		
+
 	candidate_tile_holder.remove_child(get_candidate_or_null())
 	is_predrawn = false
 	cube_node.visible = true
@@ -103,7 +103,7 @@ func reset() -> void:
 func place(show_animation: bool = true) -> bool:
 	if has_player or not placeable:
 		return false
-	
+
 	cube_node.visible = false
 	#Reset animations
 	if(predraw_tween):
@@ -111,7 +111,7 @@ func place(show_animation: bool = true) -> bool:
 	if(show_animation):
 		Config.controls_available = false
 		is_predrawn = false
-		
+
 		if get_current_or_null() != null:
 			var prev_paths := get_current_or_null().find_children("*", "Path3D") as Array[Node]
 			for p in prev_paths:
@@ -120,36 +120,36 @@ func place(show_animation: bool = true) -> bool:
 		else:
 			placing_tween = animations.placing_animation(self)
 		await placing_tween.finished
-		
-		Config.controls_available = true 
-	
+
+		Config.controls_available = true
+
 	var candidate :=  get_candidate_or_null()
 	if candidate == null:
 		print("Weird no candidate")
 		return false
-		
-	candidate_tile_holder.position.y = 0.0 
+
+	candidate_tile_holder.position.y = 0.0
 	candidate.scale = Vector3.ONE
 	candidate.position = Vector3.ZERO
 	candidate.reparent(current_tile_holder)
 	candidate.draw_props()
- 
+
 	var paths := candidate.find_children("*", "Path3D") as Array[Node]
 	for path in paths:
 		path.add_to_group(Config.PATH_GROUP)
 	return true
-	
-func delete() -> void:	
+
+func delete() -> void:
 	if(has_bomb):
 		bomb.explode()
 	var tween := animations.shake_and_fell(self)
 	tween.tween_callback(out.emit)
 	tween.tween_interval(0.5)
 	tween.tween_callback(queue_free)
-	
+
 func predraw_anim() -> void:
 	if is_predrawn:
 		predraw_tween = animations.size_blink(self)
-			
+
 func display_bomb() -> void:
 	bomb.visible = has_bomb

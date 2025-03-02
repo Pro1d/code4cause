@@ -7,15 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
 [ext_resource type="PackedScene" uid="uid://c02g2aiybdtkw" path="res://scenes/game/background.tscn" id="7_jw0xs"]
-[ext_resource type="PackedScene" uid="uid://cyds62x7xt74i" path="res://scenes/game/Boss/boss.tscn" id="8_re5ud"]
+[ext_resource type="PackedScene" uid="uid://cyds62x7xt74i" path="res://scenes/game/boss.tscn" id="8_re5ud"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
 background_color = Color(0.184314, 0, 0, 1)
+background_energy_multiplier = 0.15
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.2
 tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.2
+glow_hdr_threshold = 0.35
+glow_hdr_scale = 0.5
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.184314, 0, 0, 1)
@@ -52,9 +57,6 @@ size = 5.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, -0.413551, -5.36834)
 
-[node name="Boss" parent="Camera3D" instance=ExtResource("8_re5ud")]
-transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, -1.94988, 0.362383, -6.05454)
-
 [node name="TileGrid" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_xpw66")
@@ -70,6 +72,8 @@ unique_name_in_owner = true
 [node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
 bpm = 80.0
 sfx_on = false
+
+[node name="Boss" parent="." instance=ExtResource("8_re5ud")]
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
 [connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]
