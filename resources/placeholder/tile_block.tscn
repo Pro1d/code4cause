@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://binwvu3lbgfc"]
+[gd_scene load_steps=28 format=4 uid="uid://b6f4c4jfl7dpp"]
 
 [ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_qwc7e"]
 [ext_resource type="Texture2D" uid="uid://dl6apmnijuyx5" path="res://assets/textures/tile_road.png" id="2_h0awc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ryjvk7nsgqc1" path="res://assets/textures/tree1.png" id="8_csvx2"]
 [ext_resource type="Texture2D" uid="uid://d2deptcgwidwh" path="res://assets/textures/tree2.png" id="9_3u7sm"]
 [ext_resource type="Texture2D" uid="uid://dmd4qco70y8x4" path="res://assets/textures/tree3.png" id="10_hrpl0"]
+[ext_resource type="Texture2D" uid="uid://cdcxpdgto8l6r" path="res://assets/textures/puddle_v0.png" id="13_ijs51"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hn0aj"]
 resource_name = "tile_road"
@@ -74,6 +75,18 @@ albedo_texture = ExtResource("4_bke53")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhg1a"]
 albedo_texture = ExtResource("4_bke53")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_e4bip"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02lo"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("13_ijs51")
+emission_enabled = true
+emission = Color(1, 0.716667, 0, 1)
+emission_energy_multiplier = 0.5
+emission_texture = ExtResource("13_ijs51")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4u8o"]
 albedo_color = Color(0.767163, 0.57365, 0.464367, 1)
 
@@ -103,6 +116,11 @@ script = ExtResource("1_qwc7e")
 mesh = SubResource("ArrayMesh_avxun")
 surface_material_override/0 = SubResource("StandardMaterial3D_en12o")
 surface_material_override/1 = SubResource("StandardMaterial3D_qhg1a")
+
+[node name="Puddle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152026, 0)
+mesh = SubResource("PlaneMesh_e4bip")
+surface_material_override/0 = SubResource("StandardMaterial3D_s02lo")
 
 [node name="Mesh" type="Node3D" parent="."]
 visible = false

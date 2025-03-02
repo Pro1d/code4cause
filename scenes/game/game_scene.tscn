@@ -7,15 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
 [ext_resource type="PackedScene" uid="uid://c02g2aiybdtkw" path="res://scenes/game/background.tscn" id="7_jw0xs"]
-[ext_resource type="PackedScene" path="res://scenes/game/boss.tscn" id="8_re5ud"]
+[ext_resource type="PackedScene" uid="uid://cyds62x7xt74i" path="res://scenes/game/boss.tscn" id="8_re5ud"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
 background_color = Color(0.184314, 0, 0, 1)
+background_energy_multiplier = 0.15
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.2
 tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.2
+glow_hdr_threshold = 0.35
+glow_hdr_scale = 0.5
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.184314, 0, 0, 1)
