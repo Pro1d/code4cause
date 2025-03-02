@@ -9,6 +9,8 @@ var all_tiles_scene : Array[PackedScene] = [
 	preload("res://resources/placeholder/tile_turn.tscn"),
 	preload("res://resources/placeholder/tile_cross.tscn"),
 ]
+var inventory: Array[PackedScene] = []
+
  
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
@@ -21,10 +23,21 @@ func _ready() -> void:
 		add_next_tile() 
 	update_all_tiles()  
 	game_scene.tile_placed.connect(_on_tile_placed)
-	game_scene.next_tile = next_tiles[0] 
+	game_scene.next_tile = next_tiles[0]
+
+func _reset_inventory() -> void:
+	for i in range(2):
+		inventory.push_back(all_tiles_scene[0])
+	for i in range(3):
+		inventory.push_back(all_tiles_scene[1])
+	for i in range(1):
+		inventory.push_back(all_tiles_scene[2])
+	inventory.shuffle()
 
 func add_next_tile() -> void:
-	next_tiles.append(all_tiles_scene.pick_random())
+	if inventory.is_empty():
+		_reset_inventory()
+	next_tiles.append(inventory.pop_back())
 	
 func _on_tile_placed() -> void:
 	add_next_tile()
