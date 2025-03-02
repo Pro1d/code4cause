@@ -54,12 +54,11 @@ func set_current_cell(pos: Vector2i) -> void:
 	highlighted_cell.highlight(true)
 	
 	# Forbid placement if cell is occupied
-	var next_cell : PlacementCell = cells[current_pos.x][current_pos.y]
-	if(not next_cell.placing_available()):
+	if(not highlighted_cell.placing_available()):
 		return
 		
 	current_cell.reset()
-	current_cell = next_cell
+	current_cell = highlighted_cell
 	if("predraw" in current_cell):
 		current_cell.predraw(placing_tile_scene, grid_rotation)
 
@@ -70,6 +69,8 @@ func rotate_cell(rad: float) -> void:
 func place_tile() -> void:
 	if(current_cell.placing_available()):
 		if await current_cell.place():
+			# set a random rotation so each piece is preplaced with a new angle
+			grid_rotation = PI/2*randi_range(0,3)
 			tile_placed.emit() 
 	
 func add_row()->void:

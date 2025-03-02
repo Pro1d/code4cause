@@ -8,5 +8,5 @@ func _input(event: InputEvent) -> void:
 		restart()
 		
 func restart() -> void:
-		Config.score = 0
+		Config.reset_game()
 		get_tree().change_scene_to_file("res://scenes/main/GameMain.tscn")

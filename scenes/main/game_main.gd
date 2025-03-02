@@ -7,7 +7,8 @@ extends MarginContainer
 var all_tiles_scene : Array[PackedScene] = [ 
 	preload("res://resources/placeholder/tile_straight.tscn"),
 	preload("res://resources/placeholder/tile_turn.tscn"),
-] 
+	preload("res://resources/placeholder/tile_cross.tscn"),
+]
  
 var next_tiles : Array[PackedScene] = []
 var next_tiles_length: int = 4
