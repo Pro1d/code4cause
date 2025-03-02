@@ -50,12 +50,11 @@ func set_current_cell(pos: Vector2i) -> void:
 	highlighted_cell.highlight(true)
 	
 	# Forbid placement if cell is occupied
-	var next_cell : PlacementCell = cells[current_pos.x][current_pos.y]
-	if(not next_cell.placing_available()):
+	if(not highlighted_cell.placing_available()):
 		return
 		
 	current_cell.reset()
-	current_cell = next_cell
+	current_cell = highlighted_cell
 	if("predraw" in current_cell):
 		current_cell.predraw(placing_tile_scene, grid_rotation)
 
