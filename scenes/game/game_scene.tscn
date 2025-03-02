@@ -12,15 +12,15 @@
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
 background_color = Color(0.184314, 0, 0, 1)
-background_energy_multiplier = 0.32
+background_energy_multiplier = 0.15
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.2
 tonemap_mode = 2
 glow_enabled = true
-glow_bloom = 0.34
-glow_hdr_threshold = 0.87
-glow_hdr_scale = 4.0
+glow_bloom = 0.2
+glow_hdr_threshold = 0.35
+glow_hdr_scale = 0.5
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.184314, 0, 0, 1)
