@@ -183,7 +183,7 @@ theme_override_constants/separation = 20
 [node name="QWSD" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "QWSD"
+text = "WASD"
 horizontal_alignment = 2
 
 [node name="Move" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer"]
@@ -199,7 +199,7 @@ theme_override_constants/separation = 20
 [node name="AE" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "A/E"
+text = "Q/E"
 horizontal_alignment = 2
 
 [node name="Rotate" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer2"]
@@ -222,7 +222,7 @@ horizontal_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
-text = "Place"
+text = "Build"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
 layout_mode = 2
