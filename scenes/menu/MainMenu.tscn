@@ -1,0 +1,254 @@
+[gd_scene load_steps=16 format=3 uid="uid://b5sj4x5qufpdm"]
+
+[ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_ikplg"]
+[ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="2_3fahu"]
+[ext_resource type="Theme" uid="uid://e2qgxo4dwns7" path="res://resources/themes/hud.theme" id="3_j0b6e"]
+[ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="4_7lb1f"]
+[ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="5_p04qy"]
+[ext_resource type="FontFile" uid="uid://dcgydtfdcjm86" path="res://assets/fonts/Blaka-Regular.ttf" id="5_vbptc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gelce"]
+shader = ExtResource("4_7lb1f")
+shader_parameter/speed = 0.5
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/tint_color = Color(0.360784, 0.109804, 0.0745098, 1)
+shader_parameter/tiling = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3idm"]
+bg_color = Color(0.117647, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlghd"]
+bg_color = Color(0.997452, 0.960241, 0.902432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8u8d"]
+bg_color = Color(0.207843, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppxah"]
+bg_color = Color(0.996078, 0.960784, 0.901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncd34"]
+bg_color = Color(0.996078, 0.960784, 0.901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdtla"]
+bg_color = Color(0.996078, 0.960784, 0.901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nvm6"]
+
+[sub_resource type="Theme" id="Theme_wgm0n"]
+Button/colors/font_color = Color(0.117647, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.117647, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.996078, 0.960784, 0.901961, 1)
+Button/colors/font_hover_pressed_color = Color(0.117647, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.996078, 0.960784, 0.901961, 1)
+Button/colors/icon_focus_color = Color(0.117647, 0, 0, 1)
+Button/colors/icon_hover_color = Color(0.117647, 0, 0, 1)
+Button/colors/icon_hover_pressed_color = Color(0.117647, 0, 0, 1)
+Button/colors/icon_normal_color = Color(0.117647, 0, 0, 1)
+Button/colors/icon_pressed_color = Color(0.117647, 0, 0, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("5_vbptc")
+Button/styles/hover = SubResource("StyleBoxFlat_d3idm")
+Button/styles/normal = SubResource("StyleBoxFlat_vlghd")
+Button/styles/pressed = SubResource("StyleBoxFlat_y8u8d")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ppxah")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ncd34")
+Label/font_sizes/font_size = 42
+Label/fonts/font = ExtResource("5_vbptc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_wdtla")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_5nvm6")
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ikplg")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.117647, 0, 0, 0.705882)
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="Panel"]
+modulate = Color(0.397578, 0.128034, 0.0905271, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.00002
+offset_top = -160.0
+offset_right = -367.0
+offset_bottom = 589.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.263139
+texture = ExtResource("2_3fahu")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Tile" type="TextureRect" parent="Panel"]
+modulate = Color(0.996078, 0.960784, 0.901961, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -939.0
+offset_top = -300.0
+offset_right = 829.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0349066
+texture = ExtResource("2_3fahu")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="Panel/Tile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.207843, 0, 0, 1)
+theme_override_font_sizes/font_size = 130
+text = "MULHOUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopStripe" type="TextureRect" parent="Panel/Tile"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gelce")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.387865
+offset_top = 8.23705
+offset_right = -0.387817
+offset_bottom = 52.2371
+grow_horizontal = 2
+texture = ExtResource("5_p04qy")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="BottomStripe" type="TextureRect" parent="Panel/Tile"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gelce")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.830461
+offset_top = 155.832
+offset_right = -0.830444
+offset_bottom = 199.832
+grow_horizontal = 2
+texture = ExtResource("5_p04qy")
+expand_mode = 2
+stretch_mode = 1
+flip_h = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 290
+theme_override_constants/margin_bottom = 40
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+theme = SubResource("Theme_wgm0n")
+
+[node name="QWSD" type="Label" parent="MarginContainer/MainContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MainContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="QWSD" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "QWSD"
+horizontal_alignment = 2
+
+[node name="Move" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+text = "Move"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/MainContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AE" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A/E"
+horizontal_alignment = 2
+
+[node name="Rotate" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+text = "Rotate"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/MainContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AE" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Space"
+horizontal_alignment = 2
+
+[node name="Rotate" type="Label" parent="MarginContainer/MainContainer/Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+text = "Place"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="BestRun" type="Label" parent="MarginContainer/MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+theme_override_font_sizes/font_size = 32
+text = "Best Run: 100km"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="MarginContainer/MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_j0b6e")
+theme_override_font_sizes/font_size = 52
+text = "Start Game"
+
+[node name="GameBy" type="Label" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+text = "Game By"
+horizontal_alignment = 1
