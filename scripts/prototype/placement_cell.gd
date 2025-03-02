@@ -31,7 +31,7 @@ func _ready() -> void:
 func appear() -> void:
 	scale = Vector3.ZERO
 	var appear_tween := create_tween()
-	var appear_duration := 0.5
+	var appear_duration := 4
 	appear_tween \
 		.tween_property(self, "scale", Vector3.ONE, appear_duration) \
 		.set_ease(Tween.EASE_IN_OUT) \
