@@ -6,6 +6,7 @@ extends Node
 signal on_death
 
 func take_damage(amount:int = 1) -> void:
+	print("dealing damage to boss")
 	health = maxi(health - amount, 0)
 	if(health <= 0):
 		death()

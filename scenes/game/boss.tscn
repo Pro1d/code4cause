@@ -4,3 +4,4 @@
 
 [node name="Boss" type="Node3D"]
 script = ExtResource("1_rmxyp")
+health = 10

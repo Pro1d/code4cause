@@ -30,6 +30,7 @@ Config="*res://scripts/singleton/Config.gd"
 MusicManager="*res://scripts/singleton/MusicManager.gd"
 SoundFxManager="*res://scripts/singleton/SoundFxManager.gd"
 SceneManager="*res://scripts/singleton/SceneManager.gd"
+GameManager="*res://scripts/singleton/GameManager.gd"
 
 [debug]
 

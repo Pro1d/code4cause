@@ -1,6 +1,8 @@
 class_name Bomb
 extends Node3D
 
+@onready var explosion_particles: CPUParticles3D = $ExplosionParticles
+
 var is_lit := false
 var base_position: Vector3
 
@@ -11,8 +13,5 @@ func lit_up() -> void:
 func explode() -> void:
 	if(!is_lit):
 		return
-	print("bomb exploded")
-
-func _process(delta: float) -> void:
-	if(is_lit):
-		position = base_position + (Vector3.UP * sin(delta * 100.0) * 5.0)
+	explosion_particles.emitting = true
+	GameManager.game_scene.damage_boss()
