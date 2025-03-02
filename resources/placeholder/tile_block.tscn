@@ -1,78 +1,17 @@
-[gd_scene load_steps=25 format=4 uid="uid://binwvu3lbgfc"]
+[gd_scene load_steps=14 format=3 uid="uid://binwvu3lbgfc"]
 
 [ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_qwc7e"]
-[ext_resource type="Texture2D" uid="uid://dl6apmnijuyx5" path="res://assets/textures/tile_road.png" id="2_h0awc"]
+[ext_resource type="ArrayMesh" uid="uid://crc5bxi4ti1lw" path="res://assets/meshes/hole.obj" id="2_2s4d2"]
 [ext_resource type="Texture2D" uid="uid://bswotmgjikl1m" path="res://assets/textures/grass1.png" id="3_3payq"]
-[ext_resource type="Texture2D" uid="uid://gfh6bg12oawi" path="res://assets/textures/tile_grass.png" id="3_ucrxb"]
-[ext_resource type="Texture2D" uid="uid://4l8e8cxjyqx1" path="res://assets/textures/tile_dirt.png" id="4_bke53"]
 [ext_resource type="Texture2D" uid="uid://ie1fj8ki8f6k" path="res://assets/textures/grass2.png" id="4_e7hcm"]
 [ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_4iemx"]
 [ext_resource type="Texture2D" uid="uid://ba6ahxgfmx23t" path="res://assets/textures/stone2.png" id="6_nap31"]
-[ext_resource type="Texture2D" uid="uid://xi507sssbym6" path="res://assets/textures/stone3.png" id="7_jpgta"]
-[ext_resource type="Texture2D" uid="uid://ryjvk7nsgqc1" path="res://assets/textures/tree1.png" id="8_csvx2"]
-[ext_resource type="Texture2D" uid="uid://d2deptcgwidwh" path="res://assets/textures/tree2.png" id="9_3u7sm"]
-[ext_resource type="Texture2D" uid="uid://dmd4qco70y8x4" path="res://assets/textures/tree3.png" id="10_hrpl0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hn0aj"]
-resource_name = "tile_road"
-albedo_texture = ExtResource("2_h0awc")
-metallic = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_823n5"]
-resource_name = "Material.001"
-albedo_texture = ExtResource("3_ucrxb")
-metallic = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45sv3"]
-resource_name = "Material.002"
-albedo_texture = ExtResource("4_bke53")
-metallic = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_avxun"]
-_surfaces = [{
-"aabb": AABB(-0.5, 0, -0.166667, 0.666667, 0.013721, 0.666667),
-"attribute_data": PackedByteArray("AAD//wAA//8AAP//AAD//wAAAAD//wAAAAD///////8AAP//AAAAAP//AAAAAP//AAAAAP///////wAAAAD//////////wAA"),
-"format": 34896613399,
-"index_count": 24,
-"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACwAMAA0ADQAMAA4ADwAQABEA"),
-"material": SubResource("StandardMaterial3D_hn0aj"),
-"name": "tile_road",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 18,
-"vertex_data": PackedByteArray("/3///////n//fwAA///+fwAA+v////5/AAAAAP///n//fwAA//9U1f9/AAD/f1TV//8AAP//VNX//wAA/39U1f9/AAD/f/+//38AAAAA/7///wAAAAD/vwAAAAD/f/+/AAAAAAAA/7//fwAA/3//v/9/AAAAAP+///8AAAAAqir//wAA/3+qKv9/AAD/f6oq/3////9/////f////3///1TVqipU1aoqVNWqKlTVqir///9/////f////3////9/////f////3////9/qqqqqqqqqqqqqqqq")
-}, {
-"aabb": AABB(-0.5, -0.332281, -0.5, 1, 0.346002, 1),
-"attribute_data": PackedByteArray("K4StPqLx7D4rhK0+98kJPzVBVDyA8ew+NUFUPPfJCT8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAn6qqPgAAAADrOA4/AACAPwAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAIAAAIA/AACAPwAAAAAAAACAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAIA/sKoqP5+qqj6wqio/n6qqPgAAgD+fqqo+AACAP5+qqj5ZpH0/ovHsPlmkfT+i8ew+WaR9P/fJCT9ZpH0/98kJPwAAAACfqqo+AAAAAJ+qqj4AAAAAAACAPwAAAAAAAIA/NUFUPPfJCT8rhK0+98kJPzVBVDz3yQk/K4StPvfJCT8AAAAAdhxHPzVBVDz3yQk/AAAAAHYcRz8AAAAAAACAP1mkfT/3yQk/NzMqP/fJCT83Myo/98kJPwAAAADrOA4/K4StPvfJCT83Myo/98kJP1mkfT/3yQk/AAAAAAAAgD+wqio/n6qqPrCqKj8AAAAAsKoqP5+qqj41QVQ8ovHsPjVBVDz3yQk/K4StPqLx7D4rhK0+98kJPzczKj+i8ew+NzMqP/fJCT8AAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAgD8AAIA/AAAAAAAAAIAAAAAAAACAPwAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD+fqqo+n6qqPp+qqj6fqqo+n6qqPgAAAAAAAAAAAACAP1mkfT+i8ew+WaR9P/fJCT83Myo/ovHsPjczKj/3yQk/n6qqPp+qqj43Myo/ovHsPrCqKj+wqio/sKoqP7CqKj8="),
-"format": 34359742487,
-"index_count": 168,
-"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AIAAhACIAIgAhACMAJAAlACYAJgAlACcAJwAoACYAKQAqACsALAAKAC0ALQAKAAsALgAvACcAMAALACoAMQAyAC0ALQAyACwAJQAxACcAJwAxAC4AMwA0ADUANQA0ADYANwA4ADkAOQA4ADoAOQA6ADsAOwA6ADwAPQA+AD8APwA+AEAAQQBCAEMAQwBCAEQARQBGAEcARwBGAEgASQBKACoAKgBKACsACQBJAAsACwBJACoASwBMAE0ATQBMAE4ATwBQAFEAUQBQAFIAUwBUAFUAVQBUAFYAVQBWAAAAAABWAAEAVwBYAFkAWgA7ADwA"),
-"material": SubResource("StandardMaterial3D_823n5"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 91,
-"vertex_data": PackedByteArray("AAAAPwzOYDzBqio+AAAAPwAAAADBqio+AAAAPwzOYDwAAAA/AAAAPwAAAAAAAAA/AAAAv9rJYDzBqiq+AAAAvwAAAADBqiq+AAAAv9rJYDwAAAC/AAAAvwAAAAAAAAC/AAAAv7wgqr4AAAC/AAAAv7wgqr7Bqiq+waoqvrwgqr4AAAC/waoqvrwgqr7Bqiq+AAAAv9rJYDzBqio+waoqvgzOYDzBqio+AAAAv9rJYDwAAAA/waoqvgzOYDwAAAA/waoqPgzOYDzBqio+AAAAPwzOYDzBqio+waoqPgzOYDwAAAA/AAAAPwzOYDwAAAA/waoqPgzOYDzBqiq+waoqvtrJYDzBqiq+waoqPgzOYDwAAAC/waoqvtrJYDwAAAC/waoqvgzOYDzBqio+waoqvgAAAADBqio+waoqvgzOYDwAAAA/waoqvgAAAAAAAAA/AAAAPwzOYDwAAAC/waoqPgzOYDwAAAC/AAAAPwAAAAAAAAC/waoqPgAAAAAAAAC/waoqvgAAAAAAAAC/waoqvtrJYDwAAAC/AAAAvwAAAAAAAAC/AAAAv9rJYDwAAAC/AAAAP5sgqr4AAAA/AAAAP5sgqr7Bqio+waoqPpsgqr4AAAA/waoqPrwgqr7Bqio+waoqvrwgqr7Bqio+waoqPpsgqr4AAAA/waoqvrwgqr7Bqio+waoqvrwgqr4AAAA/waoqPrwgqr4AAAC/waoqPrwgqr7Bqiq+waoqPrwgqr7Bqiq+waoqvrwgqr7Bqiq+waoqPrwgqr7Bqio+AAAAP5sgqr7Bqiq+AAAAP7wgqr4AAAC/AAAAvwAAAADBqio+waoqvgAAAADBqio+AAAAv9rJYDzBqio+waoqvgzOYDzBqio+waoqPgzOYDwAAAA/waoqPgAAAAAAAAA/waoqPgzOYDzBqio+waoqPgAAAADBqio+waoqPgzOYDzBqiq+waoqPgAAAADBqiq+waoqPgzOYDwAAAC/AAAAPwzOYDwAAAC/waoqPgzOYDzBqiq+AAAAPwzOYDzBqiq+waoqPgzOYDzBqiq+AAAAPwzOYDzBqiq+waoqPgzOYDzBqio+AAAAPwzOYDzBqio+AAAAv9rJYDwAAAC/waoqvtrJYDwAAAC/AAAAv9rJYDzBqiq+waoqvtrJYDzBqiq+AAAAv7wgqr7Bqio+AAAAv7wgqr4AAAA/AAAAv9rJYDwAAAA/AAAAvwAAAAAAAAA/AAAAv9rJYDzBqio+AAAAvwAAAADBqio+waoqvtrJYDzBqiq+waoqvgAAAADBqiq+AAAAv9rJYDzBqiq+AAAAvwAAAADBqiq+AAAAPwzOYDwAAAC/AAAAPwAAAAAAAAC/AAAAPwzOYDzBqiq+AAAAPwAAAADBqiq+waoqvtrJYDzBqiq+waoqPgzOYDzBqiq+waoqvgAAAADBqiq+waoqvgAAAADBqiq+////f/7///////9//v///////3//////////f/////8AAP9/////vwAA/3////+/AAD/f////78AAP9/////v/9/AAD///+//38AAP///7//fwAA//8+If9/AAAS4P8//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/////f////7////9/////v////3////+/////f////7//////////v/////////+//////////7//////////v/////////+//////////7//////////v/////////+//38AAP///7//fwAA////v/9/AAD//////38AAP//////fwAA//////9/AACVqf8//38AAC23/z//fwAAlan/P/9/AAD//wAA/38AAP//PiH/fwAA//////9/AAD//////38AAJi9/z//fwAA////v/9/AAD///+//////5P8tUH/////k/y1Qf////+T/LVB/////////78AAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAP8//38+BPAe/z//f1IE6x7/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//fwAA////v/9/AAD///+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3+T/Em+/3//f5P8Sb7/f/9/k/xJvv///3//////////f/////////9//////////3///////3//f/v9AcH/P/9//b4Bwf9//3/7/QHB/3//f2EIzzs=")
-}, {
-"aabb": AABB(-0.5, -0.332281, -0.5, 1, 0.346002, 1),
-"attribute_data": PackedByteArray("AAAVkgAAh3FUVRWSVFWHcVRVFZJUVYdxAAAVkgAAh3H//xWS//+HcaqqFZKqqodxqqoVkqqqh3H//xWS//+HcaqqFZKqqodx//8Vkv//h3FUVRWSVFWHcQAAFZIAAIdxAAAVkgAAh3FUVRWSVFWHcf//FZL//4dxqqoVkqqqh3EAAFRVAABUVQAAqqqj/cmJ"),
-"format": 34896613399,
-"index_count": 78,
-"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAAgADAAwADAADAA0ACwAVAAoACgAVABQAGAAZABoAGgAZABsAGgAbABAAEAAbABEAHAAdAB4AHgAdAB8AHgAfAAQABAAfAAUAIAAhACIAIgAhACMA"),
-"material": SubResource("StandardMaterial3D_45sv3"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("//8AAAAA/////9j1AAD//6qqAAAAAP//qqrY9QAA/////wAAVFUAAP//2PVUVQAA//8AAAAAAAD//9j1AAAAAAAAAAD//wAAAADY9f//AABUVQAA//8AAFRV2PX//wAAVFUAAAAA//9UVdj1AAD//wAAAAAAAP//AADY9QAA//8AAAAAqqr/vwAA2PWqqv+/AAAAAP///78AANj1////v6qqAAD//wAAqqrY9f//AAD//wAA//8AAP//2PX//wAAAAAAAAAA/78AANj1AAD/vwAAAABUVf+/AADY9VRV/7///wAA//8AAP//2PX//wAA//8AAKqqAAD//9j1qqoAAFRV/v8AAP//VFXY9QAA//+qqv//AAD//6qq2PUAAP///3////9/////f////3////+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/9//3/+//9//v//f/7//3////9/////f////3////9/////f/9//3//f/9//3//f/9//3/+//9//v//f/7//3////+//3//v/9//7//f/+//3////9/7vvue+777nvu++57")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en12o"]
-albedo_texture = ExtResource("4_bke53")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhg1a"]
-albedo_texture = ExtResource("4_bke53")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8aus"]
+albedo_color = Color(0.173008, 0.102451, 0.0770211, 1)
+emission_enabled = true
+emission = Color(0.112069, 0.029993, 3.00817e-09, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4u8o"]
 albedo_color = Color(0.767163, 0.57365, 0.464367, 1)
@@ -100,9 +39,8 @@ size = Vector3(0.3, 0.1, 1)
 script = ExtResource("1_qwc7e")
 
 [node name="Road-angle" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_avxun")
-surface_material_override/0 = SubResource("StandardMaterial3D_en12o")
-surface_material_override/1 = SubResource("StandardMaterial3D_qhg1a")
+mesh = ExtResource("2_2s4d2")
+surface_material_override/2 = SubResource("StandardMaterial3D_y8aus")
 
 [node name="Mesh" type="Node3D" parent="."]
 visible = false
@@ -132,7 +70,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="Front" type="Node3D" parent="Props"]
 
 [node name="Grass1-1" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, 0.291293)
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.400906, 0.127329, 0.446028)
 visible = false
 billboard = 2
 texture = ExtResource("3_3payq")
@@ -144,93 +82,25 @@ billboard = 2
 texture = ExtResource("3_3payq")
 
 [node name="Grass2-1" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.334387, 0.12733, -0.198301)
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.476094, 0.12733, -0.423856)
 visible = false
 billboard = 2
 texture = ExtResource("4_e7hcm")
 
 [node name="Grass2-2" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, 0.31825)
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.458293, 0.0949855, 0.453197)
 visible = false
 billboard = 2
 texture = ExtResource("4_e7hcm")
-
-[node name="Stone1" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.343327, 0.0994142, -0.31178)
-visible = false
-billboard = 2
-texture = ExtResource("5_4iemx")
-
-[node name="Stone2" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.32764, 0.0994142, -0.301165)
-visible = false
-billboard = 2
-texture = ExtResource("6_nap31")
-
-[node name="Stone3" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.343327, 0.0994142, 0.322201)
-visible = false
-billboard = 2
-texture = ExtResource("7_jpgta")
 
 [node name="Back" type="Node3D" parent="Props"]
 
-[node name="Grass1-1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, 0.287093)
-visible = false
-billboard = 2
-texture = ExtResource("3_3payq")
-
-[node name="Grass1-2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, -0.368304)
-visible = false
-billboard = 2
-texture = ExtResource("3_3payq")
-
-[node name="Grass2-1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.337504, 0.133414, -0.202501)
-visible = false
-billboard = 2
-texture = ExtResource("4_e7hcm")
-
-[node name="Grass2-2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, 0.0616091)
-visible = false
-billboard = 2
-texture = ExtResource("4_e7hcm")
-
 [node name="Stone1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.328564, 0.105499, -0.0733366)
-visible = false
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.414511, 0.0559077, 0.104137)
 billboard = 2
 texture = ExtResource("5_4iemx")
 
 [node name="Stone2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.344251, 0.105499, -0.305365)
-visible = false
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.165536, 0.105499, -0.455688)
 billboard = 2
 texture = ExtResource("6_nap31")
-
-[node name="Stone3" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.328564, 0.105499, 0.219148)
-visible = false
-billboard = 2
-texture = ExtResource("7_jpgta")
-
-[node name="Tree1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, 0.322497, 0.407232, 0.0434079)
-visible = false
-billboard = 2
-texture = ExtResource("8_csvx2")
-
-[node name="Tree2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, 0.322497, 0.407232, 0.0434079)
-visible = false
-billboard = 2
-texture = ExtResource("9_3u7sm")
-
-[node name="Tree3" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(0.00101824, 0, -0.00667719, 0, 0.081604, 0, 0.0815918, 0, 8.33289e-05, 0.319862, 0.433714, -0.110606)
-visible = false
-billboard = 2
-texture = ExtResource("10_hrpl0")

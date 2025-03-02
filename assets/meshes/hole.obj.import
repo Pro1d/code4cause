@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://crc5bxi4ti1lw"
+path="res://.godot/imported/hole.obj-0ef66854b5271b15767a2e837012427a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hole.obj-0ef66854b5271b15767a2e837012427a.mesh"]
+
+source_file="res://assets/meshes/hole.obj"
+dest_files=["res://.godot/imported/hole.obj-0ef66854b5271b15767a2e837012427a.mesh", "res://.godot/imported/hole.obj-0ef66854b5271b15767a2e837012427a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
