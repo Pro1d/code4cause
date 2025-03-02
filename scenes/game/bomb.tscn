@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://7wh1pc2cmwnt"]
+[gd_scene load_steps=5 format=3 uid="uid://7wh1pc2cmwnt"]
 
 [ext_resource type="Script" path="res://scenes/game/bomb.gd" id="1_17elg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cahu"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_pbkbh"]
+[ext_resource type="Texture2D" uid="uid://cc0npfy6nwsyf" path="res://assets/textures/bomb/dynamite_off.png" id="2_y84e5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epdva"]
 albedo_color = Color(1, 0.521569, 0.117647, 1)
@@ -22,11 +18,6 @@ height = 0.2
 [node name="Bomb" type="Node3D"]
 script = ExtResource("1_17elg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.416665, 0, 0, 0, 0.416665, 0, 0, 0, 0.416665, 0, 0.398311, 0)
-material_override = SubResource("StandardMaterial3D_5cahu")
-mesh = SubResource("SphereMesh_pbkbh")
-
 [node name="ExplosionParticles" type="CPUParticles3D" parent="."]
 emitting = false
 amount = 16
@@ -42,3 +33,8 @@ initial_velocity_max = 2.0
 scale_amount_min = 0.1
 anim_speed_min = 11.87
 anim_speed_max = 11.87
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.039398, 0, 0, 0, 0.039398, 0, 0, 0, 0.039398, 0, 0.37078, 0)
+billboard = 2
+texture = ExtResource("2_y84e5")

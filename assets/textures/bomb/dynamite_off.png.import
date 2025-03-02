@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc00p70idnpc7"
-path.s3tc="res://.godot/imported/boss_top_hand.png-ab2b2c2d11233d16b76afa362c5038ff.s3tc.ctex"
+uid="uid://cc0npfy6nwsyf"
+path.s3tc="res://.godot/imported/dynamite_off.png-d7d995f750d017ad58f095970572416a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/boss/BossParts/boss_top_hand.png"
-dest_files=["res://.godot/imported/boss_top_hand.png-ab2b2c2d11233d16b76afa362c5038ff.s3tc.ctex"]
+source_file="res://assets/textures/bomb/dynamite_off.png"
+dest_files=["res://.godot/imported/dynamite_off.png-d7d995f750d017ad58f095970572416a.s3tc.ctex"]
 
 [params]
 
