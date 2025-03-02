@@ -31,7 +31,7 @@ func _ready() -> void:
 func initialize_grid() -> void:
 	for i:int in (width+extra_width):
 		_generate_row()
-	
+
 func move(dir: Vector2i) -> void:
 	highlighted_cell.highlight(false)
 	set_current_cell(current_pos + dir)
@@ -40,11 +40,11 @@ func set_current_cell(pos: Vector2i) -> void:
 	current_pos = pos.clamp(Vector2i.ZERO, Vector2i(width - 1, height - 1))
 	highlighted_cell = cells[current_pos.x][current_pos.y] as PlacementCell
 	highlighted_cell.highlight(true)
-	
+
 	# Forbid placement if cell is occupied
 	if(not highlighted_cell.placing_available()):
 		return
-		
+
 	current_cell.reset()
 	current_cell = highlighted_cell
 	if("predraw" in current_cell):
@@ -59,8 +59,8 @@ func place_tile() -> void:
 		if await current_cell.place():
 			# set a random rotation so each piece is preplaced with a new angle
 			grid_rotation = PI/2*randi_range(0,3)
-			tile_placed.emit() 
-	
+			tile_placed.emit()
+
 func add_row()->void:
 	_generate_row(true)
 	await get_tree().create_timer(0.5).timeout
@@ -69,34 +69,34 @@ func add_row()->void:
 	if(current_pos.x < 0):
 		current_pos.x = 0
 		move(Vector2i.ZERO)
-	
+
 func _delete_first_row() -> void:
 	for i in (cells[0] as Array[PlacementCell]):
 		i.delete()
 	cells.pop_front()
-		
+
 func _generate_row(appear_animation: bool = false)->void:
 	cells.append([])
 	var i := len(cells) - 1
-	
+
 	var rows_elements := row_generator.get_row(height)
-	
+
 	for j:int in height:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
 		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
-		
+
 		if(rows_elements[j] != null):
-			cell.predraw(rows_elements[j], 0.0)
+			cell.predraw(rows_elements[j].scene, rows_elements[j].rad)
 			cell.place(false)
-			cell.reset() 
+			cell.reset()
 			cell.placeable = false
-			
-		
+
+
 		if appear_animation:
-			cell.appear() 
-		
+			cell.appear()
+
 		(cells[i] as Array).append(cell)
 	grid_offset.x += cell_size
 
