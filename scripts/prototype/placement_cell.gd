@@ -18,8 +18,8 @@ var predraw_tween: Tween
 var rotate_tween: Tween
 
 var normal_placing_elevation := 0.15
-var replacing_elevation := 0.45
-var on_player_elevation := 0.80
+var replacing_elevation := 0.65
+var on_player_elevation := 0.90
 
 func _ready() -> void: 
 	highlight_hint.visible = false
@@ -48,9 +48,16 @@ func highlight(enable:bool) -> void:
 
 func set_has_player(s: bool) -> void:
 	has_player = s
-	if s and get_candidate_or_null() != null:
+	
+	if get_candidate_or_null() != null:
+		set_holder_elevation()
+
+func set_holder_elevation() -> void:
+	if has_player:
 		candidate_tile_holder.position.y = on_player_elevation
-	elif (not s) and get_candidate_or_null() != null:
+	elif get_current_or_null() != null:
+		candidate_tile_holder.position.y = replacing_elevation
+	else:
 		candidate_tile_holder.position.y = normal_placing_elevation
 
 func predraw(scene: PackedScene, rad: float = 0.) -> void:
@@ -63,12 +70,7 @@ func predraw(scene: PackedScene, rad: float = 0.) -> void:
 		new_candidate.scale = 0.9*Vector3.ONE
 		
 		is_predrawn = true
-		if has_player:
-			candidate_tile_holder.position.y = on_player_elevation
-		elif get_current_or_null() != null:
-			candidate_tile_holder.position.y = replacing_elevation
-		else:
-			candidate_tile_holder.position.y = normal_placing_elevation
+		set_holder_elevation()
 		
 func rotate_cell(rad: float) -> void:
 	if not placing_available():
@@ -103,14 +105,12 @@ func place(show_animation: bool = true) -> bool:
 		is_predrawn = false
 		
 		if get_current_or_null() != null:
-			var path_current := get_current_or_null().get_node_or_null("Path3D")
-			if path_current != null: 
-				path_current.remove_from_group(Config.PATH_GROUP)
-			var tween := animations.shake_and_fell(get_current_or_null(), 2)
-			tween.tween_callback(get_current_or_null().queue_free)
-			await tween.finished
-		
-		placing_tween = animations.placing_animation(self)
+			var prev_paths := get_current_or_null().find_children("*", "Path3D") as Array[Node]
+			for p in prev_paths:
+				p.remove_from_group(Config.PATH_GROUP)
+			placing_tween = animations.replace_tile(self)
+		else:
+			placing_tween = animations.placing_animation(self)
 		await placing_tween.finished
 		
 		Config.controls_available = true 
@@ -122,6 +122,7 @@ func place(show_animation: bool = true) -> bool:
 		
 	candidate_tile_holder.position.y = 0.0 
 	candidate.scale = Vector3.ONE
+	candidate.position = Vector3.ZERO
 	candidate.reparent(current_tile_holder)
 	candidate.draw_props()
  
