@@ -3,22 +3,23 @@ extends Node3D
 signal out
 
 @export var highlight_hint: Node3D
-@onready var child_scene: Node3D = $Scene
+@onready var candidate_tile_holder: Node3D = $Candidate
+@onready var current_tile_holder: Node3D = $Current
 @onready var cube_node: Node3D = $cube
 
 @onready var animations : CellAnimations = %CellAnimations
 
+var has_player := false
 var is_set := false
 var is_predrawn := false
 
-var current_tile_scene: PackedScene
+var placing_tween: Tween
 var predraw_tween: Tween
 var rotate_tween: Tween
 
 var normal_placing_elevation := 0.15
 var replacing_elevation := 0.30
 var on_player_elevation := 0.60
-
 
 func _ready() -> void: 
 	highlight_hint.visible = false
@@ -32,6 +33,15 @@ func appear() -> void:
 		.set_ease(Tween.EASE_IN_OUT) \
 		.set_trans(Tween.TRANS_QUAD )
 
+func get_candidate_or_null() -> GameTile:
+	return (candidate_tile_holder.get_child(0) as GameTile)
+	
+func get_current_or_null() -> GameTile:
+	return (current_tile_holder.get_child(0) as GameTile)
+	
+func placing_available() -> bool:
+	return (not is_set) and (placing_tween == null or (not placing_tween.is_running()))
+
 func highlight(enable:bool) -> void:
 	highlight_hint.visible = enable
 	cube_node.visible = not enable
@@ -39,14 +49,14 @@ func highlight(enable:bool) -> void:
 func predraw(scene: PackedScene, rad: float = 0.) -> void:
 	highlight_hint.visible = true
 	if not is_set and scene != null:
-		var child : GameTile = scene.instantiate()
-		child.rotate_y(rad)
-		child.target_rot_y += rad
-		child_scene.add_child(child)
-		child.scale = 0.9*Vector3.ONE
-		current_tile_scene = scene
+		var new_candidate : GameTile = scene.instantiate()
+		new_candidate.rotate_y(rad)
+		new_candidate.target_rot_y += rad
+		candidate_tile_holder.add_child(new_candidate)
+		new_candidate.scale = 0.9*Vector3.ONE
+		
 		is_predrawn = true
-		child_scene.position.y = normal_placing_elevation
+		candidate_tile_holder.position.y = normal_placing_elevation
 		
 func rotate_cell(rad: float) -> void:
 	if is_set:
@@ -61,27 +71,32 @@ func rotate_cell(rad: float) -> void:
 func reset() -> void:
 	highlight_hint.visible = false
 	
-	if(child_scene.get_children().size() == 0):
+	if(candidate_tile_holder.get_child_count() == 0):
 		return
 		
 	if not is_set:
-		child_scene.remove_child(child_scene.get_child(0))
+		candidate_tile_holder.remove_child(get_candidate_or_null())
 		is_predrawn = false
 		cube_node.visible = true
 
-func place() -> void:
-	is_set = true
-	
+func place(show_animation: bool = true) -> void:
+	cube_node.visible = false
 	#Reset animations
 	if(predraw_tween):
 		predraw_tween.stop()
-	(child_scene.get_child(0) as Node3D).scale = Vector3.ONE
-	child_scene.position.y = 0.0
-	cube_node.visible = false
+	if(show_animation):
+		is_predrawn = false
+		placing_tween = animations.placing_animation(self)
+		await placing_tween.finished
 	
-	(child_scene.get_child(0) as GameTile).draw_props()
+	is_set = true
+	if get_candidate_or_null() == null:
+		return 
+	get_candidate_or_null().scale = Vector3.ONE
+	candidate_tile_holder.position.y = 0.0
+	get_candidate_or_null().draw_props()
  
-	var path : Path3D = child_scene.get_child(0).get_node_or_null("Path3D")
+	var path : Path3D = get_candidate_or_null().get_node_or_null("Path3D")
 	if path != null: 
 		path.add_to_group(Config.PATH_GROUP)
 	

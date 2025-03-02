@@ -37,7 +37,7 @@ func initialize_grid() -> void:
 	for i in range(initial_cells_length):
 		var initial_cell : PlacementCell = cells[i][initial_column]
 		initial_cell.predraw(packed_straight, 0.0)
-		initial_cell.place()
+		initial_cell.place(false)
 		initial_cell.reset()
 
 func move(dir: Vector2i) -> void:
@@ -50,11 +50,12 @@ func set_current_cell(pos: Vector2i) -> void:
 	highlighted_cell.highlight(true)
 	
 	# Forbid placement if cell is occupied
-	if((cells[current_pos.x][current_pos.y] as PlacementCell).is_set):
+	var next_cell : PlacementCell = cells[current_pos.x][current_pos.y]
+	if(not next_cell.placing_available()):
 		return
 		
 	current_cell.reset()
-	current_cell = cells[current_pos.x][current_pos.y]
+	current_cell = next_cell
 	if("predraw" in current_cell):
 		current_cell.predraw(placing_tile_scene, grid_rotation)
 
@@ -63,7 +64,7 @@ func rotate_cell(rad: float) -> void:
 	current_cell.rotate_cell(rad)
 
 func place_tile() -> void:
-	if(not current_cell.is_set):
+	if(current_cell.placing_available()):
 		current_cell.place()
 		current_pos = get_closest_available_cell(current_pos.x, current_pos.y)
 		highlighted_cell = (cells[current_pos.x][current_pos.y] as PlacementCell)
@@ -122,7 +123,7 @@ func get_closest_available_cell(x:int, y:int) -> Vector2i:
 		visited[current] = true
 
 		# Return the position if it's False
-		if not (cells[cx][cy] as PlacementCell).is_set :
+		if not (cells[cx][cy] as PlacementCell).placing_available() :
 			return current  # Found the closest false value!
 
 		# Add neighbors to the queue

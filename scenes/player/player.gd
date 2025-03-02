@@ -15,9 +15,11 @@ func _ready() -> void:
 func set_current_cell(c: PlacementCell) -> void:
 	if current_cell != null:
 		current_cell.out.disconnect(on_death)
+		current_cell.has_player = false
 	current_cell = c
 	cell_changed.emit(c)
 	current_cell.out.connect(on_death)
+	current_cell.has_player = true
 
 func on_death() -> void:
 	died.emit()

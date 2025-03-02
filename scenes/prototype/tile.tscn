@@ -37,7 +37,9 @@ visible = false
 mesh = SubResource("SphereMesh_edhu6")
 skeleton = NodePath("../..")
 
-[node name="Scene" type="Node3D" parent="."]
+[node name="Candidate" type="Node3D" parent="."]
+
+[node name="CurrentTile" type="Node3D" parent="."]
 
 [node name="CellAnimations" type="Node" parent="."]
 unique_name_in_owner = true

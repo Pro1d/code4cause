@@ -21,9 +21,22 @@ func shake_and_fell(c: PlacementCell) -> Tween:
 		.set_delay(shake_count * shake_duration * .85)
 	
 	return tween
+	
+func placing_animation(c: PlacementCell) -> Tween:
+	var duration : = 0.1
+	var _child: GameTile = c.get_candidate_or_null()
+	var tween := c.create_tween()
+
+	tween.tween_property(c.candidate_tile_holder, "position:y", 0, duration) \
+		.set_ease(Tween.EASE_IN)  
+	#tween.parallel().tween_property(c.candidate_tile_holder, "scale", Vector3.ONE, 0.7*duration) \
+		#.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD) \
+		#.set_delay(0.3*duration)
+	
+	return tween
 
 func size_blink(c: PlacementCell) -> Tween:
-	var child: Node3D = c.child_scene.get_child(0)
+	var child: GameTile = c.get_candidate_or_null()
 	var tween := c.create_tween()
 	tween.tween_property(child, "scale", 0.8 *Vector3.ONE, 0.1) \
 		.set_trans(Tween.TRANS_BACK) \
@@ -34,7 +47,7 @@ func size_blink(c: PlacementCell) -> Tween:
 	return tween
 
 func block_rotation(c: PlacementCell, rad: float) -> Tween:
-	var tile_scene := (c.child_scene.get_child(0) as GameTile)
+	var tile_scene := c.get_candidate_or_null()
 	var duration := 0.3
 	tile_scene.target_rot_y += rad  
 	var current_angle := tile_scene.rotation.y
