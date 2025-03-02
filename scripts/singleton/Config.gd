@@ -8,3 +8,8 @@ var score := 0 : set = set_score
 func set_score(s: int) -> void:
 	score = s
 	score_changed.emit(s)
+
+
+func reset_game() -> void:
+	score = 0
+	controls_available = true
