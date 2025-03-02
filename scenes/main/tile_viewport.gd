@@ -20,6 +20,8 @@ func new_tile(tile_scene: PackedScene) -> void:
 		tile.queue_free()
 		
 	tile = tile_scene.instantiate()
+	# apply a random angle so the tiles won't all look the same in the preview
+	tile.rotate_y(PI/2 * randi_range(0,3))
 	viewport.add_child(tile)
 
 var _tween_focus : Tween
