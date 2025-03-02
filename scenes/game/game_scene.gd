@@ -8,10 +8,15 @@ signal tile_placed
 @onready var player: Player = %Player
 @onready var metronome: Metronome = $Metronome
 @onready var background: Background = %Background
+@onready var boss: Boss = $Boss
+
 
 var next_tile: PackedScene : set = set_next_tile
 var cell_size: float= 0
 var camera_offset_x :float = 0
+
+func _init() -> void:
+	GameManager.game_scene = self
 
 func _ready() -> void:
 	cell_size = grid.cell_size
@@ -38,3 +43,6 @@ func add_row() -> void:
 
 func _process(_delta: float) -> void:
 	camera.global_position.x = camera_offset_x + metronome.time()
+	
+func damage_boss() -> void:
+	boss.take_damage()

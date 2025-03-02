@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://depdfa24xcvji"]
+[gd_scene load_steps=8 format=3 uid="uid://depdfa24xcvji"]
 
 [ext_resource type="Script" path="res://scripts/prototype/placement_cell.gd" id="1_2xaup"]
+[ext_resource type="PackedScene" path="res://scenes/game/bomb.tscn" id="2_gdixw"]
 [ext_resource type="Script" path="res://scenes/prototype/cell_animations.gd" id="2_vd6fk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayvf"]
@@ -44,3 +45,5 @@ skeleton = NodePath("../..")
 [node name="CellAnimations" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_vd6fk")
+
+[node name="Bomb" parent="." instance=ExtResource("2_gdixw")]

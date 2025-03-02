@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5j3nkd57dwpk"]
+[gd_scene load_steps=10 format=3 uid="uid://5j3nkd57dwpk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
 [ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
 [ext_resource type="PackedScene" uid="uid://c02g2aiybdtkw" path="res://scenes/game/background.tscn" id="7_jw0xs"]
+[ext_resource type="PackedScene" path="res://scenes/game/boss.tscn" id="8_re5ud"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
@@ -66,6 +67,8 @@ unique_name_in_owner = true
 [node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
 bpm = 80.0
 sfx_on = false
+
+[node name="Boss" parent="." instance=ExtResource("8_re5ud")]
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
 [connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]

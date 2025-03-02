@@ -6,11 +6,13 @@ signal out
 @onready var candidate_tile_holder: Node3D = $CandidateTile
 @onready var current_tile_holder: Node3D = $CurrentTile
 @onready var cube_node: Node3D = $cube
+@onready var bomb: Bomb = $Bomb
 
 @onready var animations : CellAnimations = %CellAnimations
 
 @export var placeable := true
 var has_player := false : set = set_has_player
+var has_bomb := false
 var is_set := false
 var is_predrawn := false
 
@@ -24,6 +26,7 @@ var on_player_elevation := 0.90
 
 func _ready() -> void: 
 	highlight_hint.visible = false
+	display_bomb()
 	
 func appear() -> void:
 	scale = Vector3.ZERO
@@ -35,9 +38,13 @@ func appear() -> void:
 		.set_trans(Tween.TRANS_QUAD )
 
 func get_candidate_or_null() -> GameTile:
+	if candidate_tile_holder.get_child_count() == 0:
+		return null
 	return (candidate_tile_holder.get_child(0) as GameTile)
 	
 func get_current_or_null() -> GameTile:
+	if current_tile_holder.get_child_count() == 0:
+		return null
 	return (current_tile_holder.get_child(0) as GameTile)
 	
 func placing_available() -> bool:
@@ -133,6 +140,8 @@ func place(show_animation: bool = true) -> bool:
 	return true
 	
 func delete() -> void:	
+	if(has_bomb):
+		bomb.explode()
 	var tween := animations.shake_and_fell(self)
 	tween.tween_callback(out.emit)
 	tween.tween_interval(0.5)
@@ -141,3 +150,6 @@ func delete() -> void:
 func predraw_anim() -> void:
 	if is_predrawn:
 		predraw_tween = animations.size_blink(self)
+			
+func display_bomb() -> void:
+	bomb.visible = has_bomb
