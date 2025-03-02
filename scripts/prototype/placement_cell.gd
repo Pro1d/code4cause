@@ -125,7 +125,7 @@ func place(show_animation: bool = true) -> bool:
 	candidate.reparent(current_tile_holder)
 	candidate.draw_props()
  
-	var paths := get_candidate_or_null().find_children("*", "Path3D") as Array[Node]
+	var paths := candidate.find_children("*", "Path3D") as Array[Node]
 	for path in paths:
 		path.add_to_group(Config.PATH_GROUP)
 	return true
