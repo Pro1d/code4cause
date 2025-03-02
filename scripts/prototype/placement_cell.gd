@@ -96,8 +96,8 @@ func place(show_animation: bool = true) -> void:
 	candidate_tile_holder.position.y = 0.0
 	get_candidate_or_null().draw_props()
  
-	var path : Path3D = get_candidate_or_null().get_node_or_null("Path3D")
-	if path != null: 
+	var paths := get_candidate_or_null().find_children("*", "Path3D") as Array[Node]
+	for path in paths:
 		path.add_to_group(Config.PATH_GROUP)
 	
 func delete() -> void:
