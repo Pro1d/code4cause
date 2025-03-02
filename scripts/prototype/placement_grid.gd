@@ -4,7 +4,8 @@ signal tile_placed
 
 var packed_straight : PackedScene = preload("res://resources/placeholder/tile_straight.tscn")
 
-@export var width: int = 6
+@export var width: int = 5
+@export var extra_width: int = 1
 @export var height: int = 4
 @export var cell_size: float = 1.0
 
@@ -28,7 +29,7 @@ func _ready() -> void:
 	highlighted_cell.highlight(true)
 
 func initialize_grid() -> void:
-	for i:int in width:
+	for i:int in (width+extra_width):
 		_generate_row()
 		
 	var initial_cell : PlacementCell = cells[0][2]
