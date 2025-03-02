@@ -4,8 +4,11 @@ signal tile_placed
 
 var packed_straight : PackedScene = preload("res://resources/placeholder/tile_straight.tscn")
 
-@export var width: int = 6
+@export var width: int = 5
+@export var extra_width: int = 1
 @export var height: int = 4
+@export var initial_column : int = 1
+@export var initial_cells_length : int = 2
 @export var cell_size: float = 1.0
 
 @export var tile_scene: PackedScene
@@ -21,20 +24,21 @@ var grid_rotation: float
 
 func _ready() -> void:
 	initialize_grid()
-	current_pos = Vector2(1,2)
+	current_pos = Vector2(initial_cells_length,initial_column)
 	current_cell = cells[current_pos.x][current_pos.y]
 	current_cell.predraw(placing_tile_scene, grid_rotation)
 	highlighted_cell = current_cell
 	highlighted_cell.highlight(true)
 
 func initialize_grid() -> void:
-	for i:int in width:
+	for i:int in (width+extra_width):
 		_generate_row()
 		
-	var initial_cell : PlacementCell = cells[0][2]
-	initial_cell.predraw(packed_straight, 0.0)
-	initial_cell.place()
-	initial_cell.reset()
+	for i in range(initial_cells_length):
+		var initial_cell : PlacementCell = cells[i][initial_column]
+		initial_cell.predraw(packed_straight, 0.0)
+		initial_cell.place()
+		initial_cell.reset()
 
 func move(dir: Vector2i) -> void:
 	highlighted_cell.highlight(false)
@@ -103,7 +107,7 @@ func _generate_row(appear_animation: bool = false)->void:
 
 func get_closest_available_cell(x:int, y:int) -> Vector2i:
 	# Directions for 4-way movement (up, down, left, right)
-	var directions := [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
+	var directions := [Vector2i(1, 0), Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0)]
 
 	# Queue for BFS (stores (x, y) positions)
 	var queue := [Vector2i(x, y)]

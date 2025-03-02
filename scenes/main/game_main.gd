@@ -68,7 +68,7 @@ func change_to_next_tiles() -> void:
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("ui_cancel")):
 		pause()
-
+ 
 
 func pause() -> void:
 	is_paused = !is_paused
