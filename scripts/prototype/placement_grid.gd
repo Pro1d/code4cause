@@ -2,7 +2,7 @@ class_name PlacementGrid
 extends Node
 signal tile_placed
 
-@export var width: int = 5
+@export var width: int = 6
 @export var extra_width: int = 1
 @export var height: int = 4
 @export var initial_column : int = 1
