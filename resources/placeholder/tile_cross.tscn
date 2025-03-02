@@ -1,0 +1,199 @@
+[gd_scene load_steps=17 format=3 uid="uid://ctaivsykma1o4"]
+
+[ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_87kq6"]
+[ext_resource type="ArrayMesh" uid="uid://dlq86ti1y7fub" path="res://assets/meshes/road-cross.obj" id="2_pp78i"]
+[ext_resource type="Texture2D" uid="uid://bswotmgjikl1m" path="res://assets/textures/grass1.png" id="3_dckrw"]
+[ext_resource type="Texture2D" uid="uid://ie1fj8ki8f6k" path="res://assets/textures/grass2.png" id="4_6rxkk"]
+[ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_1aaee"]
+[ext_resource type="Texture2D" uid="uid://ba6ahxgfmx23t" path="res://assets/textures/stone2.png" id="6_dfls7"]
+[ext_resource type="Texture2D" uid="uid://xi507sssbym6" path="res://assets/textures/stone3.png" id="7_jbqw2"]
+[ext_resource type="Texture2D" uid="uid://ryjvk7nsgqc1" path="res://assets/textures/tree1.png" id="8_hm0nx"]
+[ext_resource type="Texture2D" uid="uid://d2deptcgwidwh" path="res://assets/textures/tree2.png" id="9_rswdb"]
+[ext_resource type="Texture2D" uid="uid://dmd4qco70y8x4" path="res://assets/textures/tree3.png" id="10_aq8tn"]
+
+[sub_resource type="Curve3D" id="Curve3D_lnhvg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_0edo8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -0.5, 0.2, 0, 0.5, 0, 0, 0.5, 0.2, 0, 0, 0.1, 0, -0.5, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4u8o"]
+albedo_color = Color(0.767163, 0.57365, 0.464367, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hsro6"]
+material = SubResource("StandardMaterial3D_o4u8o")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgwnp"]
+albedo_color = Color(0, 0.505882, 0.180392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bvomk"]
+material = SubResource("StandardMaterial3D_kgwnp")
+size = Vector3(0.3, 0.1, 1)
+
+[node name="TileCross" type="Node3D"]
+script = ExtResource("1_87kq6")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+curve = SubResource("Curve3D_lnhvg")
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+curve = SubResource("Curve3D_0edo8")
+
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_hsro6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.05, 0)
+mesh = SubResource("BoxMesh_bvomk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.05, 0)
+mesh = SubResource("BoxMesh_bvomk")
+skeleton = NodePath("../..")
+
+[node name="Road-straight" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_pp78i")
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Front" type="Node3D" parent="Props"]
+
+[node name="Grass1-1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, 0.291293)
+visible = false
+billboard = 2
+texture = ExtResource("3_dckrw")
+
+[node name="Grass1-2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, -0.364104)
+visible = false
+billboard = 2
+texture = ExtResource("3_dckrw")
+
+[node name="Grass2-1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.334387, 0.12733, -0.198301)
+visible = false
+billboard = 2
+texture = ExtResource("4_6rxkk")
+
+[node name="Grass2-2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, 0.0658091)
+visible = false
+billboard = 2
+texture = ExtResource("4_6rxkk")
+
+[node name="Stone1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.343327, 0.0994142, -0.0691365)
+visible = false
+billboard = 2
+texture = ExtResource("5_1aaee")
+
+[node name="Stone2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.32764, 0.0994142, -0.301165)
+visible = false
+billboard = 2
+texture = ExtResource("6_dfls7")
+
+[node name="Stone3" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.343327, 0.0994142, 0.223348)
+visible = false
+billboard = 2
+texture = ExtResource("7_jbqw2")
+
+[node name="Tree1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, -0.349394, 0.401147, 0.047608)
+visible = false
+billboard = 2
+texture = ExtResource("8_hm0nx")
+
+[node name="Tree2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, -0.349394, 0.401147, 0.047608)
+visible = false
+billboard = 2
+texture = ExtResource("9_rswdb")
+
+[node name="Tree3" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(0.00101824, 0, -0.00667719, 0, 0.081604, 0, 0.0815918, 0, 8.33289e-05, -0.352029, 0.427629, -0.106406)
+visible = false
+billboard = 2
+texture = ExtResource("10_aq8tn")
+
+[node name="Back" type="Node3D" parent="Props"]
+
+[node name="Grass1-1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, 0.287093)
+visible = false
+billboard = 2
+texture = ExtResource("3_dckrw")
+
+[node name="Grass1-2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, -0.368304)
+visible = false
+billboard = 2
+texture = ExtResource("3_dckrw")
+
+[node name="Grass2-1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.337504, 0.133414, -0.202501)
+visible = false
+billboard = 2
+texture = ExtResource("4_6rxkk")
+
+[node name="Grass2-2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, 0.0616091)
+visible = false
+billboard = 2
+texture = ExtResource("4_6rxkk")
+
+[node name="Stone1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.328564, 0.105499, -0.0733366)
+visible = false
+billboard = 2
+texture = ExtResource("5_1aaee")
+
+[node name="Stone2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.344251, 0.105499, -0.305365)
+visible = false
+billboard = 2
+texture = ExtResource("6_dfls7")
+
+[node name="Stone3" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.328564, 0.105499, 0.219148)
+visible = false
+billboard = 2
+texture = ExtResource("7_jbqw2")
+
+[node name="Tree1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, 0.322497, 0.407232, 0.0434079)
+visible = false
+billboard = 2
+texture = ExtResource("8_hm0nx")
+
+[node name="Tree2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, 0.322497, 0.407232, 0.0434079)
+visible = false
+billboard = 2
+texture = ExtResource("9_rswdb")
+
+[node name="Tree3" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(0.00101824, 0, -0.00667719, 0, 0.081604, 0, 0.0815918, 0, 8.33289e-05, 0.319862, 0.433714, -0.110606)
+visible = false
+billboard = 2
+texture = ExtResource("10_aq8tn")
