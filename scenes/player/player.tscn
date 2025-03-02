@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfxnn5sgl8knh"]
+[gd_scene load_steps=6 format=3 uid="uid://dfxnn5sgl8knh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0b1kw"]
 [ext_resource type="ArrayMesh" uid="uid://cu3jckjcmy5i6" path="res://assets/meshes/player.obj" id="2_i5hgk"]
 [ext_resource type="Script" path="res://scenes/player/player_movement.gd" id="3_42uji"]
+[ext_resource type="ArrayMesh" uid="uid://cd0gyn7u8pqwa" path="res://assets/meshes/player-stand.obj" id="3_d3hwm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkhvx"]
+albedo_color = Color(0.209513, 0.116341, 0.00587756, 1)
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_0b1kw")
@@ -10,7 +14,13 @@ script = ExtResource("1_0b1kw")
 [node name="Mesh" type="Node3D" parent="."]
 
 [node name="Player" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131664, 0)
 mesh = ExtResource("2_i5hgk")
+
+[node name="Player-stand" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(0.581375, 0, 0, 0, 0.566593, 0, 0, 0, 0.581375, 0, 0, 0)
+mesh = ExtResource("3_d3hwm")
+surface_material_override/0 = SubResource("StandardMaterial3D_lkhvx")
 
 [node name="player_movement" type="Node" parent="."]
 script = ExtResource("3_42uji")
