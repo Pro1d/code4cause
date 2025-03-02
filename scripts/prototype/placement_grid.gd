@@ -65,10 +65,8 @@ func rotate_cell(rad: float) -> void:
 
 func place_tile() -> void:
 	if(current_cell.placing_available()):
-		current_cell.place()
-		current_pos = get_closest_available_cell(current_pos.x, current_pos.y)
-		highlighted_cell = (cells[current_pos.x][current_pos.y] as PlacementCell)
-		tile_placed.emit()
+		if await current_cell.place():
+			tile_placed.emit() 
 	
 func add_row()->void:
 	_generate_row(true)
@@ -98,7 +96,7 @@ func _generate_row(appear_animation: bool = false)->void:
 		(cells[i] as Array).append(cell)
 	grid_offset.x += cell_size
 
-
+# Currently unused
 func get_closest_available_cell(x:int, y:int) -> Vector2i:
 	# Directions for 4-way movement (up, down, left, right)
 	var directions := [Vector2i(1, 0), Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0)]

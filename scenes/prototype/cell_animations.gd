@@ -1,14 +1,13 @@
 class_name  CellAnimations
 extends Node
 
-func shake_and_fell(c: PlacementCell) -> Tween:
+func shake_and_fell(c: Node3D, shake_count := 8) -> Tween:
 	var shake_magnitude := 0.07 # m
 	var shake_duration := 0.1 # s
 	var gpos := c.global_position
 	var tween := c.create_tween()
 	tween.tween_interval(randf() * 0.4)
 	var shake_offset := Vector3(1, 0, 0).rotated(Vector3.UP, randf() * TAU)
-	var shake_count := 8
 	for i in range(shake_count):
 		var shake_factor := pow(float(i + 1) / shake_count, 2.0)
 		var shake := shake_offset * shake_magnitude * shake_factor
@@ -28,22 +27,20 @@ func placing_animation(c: PlacementCell) -> Tween:
 	var tween := c.create_tween()
 
 	tween.tween_property(c.candidate_tile_holder, "position:y", 0, duration) \
-		.set_ease(Tween.EASE_IN)  
-	#tween.parallel().tween_property(c.candidate_tile_holder, "scale", Vector3.ONE, 0.7*duration) \
-		#.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD) \
-		#.set_delay(0.3*duration)
+		.set_ease(Tween.EASE_IN)
 	
 	return tween
 
 func size_blink(c: PlacementCell) -> Tween:
 	var child: GameTile = c.get_candidate_or_null()
 	var tween := c.create_tween()
-	tween.tween_property(child, "scale", 0.8 *Vector3.ONE, 0.1) \
-		.set_trans(Tween.TRANS_BACK) \
-		.set_ease(Tween.EASE_OUT) 
-	tween.tween_property(child, "scale",  0.9*Vector3.ONE, 0.1) \
-		.set_trans(Tween.TRANS_BACK) \
-		.set_ease(Tween.EASE_IN)
+	if child != null:
+		tween.tween_property(child, "scale", 0.8 *Vector3.ONE, 0.1) \
+			.set_trans(Tween.TRANS_BACK) \
+			.set_ease(Tween.EASE_OUT) 
+		tween.tween_property(child, "scale",  0.9*Vector3.ONE, 0.1) \
+			.set_trans(Tween.TRANS_BACK) \
+			.set_ease(Tween.EASE_IN)
 	return tween
 
 func block_rotation(c: PlacementCell, rad: float) -> Tween:

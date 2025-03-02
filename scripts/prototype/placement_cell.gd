@@ -3,13 +3,13 @@ extends Node3D
 signal out
 
 @export var highlight_hint: Node3D
-@onready var candidate_tile_holder: Node3D = $Candidate
-@onready var current_tile_holder: Node3D = $Current
+@onready var candidate_tile_holder: Node3D = $CandidateTile
+@onready var current_tile_holder: Node3D = $CurrentTile
 @onready var cube_node: Node3D = $cube
 
 @onready var animations : CellAnimations = %CellAnimations
 
-var has_player := false
+var has_player := false : set = set_has_player
 var is_set := false
 var is_predrawn := false
 
@@ -18,8 +18,8 @@ var predraw_tween: Tween
 var rotate_tween: Tween
 
 var normal_placing_elevation := 0.15
-var replacing_elevation := 0.30
-var on_player_elevation := 0.60
+var replacing_elevation := 0.45
+var on_player_elevation := 0.80
 
 func _ready() -> void: 
 	highlight_hint.visible = false
@@ -46,9 +46,16 @@ func highlight(enable:bool) -> void:
 	highlight_hint.visible = enable
 	cube_node.visible = not enable
 
+func set_has_player(s: bool) -> void:
+	has_player = s
+	if s and get_candidate_or_null() != null:
+		candidate_tile_holder.position.y = on_player_elevation
+	elif (not s) and get_candidate_or_null() != null:
+		candidate_tile_holder.position.y = normal_placing_elevation
+
 func predraw(scene: PackedScene, rad: float = 0.) -> void:
 	highlight_hint.visible = true
-	if not is_set and scene != null:
+	if placing_available() and scene != null:
 		var new_candidate : GameTile = scene.instantiate()
 		new_candidate.rotate_y(rad)
 		new_candidate.target_rot_y += rad
@@ -56,10 +63,15 @@ func predraw(scene: PackedScene, rad: float = 0.) -> void:
 		new_candidate.scale = 0.9*Vector3.ONE
 		
 		is_predrawn = true
-		candidate_tile_holder.position.y = normal_placing_elevation
+		if has_player:
+			candidate_tile_holder.position.y = on_player_elevation
+		elif get_current_or_null() != null:
+			candidate_tile_holder.position.y = replacing_elevation
+		else:
+			candidate_tile_holder.position.y = normal_placing_elevation
 		
 func rotate_cell(rad: float) -> void:
-	if is_set:
+	if not placing_available():
 		return
 		
 	if abs(rad) > 0:
@@ -74,35 +86,51 @@ func reset() -> void:
 	if(candidate_tile_holder.get_child_count() == 0):
 		return
 		
-	if not is_set:
-		candidate_tile_holder.remove_child(get_candidate_or_null())
-		is_predrawn = false
-		cube_node.visible = true
+	candidate_tile_holder.remove_child(get_candidate_or_null())
+	is_predrawn = false
+	cube_node.visible = true
 
-func place(show_animation: bool = true) -> void:
+func place(show_animation: bool = true) -> bool:
+	if has_player:
+		return false
+	
 	cube_node.visible = false
 	#Reset animations
 	if(predraw_tween):
 		predraw_tween.stop()
 	if(show_animation):
+		Config.controls_available = false
 		is_predrawn = false
+		
+		if get_current_or_null() != null:
+			var path_current := get_current_or_null().get_node_or_null("Path3D")
+			if path_current != null: 
+				path_current.remove_from_group(Config.PATH_GROUP)
+			var tween := animations.shake_and_fell(get_current_or_null(), 2)
+			tween.tween_callback(get_current_or_null().queue_free)
+			await tween.finished
+		
 		placing_tween = animations.placing_animation(self)
 		await placing_tween.finished
+		
+		Config.controls_available = true 
 	
-	is_set = true
-	if get_candidate_or_null() == null:
-		return 
-	get_candidate_or_null().scale = Vector3.ONE
-	candidate_tile_holder.position.y = 0.0
-	get_candidate_or_null().draw_props()
+	var candidate :=  get_candidate_or_null()
+	if candidate == null:
+		print("Weird no candidate")
+		return false
+		
+	candidate_tile_holder.position.y = 0.0 
+	candidate.scale = Vector3.ONE
+	candidate.reparent(current_tile_holder)
+	candidate.draw_props()
  
-	var path : Path3D = get_candidate_or_null().get_node_or_null("Path3D")
+	var path : Path3D = candidate.get_node_or_null("Path3D")
 	if path != null: 
 		path.add_to_group(Config.PATH_GROUP)
+	return true
 	
-func delete() -> void:
-	is_set = false 
-	
+func delete() -> void:	
 	var tween := animations.shake_and_fell(self)
 	tween.tween_callback(out.emit)
 	tween.tween_interval(0.5)

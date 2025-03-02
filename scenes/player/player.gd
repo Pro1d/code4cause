@@ -19,7 +19,7 @@ func set_current_cell(c: PlacementCell) -> void:
 	current_cell = c
 	cell_changed.emit(c)
 	current_cell.out.connect(on_death)
-	current_cell.has_player = true
+	c.has_player = true
 
 func on_death() -> void:
 	died.emit()
