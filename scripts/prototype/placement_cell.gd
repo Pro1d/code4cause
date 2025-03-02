@@ -5,7 +5,9 @@ signal out
 @export var highlight_hint: Node3D
 @onready var child_scene: Node3D = $Scene
 @onready var cube_node: Node3D = $cube
+@onready var bomb: Node3D = $Bomb
 
+var has_bomb := false
 var is_set := false
 var is_predrawn := false
 
@@ -130,6 +132,9 @@ func redraw_child(new_is_set:bool, scene: PackedScene) -> void:
 	
 	child_scene.add_child(child)
 	
+	display_bomb()
+		
+	
 func predraw_anim() -> void:
 	if is_predrawn:
 		var child: Node3D = child_scene.get_child(0)
@@ -140,3 +145,6 @@ func predraw_anim() -> void:
 		predraw_tween.tween_property(child, "scale",  0.9*Vector3.ONE, 0.1) \
 			.set_trans(Tween.TRANS_BACK) \
 			.set_ease(Tween.EASE_IN)
+			
+func display_bomb() -> void:
+	bomb.visible = has_bomb

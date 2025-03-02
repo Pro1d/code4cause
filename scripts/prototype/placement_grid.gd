@@ -10,6 +10,10 @@ var packed_straight : PackedScene = preload("res://resources/placeholder/tile_st
 @export var cell_size: float = 1.0
 
 @export var tile_scene: PackedScene
+
+@export_group("Debug: bomb proba")
+@export_range(0.0, 1.0) var bomb_proba: float = 1.0
+
 var placing_tile_scene: PackedScene
 
 var cells: Array
@@ -84,6 +88,7 @@ func shift_back() -> void:
 	for i:int in width:
 		for j:int in range(1, height):
 			var old_cell: PlacementCell = cells[i][j]
+			(cells[i][j-1] as PlacementCell).has_bomb = old_cell.has_bomb
 			(cells[i][j-1] as PlacementCell).redraw_child(old_cell.is_set, old_cell.current_tile_scene)
 			old_cell.delete()
 	
@@ -94,6 +99,13 @@ func _generate_row(appear_animation: bool = false)->void:
 		# Instantiate cell
 		var cell: PlacementCell = tile_scene.instantiate()
 		add_child(cell)
+		
+		# Decide on spawning a bomb
+		var r: float = randf()
+		if(r <= bomb_proba):
+			cell.has_bomb = true
+		cell.display_bomb()
+		
 		if appear_animation:
 			cell.appear() 
 		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
