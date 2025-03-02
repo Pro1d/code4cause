@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="6_5pjwo"]
 [ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="6_vqqcm"]
 [ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="7_iaqjs"]
-[ext_resource type="PackedScene" path="res://scenes/ui/fade_panel.tscn" id="9_dfmno"]
+[ext_resource type="PackedScene" uid="uid://bljx0fofq5vq4" path="res://scenes/ui/fade_panel.tscn" id="9_dfmno"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vvsm"]
 shader = ExtResource("6_5pjwo")

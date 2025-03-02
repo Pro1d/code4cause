@@ -2,18 +2,10 @@ class_name BossAnimator
 extends AnimationTree
 
 func idle() -> void:
-	reset_state()
-	set("Parameters/Conditions/Idle", true)
+	(self["parameters/playback"] as AnimationNodeStateMachinePlayback).travel("boss_idle")
 	
 func damage() -> void:
-	reset_state()
-	set("Parameters/Conditions/Damage", true)
+	(self["parameters/playback"] as AnimationNodeStateMachinePlayback).travel("boss_damage")
 	
 func death() -> void:
-	reset_state()
-	set("Parameters/Conditions/Death", true)
-
-func reset_state() -> void:
-	set("Parameters/Conditions/Idle", false)
-	set("Parameters/Conditions/Damage", false)
-	set("Parameters/Conditions/Death", false)
+	(self["parameters/playback"] as AnimationNodeStateMachinePlayback).travel("boss_death")

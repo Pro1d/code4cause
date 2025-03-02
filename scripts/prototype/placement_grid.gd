@@ -93,6 +93,8 @@ func _generate_row(appear_animation: bool = false)->void:
 			cell.reset() 
 			cell.placeable = false
 			
+		cell.has_bomb = true
+		cell.display_bomb()
 		
 		if appear_animation:
 			cell.appear() 

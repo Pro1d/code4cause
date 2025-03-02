@@ -8,7 +8,7 @@ signal tile_placed
 @onready var player: Player = %Player
 @onready var metronome: Metronome = $Metronome
 @onready var background: Background = %Background
-@onready var boss: Boss = $Boss
+@onready var boss: Boss = $Camera3D/Boss
 
 
 var next_tile: PackedScene : set = set_next_tile
