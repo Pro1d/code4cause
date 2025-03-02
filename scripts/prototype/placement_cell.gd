@@ -6,10 +6,12 @@ signal out
 @onready var candidate_tile_holder: Node3D = $CandidateTile
 @onready var current_tile_holder: Node3D = $CurrentTile
 @onready var cube_node: Node3D = $cube
+@onready var bomb: Node3D = $Bomb
 
 @onready var animations : CellAnimations = %CellAnimations
 
 var has_player := false : set = set_has_player
+var has_bomb := false
 var is_set := false
 var is_predrawn := false
 
@@ -139,3 +141,6 @@ func delete() -> void:
 func predraw_anim() -> void:
 	if is_predrawn:
 		predraw_tween = animations.size_blink(self)
+			
+func display_bomb() -> void:
+	bomb.visible = has_bomb

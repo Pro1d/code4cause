@@ -79,6 +79,10 @@ window/size/viewport_width=1366
 window/size/viewport_height=768
 window/stretch/mode="viewport"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 theme/custom="res://resources/themes/hud.theme"
