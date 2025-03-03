@@ -2,13 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://dpr3esbfg5ytd" path="res://resources/placeholder/tile_base.tscn" id="1_v447w"]
 [ext_resource type="ArrayMesh" uid="uid://b1nfgbo6p2rlc" path="res://assets/meshes/road-straight.obj" id="2_6418b"]
-[ext_resource type="Curve3D" uid="uid://bldpuiuq4w5ok" path="res://resources/placeholder/tile_straight.tres" id="2_rybjo"]
+
+[sub_resource type="Curve3D" id="Curve3D_8yl2k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="TileStraight" instance=ExtResource("1_v447w")]
 
 [node name="Path3D" type="Path3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-curve = ExtResource("2_rybjo")
+curve = SubResource("Curve3D_8yl2k")
 
 [node name="Road-straight" type="MeshInstance3D" parent="Mesh" index="0"]
 mesh = ExtResource("2_6418b")

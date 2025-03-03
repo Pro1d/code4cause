@@ -95,84 +95,45 @@ surface_material_override/1 = SubResource("StandardMaterial3D_5sxe4")
 
 [node name="Grass1-1" parent="Props/Front" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.324866, 0.03, 0.386621)
-axis = 2
 
 [node name="Grass1-2" parent="Props/Front" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2782, 0.03, -0.402639)
-axis = 2
 
 [node name="Grass2-1" parent="Props/Front" index="2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444359, 0.03, -0.33397)
-axis = 2
 
 [node name="Grass2-2" parent="Props/Front" index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.435388, 0.03, 0.200659)
-axis = 2
 
 [node name="Stone1" parent="Props/Front" index="4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444411, 0.03, -0.079052)
-axis = 2
 
 [node name="Stone2" parent="Props/Front" index="5"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0590373, 0.03, -0.302056)
-axis = 2
 
 [node name="Stone3" parent="Props/Front" index="6"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.168192, 0.03, 0.369537)
-axis = 2
 
 [node name="Tree1" parent="Props/Front" index="7"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349394, 0.03, -0.0552125)
 visible = false
-axis = 2
 
 [node name="Tree2" parent="Props/Front" index="8"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349, 0.03, 0.0369906)
 visible = false
-axis = 2
 
 [node name="Tree3" parent="Props/Front" index="9"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.352, 0.03, -0.0238916)
 visible = false
-axis = 2
-
-[node name="Grass1-1" parent="Props/Back" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, 0.287093)
-axis = 2
-
-[node name="Grass1-2" parent="Props/Back" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, -0.368304)
-axis = 2
-
-[node name="Grass2-1" parent="Props/Back" index="2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.337504, 0.03, -0.202501)
-axis = 2
 
 [node name="Grass2-2" parent="Props/Back" index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.42713, 0.03, 0.0989426)
-axis = 2
 
 [node name="Stone1" parent="Props/Back" index="4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.392549, 0.03, -0.0898304)
-axis = 2
-
-[node name="Stone2" parent="Props/Back" index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.344251, 0.03, -0.305365)
-axis = 2
-
-[node name="Stone3" parent="Props/Back" index="6"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 0.03, 0.219148)
-axis = 2
 
 [node name="Tree1" parent="Props/Back" index="7"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.356306, 0.03, 0.340632)
-axis = 2
 
 [node name="Tree2" parent="Props/Back" index="8"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.274601, 0.03, 0.434242)
-axis = 2
 
 [node name="Tree3" parent="Props/Back" index="9"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319862, 0.03, -0.0044146)
 visible = false
-axis = 2
