@@ -67,7 +67,7 @@ func find_path(position_to_check: Vector3, change_direction : bool = false) -> P
 		if path == path_follow.get_parent():
 			continue
 		
-		var position_in_tile := (path as Node3D).global_transform.inverse() * position_to_check
+		var position_in_tile := (path as Node3D).to_local(position_to_check)
 		var curve := (path as Path3D).curve
 
 		var next_parent : Path3D = null

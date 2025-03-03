@@ -29,7 +29,7 @@ func _ready() -> void:
 	display_bomb()
 
 func appear() -> void:
-	scale = Vector3.ZERO
+	scale = Vector3.ONE * .05
 	var appear_tween := create_tween()
 	var appear_duration := 4
 	appear_tween \
