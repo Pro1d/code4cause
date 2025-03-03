@@ -6,7 +6,11 @@
 [ext_resource type="ArrayMesh" uid="uid://cd0gyn7u8pqwa" path="res://assets/meshes/player-stand.obj" id="3_d3hwm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkhvx"]
-albedo_color = Color(0.209513, 0.116341, 0.00587756, 1)
+albedo_color = Color(0.21, 0.14448, 0.1092, 1)
+metallic = 0.18
+roughness = 0.67
+clearcoat_enabled = true
+clearcoat = 0.1
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_0b1kw")
@@ -14,11 +18,11 @@ script = ExtResource("1_0b1kw")
 [node name="Mesh" type="Node3D" parent="."]
 
 [node name="Player" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131664, 0)
+transform = Transform3D(0.92, 0, 0, 0, 0.88, 0, 0, 0, 0.92, 0, -0.13722, 0)
 mesh = ExtResource("2_i5hgk")
 
 [node name="Player-stand" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(0.581375, 0, 0, 0, 0.566593, 0, 0, 0, 0.581375, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.5, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = ExtResource("3_d3hwm")
 surface_material_override/0 = SubResource("StandardMaterial3D_lkhvx")
 
