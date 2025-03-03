@@ -27,32 +27,30 @@ grow_vertical = 2
 size_flags_vertical = 0
 script = ExtResource("1_uhk2i")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(1170, 768)
+size = Vector2i(1366, 768)
 render_target_update_mode = 4
 
-[node name="GameScene" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_5yrsn")]
+[node name="GameScene" parent="MarginContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_5yrsn")]
 unique_name_in_owner = true
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
-color = Color(0, 0, 0, 0.0745098)
+size_flags_horizontal = 8
+color = Color(0, 0, 0, 0.67451)
 
-[node name="NextTiles" type="VBoxContainer" parent="HBoxContainer/MarginContainer/ColorRect"]
+[node name="NextTiles" type="VBoxContainer" parent="MarginContainer/ColorRect"]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 1
@@ -69,20 +67,20 @@ grow_vertical = 0
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="TileViewportContainer" parent="HBoxContainer/MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
+[node name="TileViewportContainer" parent="MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
 layout_mode = 2
 
-[node name="TileViewportContainer2" parent="HBoxContainer/MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
+[node name="TileViewportContainer2" parent="MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
 layout_mode = 2
 
-[node name="TileViewportContainer3" parent="HBoxContainer/MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
+[node name="TileViewportContainer3" parent="MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
 layout_mode = 2
 
-[node name="TileViewportContainer4" parent="HBoxContainer/MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
+[node name="TileViewportContainer4" parent="MarginContainer/ColorRect/NextTiles" instance=ExtResource("3_f2sao")]
 layout_mode = 2
 is_focus = true
 
-[node name="BottomOffset" type="Control" parent="HBoxContainer/MarginContainer/ColorRect/NextTiles"]
+[node name="BottomOffset" type="Control" parent="MarginContainer/ColorRect/NextTiles"]
 unique_name_in_owner = true
 layout_mode = 2
 
