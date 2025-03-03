@@ -1,18 +1,22 @@
-[gd_scene load_steps=28 format=4 uid="uid://b6f4c4jfl7dpp"]
+[gd_scene load_steps=14 format=4 uid="uid://b6f4c4jfl7dpp"]
 
-[ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_qwc7e"]
+[ext_resource type="PackedScene" uid="uid://dpr3esbfg5ytd" path="res://resources/placeholder/tile_base.tscn" id="1_dtteg"]
 [ext_resource type="Texture2D" uid="uid://dl6apmnijuyx5" path="res://assets/textures/tile_road.png" id="2_h0awc"]
-[ext_resource type="Texture2D" uid="uid://bswotmgjikl1m" path="res://assets/textures/grass1.png" id="3_3payq"]
 [ext_resource type="Texture2D" uid="uid://gfh6bg12oawi" path="res://assets/textures/tile_grass.png" id="3_ucrxb"]
 [ext_resource type="Texture2D" uid="uid://4l8e8cxjyqx1" path="res://assets/textures/tile_dirt.png" id="4_bke53"]
-[ext_resource type="Texture2D" uid="uid://ie1fj8ki8f6k" path="res://assets/textures/grass2.png" id="4_e7hcm"]
-[ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_4iemx"]
-[ext_resource type="Texture2D" uid="uid://ba6ahxgfmx23t" path="res://assets/textures/stone2.png" id="6_nap31"]
-[ext_resource type="Texture2D" uid="uid://xi507sssbym6" path="res://assets/textures/stone3.png" id="7_jpgta"]
-[ext_resource type="Texture2D" uid="uid://ryjvk7nsgqc1" path="res://assets/textures/tree1.png" id="8_csvx2"]
-[ext_resource type="Texture2D" uid="uid://d2deptcgwidwh" path="res://assets/textures/tree2.png" id="9_3u7sm"]
-[ext_resource type="Texture2D" uid="uid://dmd4qco70y8x4" path="res://assets/textures/tree3.png" id="10_hrpl0"]
 [ext_resource type="Texture2D" uid="uid://cdcxpdgto8l6r" path="res://assets/textures/puddle_v0.png" id="13_ijs51"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_spc3e"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_252m6"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("13_ijs51")
+emission_enabled = true
+emission = Color(1, 0.716667, 0, 1)
+emission_energy_multiplier = 0.5
+emission_texture = ExtResource("13_ijs51")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hn0aj"]
 resource_name = "tile_road"
@@ -29,7 +33,7 @@ resource_name = "Material.002"
 albedo_texture = ExtResource("4_bke53")
 metallic = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_avxun"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_n2pe1"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.166667, 0.666667, 0.013721, 0.666667),
 "attribute_data": PackedByteArray("AAD//wAA//8AAP//AAD//wAAAAD//wAAAAD///////8AAP//AAAAAP//AAAAAP//AAAAAP///////wAAAAD//////////wAA"),
@@ -69,186 +73,106 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en12o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqttq"]
 albedo_texture = ExtResource("4_bke53")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhg1a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sxe4"]
 albedo_texture = ExtResource("4_bke53")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_e4bip"]
-size = Vector2(1, 1)
+[node name="TileBlock" instance=ExtResource("1_dtteg")]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02lo"]
-transparency = 1
-albedo_color = Color(0, 0, 0, 1)
-albedo_texture = ExtResource("13_ijs51")
-emission_enabled = true
-emission = Color(1, 0.716667, 0, 1)
-emission_energy_multiplier = 0.5
-emission_texture = ExtResource("13_ijs51")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4u8o"]
-albedo_color = Color(0.767163, 0.57365, 0.464367, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hsro6"]
-material = SubResource("StandardMaterial3D_o4u8o")
-size = Vector3(1, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgwnp"]
-albedo_color = Color(0, 0.505882, 0.180392, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cf4ck"]
-material = SubResource("StandardMaterial3D_kgwnp")
-size = Vector3(0.3, 0.1, 0.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_i4p0o"]
-material = SubResource("StandardMaterial3D_kgwnp")
-size = Vector3(0.7, 0.1, 0.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8u1ty"]
-material = SubResource("StandardMaterial3D_kgwnp")
-size = Vector3(0.3, 0.1, 1)
-
-[node name="TileBlock" type="Node3D"]
-script = ExtResource("1_qwc7e")
-
-[node name="Road-angle" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_avxun")
-surface_material_override/0 = SubResource("StandardMaterial3D_en12o")
-surface_material_override/1 = SubResource("StandardMaterial3D_qhg1a")
-
-[node name="Puddle" type="MeshInstance3D" parent="."]
+[node name="Puddle" type="MeshInstance3D" parent="Mesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152026, 0)
-mesh = SubResource("PlaneMesh_e4bip")
-surface_material_override/0 = SubResource("StandardMaterial3D_s02lo")
-
-[node name="Mesh" type="Node3D" parent="."]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("BoxMesh_hsro6")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.05, 0.35)
-mesh = SubResource("BoxMesh_cf4ck")
+mesh = SubResource("PlaneMesh_spc3e")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_252m6")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.05, -0.35)
-mesh = SubResource("BoxMesh_i4p0o")
+[node name="Road-angle" type="MeshInstance3D" parent="Mesh" index="1"]
+mesh = SubResource("ArrayMesh_n2pe1")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tqttq")
+surface_material_override/1 = SubResource("StandardMaterial3D_5sxe4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.05, 0)
-mesh = SubResource("BoxMesh_8u1ty")
-skeleton = NodePath("../..")
+[node name="Grass1-1" parent="Props/Front" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.324866, 0.03, 0.386621)
+axis = 2
 
-[node name="Props" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="Grass1-2" parent="Props/Front" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2782, 0.03, -0.402639)
+axis = 2
 
-[node name="Front" type="Node3D" parent="Props"]
+[node name="Grass2-1" parent="Props/Front" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444359, 0.03, -0.33397)
+axis = 2
 
-[node name="Grass1-1" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, 0.291293)
+[node name="Grass2-2" parent="Props/Front" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.435388, 0.03, 0.200659)
+axis = 2
+
+[node name="Stone1" parent="Props/Front" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444411, 0.03, -0.079052)
+axis = 2
+
+[node name="Stone2" parent="Props/Front" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0590373, 0.03, -0.302056)
+axis = 2
+
+[node name="Stone3" parent="Props/Front" index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.168192, 0.03, 0.369537)
+axis = 2
+
+[node name="Tree1" parent="Props/Front" index="7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349394, 0.03, -0.0552125)
 visible = false
-billboard = 2
-texture = ExtResource("3_3payq")
+axis = 2
 
-[node name="Grass1-2" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, -0.364104)
+[node name="Tree2" parent="Props/Front" index="8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349, 0.03, 0.0369906)
 visible = false
-billboard = 2
-texture = ExtResource("3_3payq")
+axis = 2
 
-[node name="Grass2-1" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.334387, 0.12733, -0.198301)
+[node name="Tree3" parent="Props/Front" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.352, 0.03, -0.0238916)
 visible = false
-billboard = 2
-texture = ExtResource("4_e7hcm")
+axis = 2
 
-[node name="Grass2-2" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, -0.333791, 0.127329, 0.31825)
+[node name="Grass1-1" parent="Props/Back" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, 0.287093)
+axis = 2
+
+[node name="Grass1-2" parent="Props/Back" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, -0.368304)
+axis = 2
+
+[node name="Grass2-1" parent="Props/Back" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.337504, 0.03, -0.202501)
+axis = 2
+
+[node name="Grass2-2" parent="Props/Back" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.42713, 0.03, 0.0989426)
+axis = 2
+
+[node name="Stone1" parent="Props/Back" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.392549, 0.03, -0.0898304)
+axis = 2
+
+[node name="Stone2" parent="Props/Back" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.344251, 0.03, -0.305365)
+axis = 2
+
+[node name="Stone3" parent="Props/Back" index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 0.03, 0.219148)
+axis = 2
+
+[node name="Tree1" parent="Props/Back" index="7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.356306, 0.03, 0.340632)
+axis = 2
+
+[node name="Tree2" parent="Props/Back" index="8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.274601, 0.03, 0.434242)
+axis = 2
+
+[node name="Tree3" parent="Props/Back" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319862, 0.03, -0.0044146)
 visible = false
-billboard = 2
-texture = ExtResource("4_e7hcm")
-
-[node name="Stone1" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.343327, 0.0994142, -0.31178)
-visible = false
-billboard = 2
-texture = ExtResource("5_4iemx")
-
-[node name="Stone2" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.32764, 0.0994142, -0.301165)
-visible = false
-billboard = 2
-texture = ExtResource("6_nap31")
-
-[node name="Stone3" type="Sprite3D" parent="Props/Front"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, -0.343327, 0.0994142, 0.322201)
-visible = false
-billboard = 2
-texture = ExtResource("7_jpgta")
-
-[node name="Back" type="Node3D" parent="Props"]
-
-[node name="Grass1-1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, 0.287093)
-visible = false
-billboard = 2
-texture = ExtResource("3_3payq")
-
-[node name="Grass1-2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, -0.368304)
-visible = false
-billboard = 2
-texture = ExtResource("3_3payq")
-
-[node name="Grass2-1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.337504, 0.133414, -0.202501)
-visible = false
-billboard = 2
-texture = ExtResource("4_e7hcm")
-
-[node name="Grass2-2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-4.0532e-09, 0, -0.0927264, 0, 0.0927264, 0, 0.0927264, 0, -4.0532e-09, 0.3381, 0.133414, 0.0616091)
-visible = false
-billboard = 2
-texture = ExtResource("4_e7hcm")
-
-[node name="Stone1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.328564, 0.105499, -0.0733366)
-visible = false
-billboard = 2
-texture = ExtResource("5_4iemx")
-
-[node name="Stone2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.344251, 0.105499, -0.305365)
-visible = false
-billboard = 2
-texture = ExtResource("6_nap31")
-
-[node name="Stone3" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-7.61278e-10, 0, -0.017416, 0, 0.017416, 0, 0.017416, 0, -7.61278e-10, 0.328564, 0.105499, 0.219148)
-visible = false
-billboard = 2
-texture = ExtResource("7_jpgta")
-
-[node name="Tree1" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, 0.322497, 0.407232, 0.0434079)
-visible = false
-billboard = 2
-texture = ExtResource("8_csvx2")
-
-[node name="Tree2" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(-0.00162107, 0, -0.0756854, 0, 0.0757028, 0, 0.0756854, 0, -0.00162107, 0.322497, 0.407232, 0.0434079)
-visible = false
-billboard = 2
-texture = ExtResource("9_3u7sm")
-
-[node name="Tree3" type="Sprite3D" parent="Props/Back"]
-transform = Transform3D(0.00101824, 0, -0.00667719, 0, 0.081604, 0, 0.0815918, 0, 8.33289e-05, 0.319862, 0.433714, -0.110606)
-visible = false
-billboard = 2
-texture = ExtResource("10_hrpl0")
+axis = 2

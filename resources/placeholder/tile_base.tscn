@@ -1,0 +1,223 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpr3esbfg5ytd"]
+
+[ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_i23u5"]
+[ext_resource type="Texture2D" uid="uid://bswotmgjikl1m" path="res://assets/textures/grass1.png" id="3_qqm4d"]
+[ext_resource type="Texture2D" uid="uid://ie1fj8ki8f6k" path="res://assets/textures/grass2.png" id="4_ejfy5"]
+[ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_g22ls"]
+[ext_resource type="Texture2D" uid="uid://ba6ahxgfmx23t" path="res://assets/textures/stone2.png" id="6_qkung"]
+[ext_resource type="Texture2D" uid="uid://xi507sssbym6" path="res://assets/textures/stone3.png" id="7_1so22"]
+[ext_resource type="Texture2D" uid="uid://ryjvk7nsgqc1" path="res://assets/textures/tree1.png" id="8_or2yr"]
+[ext_resource type="Texture2D" uid="uid://d2deptcgwidwh" path="res://assets/textures/tree2.png" id="9_ljq4a"]
+[ext_resource type="Texture2D" uid="uid://dmd4qco70y8x4" path="res://assets/textures/tree3.png" id="10_nu5m0"]
+
+[node name="TileBase" type="Node3D"]
+script = ExtResource("1_i23u5")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Front" type="Node3D" parent="Props"]
+
+[node name="Grass1-1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.333791, 0.03, 0.331219)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_qqm4d")
+
+[node name="Grass1-2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.333791, 0.03, -0.324178)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_qqm4d")
+
+[node name="Grass2-1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.334387, 0.03, -0.158375)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_ejfy5")
+
+[node name="Grass2-2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.333791, 0.03, 0.105735)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_ejfy5")
+
+[node name="Stone1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.343327, 0.03, -0.0292106)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0002
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("5_g22ls")
+
+[node name="Stone2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.32764, 0.03, -0.261239)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0002
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("6_qkung")
+
+[node name="Stone3" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.343327, 0.03, 0.263274)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0002
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("7_1so22")
+
+[node name="Tree1" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349394, 0.03, -0.0552125)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0007
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("8_or2yr")
+
+[node name="Tree2" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349, 0.03, 0.0369906)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0007
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("9_ljq4a")
+
+[node name="Tree3" type="Sprite3D" parent="Props/Front"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.352, 0.03, -0.0238916)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0007
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("10_nu5m0")
+
+[node name="Back" type="Node3D" parent="Props"]
+
+[node name="Grass1-1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, 0.287093)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_qqm4d")
+
+[node name="Grass1-2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, -0.368304)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_qqm4d")
+
+[node name="Grass2-1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.337504, 0.03, -0.202501)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_ejfy5")
+
+[node name="Grass2-2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.03, 0.0616091)
+centered = false
+offset = Vector2(-128, -12)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_ejfy5")
+
+[node name="Stone1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 0.03, -0.0733366)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0002
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("5_g22ls")
+
+[node name="Stone2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.344251, 0.03, -0.305365)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0002
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("6_qkung")
+
+[node name="Stone3" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 0.03, 0.219148)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0002
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("7_1so22")
+
+[node name="Tree1" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.322497, 0.03, 0.0434079)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0007
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("8_or2yr")
+
+[node name="Tree2" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.322497, 0.03, 0.0434079)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0007
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("9_ljq4a")
+
+[node name="Tree3" type="Sprite3D" parent="Props/Back"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319862, 0.03, -0.0044146)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0007
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("10_nu5m0")
