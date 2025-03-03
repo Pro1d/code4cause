@@ -20,3 +20,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="TileViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.693025, 0.720914, 0, -0.720914, 0.693025, 0, 1.31115, 1.35029)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="TileViewport"]
+transform = Transform3D(0.474924, 0.68513, 0.552309, -0.729416, -0.044657, 0.682612, 0.492342, -0.727051, 0.478536, 0.226314, -2.38419e-07, 0.159626)
+sky_mode = 1
