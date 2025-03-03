@@ -7,6 +7,7 @@ signal out
 @onready var current_tile_holder: Node3D = $CurrentTile
 @onready var cube_node: Node3D = $cube
 @onready var bomb: Bomb = $Bomb
+@onready var forbidden_marker: Sprite3D = %ForbiddenMarker
 
 @onready var animations : CellAnimations = %CellAnimations
 
@@ -27,6 +28,7 @@ var on_player_elevation := 0.90
 func _ready() -> void:
 	highlight_hint.visible = false
 	display_bomb()
+	update_forbidden_marker()
 
 func appear() -> void:
 	scale = Vector3.ONE * .05
@@ -61,6 +63,7 @@ func set_has_player(s: bool) -> void:
 
 	if get_candidate_or_null() != null:
 		set_holder_elevation()
+	update_forbidden_marker()
 
 func set_holder_elevation() -> void:
 	if has_player:
@@ -81,6 +84,8 @@ func predraw(scene: PackedScene, rad: float = 0.) -> void:
 
 		is_predrawn = true
 		set_holder_elevation()
+		update_forbidden_marker()
+
 
 func rotate_cell(rad: float) -> void:
 	if not placing_available():
@@ -93,6 +98,8 @@ func rotate_cell(rad: float) -> void:
 		rotate_tween = animations.block_rotation(self, rad)
 
 func reset() -> void:
+	forbidden_marker.visible = false
+
 	highlight_hint.visible = false
 
 	if(candidate_tile_holder.get_child_count() == 0):
@@ -156,3 +163,6 @@ func predraw_anim() -> void:
 
 func display_bomb() -> void:
 	bomb.visible = has_bomb
+
+func update_forbidden_marker()->void:
+	forbidden_marker.visible = is_predrawn and (not placeable or has_player)

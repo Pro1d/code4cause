@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bthdguw6pu3n0"
-path.s3tc="res://.godot/imported/tile_dirt_light.png-406d0f3c2e0896fef62e2843c6b70e6a.s3tc.ctex"
+uid="uid://cp5ht0pbica5l"
+path.s3tc="res://.godot/imported/forbidden.png-b3aa428aaa577768e010d8591f70f578.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/tile_dirt_light.png"
-dest_files=["res://.godot/imported/tile_dirt_light.png-406d0f3c2e0896fef62e2843c6b70e6a.s3tc.ctex"]
+source_file="res://assets/textures/forbidden.png"
+dest_files=["res://.godot/imported/forbidden.png-b3aa428aaa577768e010d8591f70f578.s3tc.ctex"]
 
 [params]
 

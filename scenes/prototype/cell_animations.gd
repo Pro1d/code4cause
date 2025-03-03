@@ -96,8 +96,8 @@ func size_blink(c: PlacementCell) -> Tween:
 func block_rotation(c: PlacementCell, rad: float) -> Tween:
 	var tile_scene := c.get_candidate_or_null()
 	var duration := 0.3
-	tile_scene.target_rot_y += rad  
 	var current_angle := tile_scene.rotation.y
+	tile_scene.target_rot_y += rad  
 	var target_angle := current_angle + angle_difference(current_angle, tile_scene.target_rot_y)
 	var tween := c.create_tween()
 	tween \

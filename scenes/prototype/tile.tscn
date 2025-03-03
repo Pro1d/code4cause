@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://depdfa24xcvji"]
+[gd_scene load_steps=9 format=3 uid="uid://depdfa24xcvji"]
 
 [ext_resource type="Script" path="res://scripts/prototype/placement_cell.gd" id="1_2xaup"]
 [ext_resource type="PackedScene" uid="uid://7wh1pc2cmwnt" path="res://scenes/game/bomb.tscn" id="2_gdixw"]
 [ext_resource type="Script" path="res://scenes/prototype/cell_animations.gd" id="2_vd6fk"]
+[ext_resource type="Texture2D" uid="uid://cp5ht0pbica5l" path="res://assets/textures/forbidden.png" id="4_615g5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayvf"]
 transparency = 1
@@ -39,6 +40,15 @@ mesh = SubResource("SphereMesh_edhu6")
 skeleton = NodePath("../..")
 
 [node name="CandidateTile" type="Node3D" parent="."]
+
+[node name="ForbiddenMarker" type="Sprite3D" parent="CandidateTile"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.334475, 0)
+modulate = Color(0.442501, 7.70092e-07, 9.62615e-08, 1)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_615g5")
 
 [node name="CurrentTile" type="Node3D" parent="."]
 
