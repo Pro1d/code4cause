@@ -33,27 +33,25 @@ func draw_props() -> void:
 	tween_pop_in = create_tween()
 	tween_pop_in.tween_interval(0.3)
 	
+	if props_center != null:
+		var propCenter : int = randi_range(0, len(props_center.get_children())-1)
+		var prop := (props_center.get_child(propCenter) as Node3D)
+		show_prop_animation(prop)
+
 	var propFront : int = randi_range(-1, len(props_front.get_children())-1)
 	if propFront >=0:
 		var prop := (props_front.get_child(propFront) as Node3D)
-		prop.visible = true
-		prop.scale = Vector3.ONE * 0.1
-		tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		show_prop_animation(prop)
 
 	var propBack : int = randi_range(-1, len(props_back.get_children())-1)
 	if propBack >=0:
 		var prop := (props_back.get_child(propBack) as Node3D)
-		prop.visible = true
-		prop.scale = Vector3.ONE * 0.1
-		tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	
-	if props_center != null:
-		var propCenter : int = randi_range(0, len(props_center.get_children())-1)
-		var prop := (props_center.get_child(propCenter) as Node3D)
-		prop.visible = true
-		prop.scale = Vector3.ONE * 0.1
-		tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		show_prop_animation(prop)
+
 	# TODO play pop sound
+
+func show_prop_animation(prop: Node3D) -> void:
+	prop.visible = true
+	prop.scale = Vector3.ONE * 0.1
+	tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)

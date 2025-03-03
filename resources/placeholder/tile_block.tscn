@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://binwvu3lbgfc"]
+[gd_scene load_steps=12 format=3 uid="uid://binwvu3lbgfc"]
 
 [ext_resource type="PackedScene" path="res://resources/placeholder/tile_base.tscn" id="1_dtteg"]
 [ext_resource type="ArrayMesh" uid="uid://crc5bxi4ti1lw" path="res://assets/meshes/hole.obj" id="2_2s4d2"]
 [ext_resource type="Texture2D" uid="uid://4l8e8cxjyqx1" path="res://assets/textures/tile_dirt.png" id="4_bke53"]
 [ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_4iemx"]
+[ext_resource type="Texture2D" uid="uid://ba6ahxgfmx23t" path="res://assets/textures/stone2.png" id="6_nap31"]
 [ext_resource type="Texture2D" uid="uid://cdcxpdgto8l6r" path="res://assets/textures/puddle_v0.png" id="13_ijs51"]
 [ext_resource type="Texture2D" uid="uid://40hs53kq82ub" path="res://assets/textures/barrel.png" id="13_nkg23"]
 
@@ -96,13 +97,7 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource("13_nkg23")
 
-[node name="Puddle2" type="MeshInstance3D" parent="Props/Center" index="1"]
-transform = Transform3D(-0.555802, 0, 0.831314, 0, 1, 0, -0.831314, 0, -0.555802, -0.0974393, 0.0152026, -0.0611934)
-mesh = SubResource("PlaneMesh_spc3e")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_252m6")
-
-[node name="BigStone" type="Sprite3D" parent="Props/Center" index="2"]
+[node name="BigStone" type="Sprite3D" parent="Props/Center" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.160314, 0.03, -0.0682935)
 centered = false
 offset = Vector2(-512, -48)
@@ -111,3 +106,13 @@ billboard = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource("5_4iemx")
+
+[node name="BigStone2" type="Sprite3D" parent="Props/Center" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.159656, 0.03, -0.0189027)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("6_nap31")
