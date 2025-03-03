@@ -38,14 +38,16 @@ func appear() -> void:
 		.set_trans(Tween.TRANS_QUAD )
 
 func get_candidate_or_null() -> GameTile:
-	if candidate_tile_holder.get_child_count() == 0:
-		return null
-	return (candidate_tile_holder.get_child(0) as GameTile)
+	for child in candidate_tile_holder.get_children():
+		if child is GameTile:
+			return child
+	return null
 
 func get_current_or_null() -> GameTile:
-	if current_tile_holder.get_child_count() == 0:
-		return null
-	return (current_tile_holder.get_child(0) as GameTile)
+	for child in current_tile_holder.get_children():
+		if child is GameTile:
+			return child
+	return null
 
 func placing_available() -> bool:
 	return (not is_set) and (placing_tween == null or (not placing_tween.is_running()))
