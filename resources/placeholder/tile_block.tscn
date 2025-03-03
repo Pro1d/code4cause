@@ -1,12 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://binwvu3lbgfc"]
+[gd_scene load_steps=11 format=3 uid="uid://binwvu3lbgfc"]
 
 [ext_resource type="PackedScene" path="res://resources/placeholder/tile_base.tscn" id="1_dtteg"]
 [ext_resource type="ArrayMesh" uid="uid://crc5bxi4ti1lw" path="res://assets/meshes/hole.obj" id="2_2s4d2"]
 [ext_resource type="Texture2D" uid="uid://4l8e8cxjyqx1" path="res://assets/textures/tile_dirt.png" id="4_bke53"]
+[ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_4iemx"]
 [ext_resource type="Texture2D" uid="uid://cdcxpdgto8l6r" path="res://assets/textures/puddle_v0.png" id="13_ijs51"]
+[ext_resource type="Texture2D" uid="uid://40hs53kq82ub" path="res://assets/textures/barrel.png" id="13_nkg23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqttq"]
+albedo_texture = ExtResource("4_bke53")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sxe4"]
+albedo_texture = ExtResource("4_bke53")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_spc3e"]
-size = Vector2(1, 1)
+size = Vector2(0.7, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_252m6"]
 transparency = 1
@@ -17,21 +25,9 @@ emission = Color(1, 0.716667, 0, 1)
 emission_energy_multiplier = 0.5
 emission_texture = ExtResource("13_ijs51")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqttq"]
-albedo_texture = ExtResource("4_bke53")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sxe4"]
-albedo_texture = ExtResource("4_bke53")
-
 [node name="TileBlock" instance=ExtResource("1_dtteg")]
 
-[node name="Puddle" type="MeshInstance3D" parent="Mesh" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152026, 0)
-mesh = SubResource("PlaneMesh_spc3e")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_252m6")
-
-[node name="Road-angle" type="MeshInstance3D" parent="Mesh" index="1"]
+[node name="Road-angle" type="MeshInstance3D" parent="Mesh" index="0"]
 mesh = ExtResource("2_2s4d2")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tqttq")
@@ -53,7 +49,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.435
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444411, 0.03, -0.079052)
 
 [node name="Stone2" parent="Props/Front" index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0590373, 0.03, -0.302056)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0770234, 0.03, -0.257674)
 
 [node name="Stone3" parent="Props/Front" index="6"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.168192, 0.03, 0.369537)
@@ -81,3 +77,37 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2746
 
 [node name="Tree3" parent="Props/Back" index="9"]
 visible = false
+
+[node name="Center" type="Node3D" parent="Props" index="2"]
+
+[node name="Puddle" type="MeshInstance3D" parent="Props/Center" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0974393, 0.0152026, -0.0611934)
+mesh = SubResource("PlaneMesh_spc3e")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_252m6")
+
+[node name="Sprite3D" type="Sprite3D" parent="Props/Center/Puddle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259181, 0, -0.155655)
+centered = false
+offset = Vector2(-512, -128)
+pixel_size = 0.0005
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("13_nkg23")
+
+[node name="Puddle2" type="MeshInstance3D" parent="Props/Center" index="1"]
+transform = Transform3D(-0.555802, 0, 0.831314, 0, 1, 0, -0.831314, 0, -0.555802, -0.0974393, 0.0152026, -0.0611934)
+mesh = SubResource("PlaneMesh_spc3e")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_252m6")
+
+[node name="BigStone" type="Sprite3D" parent="Props/Center" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.160314, 0.03, -0.0682935)
+centered = false
+offset = Vector2(-512, -48)
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("5_4iemx")

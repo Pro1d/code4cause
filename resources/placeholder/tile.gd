@@ -12,12 +12,16 @@ var tween_pop_in : Tween
 
 @onready var props_front := $Props/Front as Node3D
 @onready var props_back := $Props/Back as Node3D
+@onready var props_center := $Props/Center as Node3D
 
 func _ready() -> void:
 	# Initialize props:
 	# - REMOVE props hidden in the editor (they cannot be used)
 	# - HIDE by default the props that can be used
-	for prop: Node3D in props_front.get_children() + props_back.get_children():
+	var all_props :=  props_front.get_children() + props_back.get_children()
+	if props_center != null:
+		all_props+= props_center.get_children()
+	for prop: Node3D in all_props:
 		if prop.visible:
 			prop.hide()
 		else:
@@ -45,4 +49,11 @@ func draw_props() -> void:
 		tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
 			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
+	if props_center != null:
+		var propCenter : int = randi_range(0, len(props_center.get_children())-1)
+		var prop := (props_center.get_child(propCenter) as Node3D)
+		prop.visible = true
+		prop.scale = Vector3.ONE * 0.1
+		tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	# TODO play pop sound
