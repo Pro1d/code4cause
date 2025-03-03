@@ -15,13 +15,12 @@ var tile : Node3D
 func _ready() -> void:
 	_update_focus_visual(false)
 	
-func new_tile(tile_scene: PackedScene) -> void:
+func new_tile(data: GameTile.Data) -> void:
 	if tile != null:
 		tile.queue_free()
 		
-	tile = tile_scene.instantiate()
-	# apply a random angle so the tiles won't all look the same in the preview
-	tile.rotate_y(PI/2 * randi_range(0,3))
+	tile = data.scene.instantiate()
+	tile.rotate_y(data.angle())
 	viewport.add_child(tile)
 
 var _tween_focus : Tween

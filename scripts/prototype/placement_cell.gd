@@ -108,6 +108,7 @@ func place(show_animation: bool = true) -> bool:
 	#Reset animations
 	if(predraw_tween):
 		predraw_tween.stop()
+		predraw_tween.kill()
 	if(show_animation):
 		Config.controls_available = false
 		is_predrawn = false

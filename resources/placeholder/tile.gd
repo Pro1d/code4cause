@@ -1,6 +1,12 @@
 class_name GameTile
 extends Node3D
 
+class Data:
+	var scene : PackedScene
+	var orientation : int # range 0-3
+	func angle() -> float:
+		return orientation * PI / 2
+
 var target_rot_y : float = 0.0
 
 func draw_props() -> void:

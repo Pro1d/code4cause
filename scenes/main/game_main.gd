@@ -4,6 +4,7 @@ extends MarginContainer
 @onready var game_scene : GameScene = %GameScene
 @onready var pause_menu: Control = $PauseMenu
 
+
 var all_tiles_scene : Array[PackedScene] = [ 
 	preload("res://resources/placeholder/tile_straight.tscn"),
 	preload("res://resources/placeholder/tile_turn.tscn"),
@@ -11,7 +12,7 @@ var all_tiles_scene : Array[PackedScene] = [
 ]
 var inventory: Array[PackedScene] = []
 
-var next_tiles : Array[PackedScene] = []
+var next_tiles : Array[GameTile.Data] = []
 var next_tiles_length: int = 4
 
 var is_paused := false
@@ -36,19 +37,22 @@ func _reset_inventory() -> void:
 func add_next_tile() -> void:
 	if inventory.is_empty():
 		_reset_inventory()
-	next_tiles.append(inventory.pop_back())
+	var tile := GameTile.Data.new()
+	tile.scene = inventory.pop_back()
+	tile.orientation = randi_range(0, 3)
+	next_tiles.append(tile)
 	
 func _on_tile_placed() -> void:
 	add_next_tile()
 	next_tiles.pop_front()
 	change_to_next_tiles() 
 	game_scene.next_tile = next_tiles[0]
-	 
+
 func update_all_tiles() -> void:
 	for i in range(next_tiles_holders.get_child_count() - 1):
 		var current_holder : TileViewportContainer = next_tiles_holders.get_child(i)
-		var tile_scene : PackedScene = next_tiles[next_tiles_length - 1 - i]
-		current_holder.new_tile(tile_scene)
+		var tile := next_tiles[next_tiles_length - 1 - i]
+		current_holder.new_tile(tile)
 
 func change_to_next_tiles() -> void:
 	var bottom_offset := %BottomOffset as Control
@@ -77,7 +81,7 @@ func change_to_next_tiles() -> void:
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("ui_cancel")):
 		pause()
- 
+
 
 func pause() -> void:
 	is_paused = !is_paused

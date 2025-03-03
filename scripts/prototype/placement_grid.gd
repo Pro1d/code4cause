@@ -57,8 +57,6 @@ func rotate_cell(rad: float) -> void:
 func place_tile() -> void:
 	if(current_cell.placing_available()):
 		if await current_cell.place():
-			# set a random rotation so each piece is preplaced with a new angle
-			grid_rotation = PI/2*randi_range(0,3)
 			tile_placed.emit()
 
 func add_row()->void:

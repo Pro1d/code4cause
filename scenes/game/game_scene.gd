@@ -11,7 +11,7 @@ signal tile_placed
 @onready var boss: Boss = $Camera3D/Boss
 
 
-var next_tile: PackedScene : set = set_next_tile
+var next_tile: GameTile.Data : set = set_next_tile
 var cell_size: float= 0
 var camera_offset_x :float = 0
 
@@ -34,8 +34,9 @@ func on_tile_placed() -> void:
 func on_death() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu/LooserMenu.tscn")
 
-func set_next_tile(nt: PackedScene) -> void:
-	grid.placing_tile_scene = nt
+func set_next_tile(nt: GameTile.Data) -> void:
+	grid.placing_tile_scene = nt.scene
+	grid.grid_rotation = nt.angle()
 	grid.move(Vector2i.ZERO)
 	
 func add_row() -> void:
