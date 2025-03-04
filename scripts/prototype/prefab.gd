@@ -20,10 +20,11 @@ func _init(s : PackedScene, r := 0., hb := false, p := false) -> void:
 static func random_prefab(indicator: int) -> Array[Array]:
 	# TODO the idea would be to use a weighted list or something of the like
 	var all_prefab: Array
+	# TODO: if no bomb pattern has been given since X indicators, force it
 	if indicator < 20:
 		# easy ones
-		#all_prefab = [single_block, single_straight, single_turn]
-		all_prefab = [bomb_debug, bomb_debug, bomb_debug]
+		all_prefab = [single_block, single_straight, single_turn]
+		#all_prefab = [not_so_dead_end, not_so_dead_end, not_so_dead_end]
 	elif indicator < 40:
 		# ok ones
 		all_prefab = [canyon, single_block, double_blocks, double_blocks_side]
@@ -78,9 +79,14 @@ static func double_blocks_side() -> Array[Array]:
 	]
 
 static func uturn() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
 	return [
-		[PrefabTile.new(tile_turn, 3*PI/2), PrefabTile.new(tile_turn)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(tile_block), null],
+		[null, null, PrefabTile.new(tile_block), null],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(tile_block), null],
+		[null, null, null, null],
+		[null, null, PrefabTile.new(tile_turn, 3*PI/2), PrefabTile.new(tile_turn)],
 	]
 
 static func corner_top() -> Array[Array]:
@@ -102,7 +108,7 @@ static func bomb_hard() -> Array[Array]:
 	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
 	return [
 		[PrefabTile.new(tile_turn,PI), null, null, null],
-		[null, PrefabTile.new(tile_turn), null , null],
+		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn), null , null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
 	]
 	
@@ -112,4 +118,56 @@ static func bomb_debug() -> Array[Array]:
 		PrefabTile.new(null, 0.0, true, true),
 		PrefabTile.new(null, 0.0, true, true), 
 		PrefabTile.new(null, 0.0, true, true)]
+	]
+	
+static func bomb_top_corner() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	return [
+		[null, PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
+		[null, PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block)],
+	]
+	
+static func bomb_bottom_corner() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	return [
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null],
+		[PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), null],
+	]
+	
+static func bomb_super_hard() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	return [
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
+		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn, PI / 2.0), null, null],
+		[PrefabTile.new(tile_turn, 3.0 * PI / 2.0), null, null, null]
+	]
+	
+static func forced_jump() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	var tile_cross := preload("res://resources/placeholder/tile_cross.tscn")
+	return [
+		[null, PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
+		[null, PrefabTile.new(tile_block), null, null],
+		[null, null, PrefabTile.new(tile_cross), null],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block)],
+	]
+	
+static func make_a_choice() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	var rand_dir:float = randi_range(0 ,1) * (PI / 2.0)
+	return [
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, PrefabTile.new(tile_block)],
+		[null, PrefabTile.new(tile_turn, PI + rand_dir), null, PrefabTile.new(tile_turn, rand_dir)],
+		[null, null, PrefabTile.new(tile_block), null]
+	]
+
+static func not_so_dead_end() -> Array[Array]:
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	return [
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), null, null, null],
+		[PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true)]
 	]

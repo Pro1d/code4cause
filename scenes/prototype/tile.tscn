@@ -7,7 +7,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayvf"]
 transparency = 1
-albedo_color = Color(0.489622, 0.489622, 0.489622, 0.666667)
+albedo_color = Color(0.882353, 0.45098, 0.152941, 0.352941)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qhy06"]
 material = SubResource("StandardMaterial3D_wayvf")
