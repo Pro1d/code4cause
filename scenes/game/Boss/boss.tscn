@@ -108,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/path = NodePath("Parts/Node3D/RHand:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -132,7 +132,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Parts/RHand:rotation")
+tracks/3/path = NodePath("Parts/Node3D/RHand:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -183,7 +183,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/path = NodePath("Parts/Node3D/RHand:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -207,7 +207,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Parts/RHand:rotation")
+tracks/3/path = NodePath("Parts/Node3D/RHand:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -247,7 +247,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/path = NodePath("Parts/Node3D/RHand:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -295,7 +295,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Parts/RHand:rotation")
+tracks/5/path = NodePath("Parts/Node3D/RHand:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -323,7 +323,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Parts/RHand:position")
+tracks/1/path = NodePath("Parts/Node3D/RHand:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -384,16 +384,6 @@ no_depth_test = true
 render_priority = 50
 texture = ExtResource("11_p0ecn")
 
-[node name="RHand" type="Node3D" parent="Parts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.685397)
-
-[node name="Sprite3D" type="Sprite3D" parent="Parts/RHand"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.574813, 0)
-billboard = 1
-no_depth_test = true
-render_priority = 52
-texture = ExtResource("12_ctyqm")
-
 [node name="Head" type="Node3D" parent="Parts"]
 
 [node name="Sprite3D" type="Sprite3D" parent="Parts/Head"]
@@ -402,6 +392,19 @@ billboard = 1
 no_depth_test = true
 render_priority = 51
 texture = ExtResource("13_gylu7")
+
+[node name="Node3D" type="Node3D" parent="Parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.78)
+
+[node name="RHand" type="Node3D" parent="Parts/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.685397)
+
+[node name="Sprite3D" type="Sprite3D" parent="Parts/Node3D/RHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.574813, 0)
+billboard = 1
+no_depth_test = true
+render_priority = 52
+texture = ExtResource("12_ctyqm")
 
 [node name="BossAnimator" type="AnimationPlayer" parent="."]
 libraries = {
