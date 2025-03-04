@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dup7r0nrptxj"]
+[gd_scene load_steps=12 format=3 uid="uid://dup7r0nrptxj"]
 
 [ext_resource type="PackedScene" uid="uid://5j3nkd57dwpk" path="res://scenes/game/game_scene.tscn" id="1_5yrsn"]
 [ext_resource type="Script" path="res://scenes/main/game_main.gd" id="1_uhk2i"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="6_vqqcm"]
 [ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="7_iaqjs"]
 [ext_resource type="PackedScene" uid="uid://bljx0fofq5vq4" path="res://scenes/ui/fade_panel.tscn" id="9_dfmno"]
+[ext_resource type="AudioStream" uid="uid://ds6k7o38w5vj2" path="res://assets/musics/Code4CauseV1.mp3" id="10_k7lvh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vvsm"]
 shader = ExtResource("6_5pjwo")
@@ -304,6 +305,12 @@ flip_h = true
 
 [node name="FadePanel" parent="." instance=ExtResource("9_dfmno")]
 layout_mode = 2
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k7lvh")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="PauseMenu/Panel/ResumeButton" to="." method="pause"]
 [connection signal="value_changed" from="PauseMenu/Panel/MusicSlider/HSlider" to="PauseMenu" method="set_music_volume"]
