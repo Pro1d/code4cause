@@ -44,7 +44,7 @@ skeleton = NodePath("../..")
 [node name="ForbiddenMarker" type="Sprite3D" parent="CandidateTile"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.334475, 0)
-modulate = Color(0.442501, 7.70092e-07, 9.62615e-08, 1)
+modulate = Color(0.82191, 6.08854e-06, 1.92523e-07, 1)
 pixel_size = 0.001
 billboard = 1
 no_depth_test = true
