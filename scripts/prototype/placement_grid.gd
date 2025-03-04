@@ -86,10 +86,16 @@ func _generate_row(appear_animation: bool = false)->void:
 		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
 
 		if(rows_elements[j] != null):
-			cell.predraw(rows_elements[j].scene, rows_elements[j].rad)
-			cell.place(false)
-			cell.reset()
-			cell.placeable = false
+			# Handle bomb
+			cell.has_bomb = rows_elements[j].has_bomb
+			cell.display_bomb()
+			
+			# Set other attributes
+			if(rows_elements[j].scene != null):
+				cell.predraw(rows_elements[j].scene, rows_elements[j].rad)
+				cell.place(false)
+				cell.reset()
+				cell.placeable = rows_elements[j].placeable
 
 
 		if appear_animation:

@@ -3,10 +3,14 @@ extends Node
 
 var scene : PackedScene
 var rad : float
+var has_bomb := false
+var placeable := false
 
-func _init(s : PackedScene, r := 0.) -> void:
+func _init(s : PackedScene, r := 0., hb := false, p := false) -> void:
 	scene = s
 	rad = r
+	has_bomb = hb
+	placeable = p
 
 # you can use the following tiles to define your prefabs
 #var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
@@ -18,7 +22,8 @@ static func random_prefab(indicator: int) -> Array[Array]:
 	var all_prefab: Array
 	if indicator < 20:
 		# easy ones
-		all_prefab = [single_block, single_straight, single_turn]
+		#all_prefab = [single_block, single_straight, single_turn]
+		all_prefab = [bomb_debug, bomb_debug, bomb_debug]
 	elif indicator < 40:
 		# ok ones
 		all_prefab = [canyon, single_block, double_blocks, double_blocks_side]
@@ -99,4 +104,12 @@ static func bomb_hard() -> Array[Array]:
 		[PrefabTile.new(tile_turn,PI), null, null, null],
 		[null, PrefabTile.new(tile_turn), null , null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
+	]
+	
+static func bomb_debug() -> Array[Array]:
+	return [
+		[PrefabTile.new(null, 0.0, true, true), 
+		PrefabTile.new(null, 0.0, true, true),
+		PrefabTile.new(null, 0.0, true, true), 
+		PrefabTile.new(null, 0.0, true, true)]
 	]
