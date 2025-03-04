@@ -16,6 +16,20 @@ func _init(s : PackedScene, r := 0., hb := false, p := false) -> void:
 #var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
 #var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
 #var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+enum FlipAxis {
+	HORIZONTAL = 1,
+	VERTICAL = 2,
+}
+static func randomly_flip(array: Array[Array], axis: FlipAxis) -> Array[Array]:
+	var ret :Array[Array]= array.duplicate()
+	if axis & FlipAxis.HORIZONTAL and randi_range(0, 1) == 1:
+		ret.reverse()
+	if axis & FlipAxis.VERTICAL and randi_range(0, 1) == 1:
+		var temp := ret.duplicate()
+		for column_index in range(temp.size()):
+			ret[column_index] = (temp[column_index] as Array).duplicate()
+			ret[column_index].reverse()
+	return ret
 
 static func random_prefab(indicator: int) -> Array[Array]:
 	# TODO the idea would be to use a weighted list or something of the like
