@@ -379,6 +379,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.541)
 
 [node name="Sprite3D" type="Sprite3D" parent="Parts/LHand"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.555066, 0, 0)
+billboard = 1
 no_depth_test = true
 render_priority = 50
 texture = ExtResource("11_p0ecn")
@@ -388,6 +389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.685397)
 
 [node name="Sprite3D" type="Sprite3D" parent="Parts/RHand"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.574813, 0)
+billboard = 1
 no_depth_test = true
 render_priority = 52
 texture = ExtResource("12_ctyqm")
@@ -396,6 +398,7 @@ texture = ExtResource("12_ctyqm")
 
 [node name="Sprite3D" type="Sprite3D" parent="Parts/Head"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
 no_depth_test = true
 render_priority = 51
 texture = ExtResource("13_gylu7")
