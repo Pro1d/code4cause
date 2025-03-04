@@ -14,7 +14,7 @@ warnings/check_invalid_track_paths=false
 
 [application]
 
-config/name="Code4Cause"
+config/name="Mulhouse"
 run/main_scene="res://scenes/main/GameMain.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
