@@ -31,6 +31,7 @@ MusicManager="*res://scripts/singleton/MusicManager.gd"
 SoundFxManager="*res://scripts/singleton/SoundFxManager.gd"
 SceneManager="*res://scripts/singleton/SceneManager.gd"
 GameManager="*res://scripts/singleton/GameManager.gd"
+PrefabHard="*res://scripts/prototype/prefab_hard.gd"
 
 [debug]
 
