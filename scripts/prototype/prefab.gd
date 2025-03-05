@@ -40,8 +40,8 @@ static func random_prefab(indicator: int) -> Array[Array]:
 	# TODO: if no bomb pattern has been given since X indicators, force it
 	if indicator < 20:
 		# easy ones
-		#all_prefab = [single_block, single_straight, single_turn]
-		all_prefab = [not_so_dead_end, not_so_dead_end, not_so_dead_end]
+		all_prefab = [single_block, single_straight, single_turn]
+		#all_prefab = [not_so_dead_end, not_so_dead_end, not_so_dead_end]
 	elif indicator < 40:
 		# ok ones
 		all_prefab = [canyon, single_block, double_blocks, double_blocks_side, corner_top, bomb_top_corner]
