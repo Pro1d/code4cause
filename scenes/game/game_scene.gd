@@ -47,3 +47,4 @@ func _process(_delta: float) -> void:
 	
 func damage_boss() -> void:
 	boss.take_damage()
+	(camera as ShakeableCamera).camera_shake()
