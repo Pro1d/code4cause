@@ -19,6 +19,7 @@ func _init(s : PackedScene, r := 0., hb := false, p := false) -> void:
 enum FlipAxis {
 	HORIZONTAL = 1,
 	VERTICAL = 2,
+	BOTH = 3,
 }
 static func randomly_flip(array: Array[Array], axis: FlipAxis) -> Array[Array]:
 	var ret :Array[Array]= array.duplicate()
@@ -41,10 +42,10 @@ static func random_prefab(indicator: int) -> Array[Array]:
 		#all_prefab = [not_so_dead_end, not_so_dead_end, not_so_dead_end]
 	elif indicator < 40:
 		# ok ones
-		all_prefab = [canyon, single_block, double_blocks, double_blocks_side]
+		all_prefab = [canyon, single_block, double_blocks, double_blocks_side, corner_top, bomb_top_corner]
 	else:
 		# evil ones
-		all_prefab = [canyon, dead_end, double_blocks, double_blocks_side, uturn, bomb_hard, corner_top, corner_bottom]
+		all_prefab = [canyon, not_so_dead_end, double_blocks, double_blocks_side, uturn, bomb_hard, bomb_super_hard, forced_jump, make_a_choice]
 	return (all_prefab.pick_random() as Callable).call()
 
 static func canyon() -> Array[Array]:
@@ -105,17 +106,10 @@ static func uturn() -> Array[Array]:
 
 static func corner_top() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	return [
+	return randomly_flip([
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
 		[null, PrefabTile.new(tile_block)],
-	]
-
-static func corner_bottom() -> Array[Array]:
-	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	return [
-		[null, PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
-	]
+	], FlipAxis.BOTH)
 
 static func bomb_hard() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
@@ -136,17 +130,10 @@ static func bomb_debug() -> Array[Array]:
 	
 static func bomb_top_corner() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	return [
+	return randomly_flip([
 		[null, PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
 		[null, PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block)],
-	]
-	
-static func bomb_bottom_corner() -> Array[Array]:
-	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	return [
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null],
-		[PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), null],
-	]
+	], FlipAxis.VERTICAL)
 	
 static func bomb_super_hard() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
@@ -160,12 +147,12 @@ static func bomb_super_hard() -> Array[Array]:
 static func forced_jump() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	var tile_cross := preload("res://resources/placeholder/tile_cross.tscn")
-	return [
+	return randomly_flip([
 		[null, PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
 		[null, PrefabTile.new(tile_block), null, null],
 		[null, null, PrefabTile.new(tile_cross), null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block)],
-	]
+	], FlipAxis.BOTH)
 	
 static func make_a_choice() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
@@ -179,9 +166,9 @@ static func make_a_choice() -> Array[Array]:
 
 static func not_so_dead_end() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	return [
+	return randomly_flip([
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, PrefabTile.new(tile_block)],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, PrefabTile.new(tile_block)],
 		[PrefabTile.new(tile_block), null, null, null],
 		[PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true)]
-	]
+	], FlipAxis.BOTH)
