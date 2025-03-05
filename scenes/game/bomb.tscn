@@ -1,20 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://7wh1pc2cmwnt"]
+[gd_scene load_steps=12 format=3 uid="uid://7wh1pc2cmwnt"]
 
 [ext_resource type="Script" path="res://scenes/game/bomb.gd" id="1_17elg"]
+[ext_resource type="Texture2D" uid="uid://bsnka3bxsj3jr" path="res://assets/textures/wisp_0.png" id="2_bac4d"]
 [ext_resource type="Texture2D" uid="uid://2y8bcja07kui" path="res://assets/textures/bomb/fire_particle_tex.png" id="2_mjgyu"]
 [ext_resource type="Texture2D" uid="uid://cc0npfy6nwsyf" path="res://assets/textures/bomb/dynamite_off.png" id="2_y84e5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epdva"]
-albedo_color = Color(1, 0.521569, 0.117647, 1)
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gxst"]
+transparency = 1
+albedo_color = Color(1, 0.670588, 0, 1)
+albedo_texture = ExtResource("2_bac4d")
+emission_enabled = true
+emission = Color(1, 0.443137, 0, 1)
+emission_energy_multiplier = 1.42
 
-[sub_resource type="SphereMesh" id="SphereMesh_7ea64"]
-material = SubResource("StandardMaterial3D_epdva")
-radius = 0.1
-height = 0.2
+[sub_resource type="QuadMesh" id="QuadMesh_6xjk8"]
+material = SubResource("StandardMaterial3D_7gxst")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm35m"]
 transparency = 1
@@ -68,12 +68,15 @@ script = ExtResource("1_17elg")
 [node name="ExplosionParticles" type="CPUParticles3D" parent="."]
 emitting = false
 amount = 16
+lifetime = 2.0
 one_shot = true
-explosiveness = 0.54
-mesh = SubResource("SphereMesh_7ea64")
+speed_scale = 3.75
+explosiveness = 0.49
+mesh = SubResource("QuadMesh_6xjk8")
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(0, 1, 0)
+spread = 180.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 2.0
