@@ -1,6 +1,7 @@
 extends Node
 
 @onready var ui_sound := AudioStreamPlayer.new()
+@onready var _sfx_bus := AudioServer.get_bus_index(&"SoundFx")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +26,9 @@ func keep_until_finished(audio: Node) -> void: # AudioStreamPlayer[2D]
 		asp3d.finished.connect(audio.queue_free)
 		return
 
+func set_volume(level: float) -> void:
+	AudioServer.set_bus_volume_db(_sfx_bus, linear_to_db(level))
+	
 func keep_audio_3d_until_finished(audio: AudioStreamPlayer3D) -> void:
 	var t := audio.global_transform
 	

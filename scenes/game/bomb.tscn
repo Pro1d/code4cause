@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://7wh1pc2cmwnt"]
+[gd_scene load_steps=15 format=3 uid="uid://7wh1pc2cmwnt"]
 
 [ext_resource type="Script" path="res://scenes/game/bomb.gd" id="1_17elg"]
 [ext_resource type="Texture2D" uid="uid://bsnka3bxsj3jr" path="res://assets/textures/wisp_0.png" id="2_bac4d"]
 [ext_resource type="Texture2D" uid="uid://2y8bcja07kui" path="res://assets/textures/bomb/fire_particle_tex.png" id="2_mjgyu"]
 [ext_resource type="Texture2D" uid="uid://cc0npfy6nwsyf" path="res://assets/textures/bomb/dynamite_off.png" id="2_y84e5"]
+[ext_resource type="AudioStream" uid="uid://uft8o6o16ora" path="res://assets/sounds/bomb/matchstick.mp3" id="5_oum7c"]
+[ext_resource type="AudioStream" uid="uid://cubnag4h0yi0p" path="res://assets/sounds/bomb/fuse_lit.mp3" id="6_ilk3q"]
+[ext_resource type="AudioStream" uid="uid://bqw182uonyuri" path="res://assets/sounds/bomb/explosion.mp3" id="7_6h4d2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gxst"]
 transparency = 1
@@ -108,3 +111,18 @@ texture = ExtResource("2_y84e5")
 libraries = {
 "": SubResource("AnimationLibrary_wc4f0")
 }
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="LitUpPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("5_oum7c")
+bus = &"SoundFx"
+
+[node name="FusePlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("6_ilk3q")
+volume_db = -3.0
+bus = &"SoundFx"
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("7_6h4d2")
+bus = &"SoundFx"

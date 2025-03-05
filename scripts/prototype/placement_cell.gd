@@ -11,6 +11,11 @@ signal out
 
 @onready var animations : CellAnimations = %CellAnimations
 
+# Audios
+@onready var move_stream: AudioStreamPlayer = $AudioStreams/MoveStream
+@onready var rotate_stream: AudioStreamPlayer = $AudioStreams/RotateStream
+@onready var place_stream: AudioStreamPlayer = $AudioStreams/PlaceStream
+
 @export var placeable := true
 var has_player := false : set = set_has_player
 var has_bomb := false
@@ -56,6 +61,7 @@ func placing_available() -> bool:
 	return (not is_set) and (placing_tween == null or (not placing_tween.is_running()))
 
 func highlight(enable:bool) -> void:
+	move_stream.play()
 	highlight_hint.visible = enable
 	cube_node.visible = not enable
 
@@ -96,6 +102,7 @@ func rotate_cell(rad: float) -> void:
 		if rotate_tween != null:
 			rotate_tween.kill()
 
+		rotate_stream.play()
 		rotate_tween = animations.block_rotation(self, rad)
 
 func reset() -> void:
@@ -123,6 +130,8 @@ func place(show_animation: bool = true) -> bool:
 		Config.controls_available = false
 		is_predrawn = false
 
+		place_stream.play()
+
 		if get_current_or_null() != null:
 			var prev_paths := get_current_or_null().find_children("*", "Path3D") as Array[Node]
 			for p in prev_paths:
@@ -144,7 +153,7 @@ func place(show_animation: bool = true) -> bool:
 	candidate.position = Vector3.ZERO
 	candidate.reparent(current_tile_holder)
 	candidate.draw_props()
-
+	
 	var paths := candidate.find_children("*", "Path3D") as Array[Node]
 	for path in paths:
 		path.add_to_group(Config.PATH_GROUP)
