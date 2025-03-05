@@ -12,10 +12,11 @@ func take_damage(amount:int = 1) -> void:
 	if(is_dead):
 		return
 		
+	print(health)
 	health = maxi(health - amount, 0)
 	
 	if(health <= 0):
-		death()
+		GameManager.end()
 	else:
 		animator.damage()
 

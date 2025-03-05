@@ -53,3 +53,42 @@ func get_row(height: int) -> Array[PrefabTile]:
 
 	total_rows += 1
 	return blocks
+
+func get_victory_row(height: int) -> Array[PrefabTile]:
+	var blocks : Array[PrefabTile] = []
+	blocks.resize(height)
+
+	# if we have a shape in memory draw it before anything
+	if len(buffer) > 0:
+		var tmp : Array = buffer.pop_front()
+		for row in len(tmp):
+			blocks[row] = tmp[row]
+		consecutive_empty_lines = 0
+	if total_rows > 3 and(
+		(consecutive_empty_lines >= 3)
+		or (total_rows > 15 and consecutive_empty_lines >= 2)
+		or (total_rows > 30 and consecutive_empty_lines >= 1)
+		):
+		var prefab := PrefabTile.victory_row()
+
+		# compute a delta so we can place the prefab somewhere within the height's range
+		var delta := randi_range(0, height-len(prefab[0]))
+
+		var front : Array = prefab.pop_front()
+		for i in len(front):
+			blocks[i+delta] = front[i]
+
+		# put the rest in the buffer
+		for col in prefab:
+			var tmp : Array
+			tmp.resize(height)
+			for row in len(col):
+				tmp[row + delta] = col[row]
+			buffer.push_back(tmp)
+		consecutive_empty_lines = 0
+	else:
+		consecutive_empty_lines += 1
+
+	total_rows += 1
+	return blocks
+	

@@ -5,12 +5,14 @@ var scene : PackedScene
 var rad : float
 var has_bomb := false
 var placeable := false
+var trigger_victory_screen := false
 
-func _init(s : PackedScene, r := 0., hb := false, p := false) -> void:
+func _init(s : PackedScene, r := 0., hb := false, p := false, trigger := false) -> void:
 	scene = s
 	rad = r
 	has_bomb = hb
 	placeable = p
+	trigger_victory_screen = trigger
 
 # you can use the following tiles to define your prefabs
 #var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
@@ -172,3 +174,16 @@ static func not_so_dead_end() -> Array[Array]:
 		[PrefabTile.new(tile_block), null, null, null],
 		[PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true)]
 	], FlipAxis.BOTH)
+
+static func victory_row() -> Array[Array]:
+	var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
+	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
+	return [
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight, 0.0, false, false, true), PrefabTile.new(tile_straight, 0.0, false, false, true), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+	]

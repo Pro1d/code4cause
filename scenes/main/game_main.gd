@@ -3,6 +3,7 @@ extends MarginContainer
 @onready var next_tiles_holders : Container = %NextTiles
 @onready var game_scene : GameScene = %GameScene
 @onready var pause_menu: Control = $PauseMenu
+@onready var fade_panel: UIFader = $FadePanel
 
 
 var all_tiles_scene : Array[PackedScene] = [ 
@@ -24,6 +25,7 @@ func _ready() -> void:
 	update_all_tiles()  
 	game_scene.tile_placed.connect(_on_tile_placed)
 	game_scene.next_tile = next_tiles[0]
+	fade_panel.fade_in()
 
 func _reset_inventory() -> void:
 	for i in range(2):

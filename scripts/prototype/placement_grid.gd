@@ -19,6 +19,7 @@ var current_pos: Vector2i
 var grid_offset: Vector3 = Vector3(0,0,0)
 var camera_offset_x :float = 0
 var grid_rotation: float
+var victory := false
 
 func _ready() -> void:
 	initialize_grid()
@@ -60,7 +61,11 @@ func place_tile() -> void:
 			tile_placed.emit()
 
 func add_row()->void:
-	_generate_row(true)
+	if(victory):
+		_spawn_victory_row()
+	else:
+		_generate_row(true)
+		
 	await get_tree().create_timer(0.5).timeout
 	_delete_first_row()
 	current_pos += Vector2i.LEFT
@@ -103,6 +108,34 @@ func _generate_row(appear_animation: bool = false)->void:
 
 		(cells[i] as Array).append(cell)
 	grid_offset.x += cell_size
+
+func _spawn_victory_row() -> void:
+	cells.append([])
+	var i := len(cells) - 1
+
+	var rows_elements := row_generator.get_victory_row(height)
+
+	for j:int in height:
+		# Instantiate cell
+		var cell: PlacementCell = tile_scene.instantiate()
+		add_child(cell)
+		cell.global_position = grid_offset + Vector3(0, 0.0, -j * cell_size)
+
+		if(rows_elements[j] != null):
+			cell.victory_cell = rows_elements[j].trigger_victory_screen
+			
+			# Set other attributes
+			if(rows_elements[j].scene != null):
+				cell.predraw(rows_elements[j].scene, rows_elements[j].rad)
+				cell.place(false)
+				cell.reset()
+				cell.placeable = rows_elements[j].placeable
+
+		cell.appear()
+
+		(cells[i] as Array).append(cell)
+	grid_offset.x += cell_size
+	
 
 # Currently unused
 func get_closest_available_cell(x:int, y:int) -> Vector2i:

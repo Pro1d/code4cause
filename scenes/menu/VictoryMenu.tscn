@@ -1,0 +1,165 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkcp48fdgb16f"]
+
+[ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="2_n5ogn"]
+[ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="3_2aph4"]
+[ext_resource type="Script" path="res://scenes/menu/victory_screen.gd" id="3_24joj"]
+[ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="4_g6sge"]
+[ext_resource type="Theme" uid="uid://e2qgxo4dwns7" path="res://resources/themes/hud.theme" id="5_jrun6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gelce"]
+shader = ExtResource("3_2aph4")
+shader_parameter/speed = 0.5
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/tint_color = Color(0.360784, 0.109804, 0.0745098, 1)
+shader_parameter/tiling = Vector2(3, 3)
+
+[node name="VictoryMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_24joj")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.117647, 0, 0, 0.705882)
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="Panel"]
+modulate = Color(0.397578, 0.128034, 0.0905271, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -559.0
+offset_right = 344.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n5ogn")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Banner" type="TextureRect" parent="Panel"]
+modulate = Color(0.996078, 0.960784, 0.901961, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -874.0
+offset_top = -363.0
+offset_right = 894.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0367938
+texture = ExtResource("2_n5ogn")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("3_24joj")
+
+[node name="Label" type="Label" parent="Panel/Banner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.207843, 0, 0, 1)
+theme_override_font_sizes/font_size = 92
+text = "YOU'VE MADE IT TO MULHOUSE !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopStripe" type="TextureRect" parent="Panel/Banner"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gelce")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.387865
+offset_top = 8.23705
+offset_right = -0.387817
+offset_bottom = 52.2371
+grow_horizontal = 2
+texture = ExtResource("4_g6sge")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="BottomStripe" type="TextureRect" parent="Panel/Banner"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gelce")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.37389e-05
+offset_top = 255.0
+offset_bottom = 299.0
+grow_horizontal = 2
+texture = ExtResource("4_g6sge")
+expand_mode = 2
+stretch_mode = 1
+flip_h = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 360
+theme_override_constants/margin_bottom = 40
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+theme_override_font_sizes/font_size = 80
+text = "Score"
+horizontal_alignment = 1
+
+[node name="BestRun" type="Label" parent="MarginContainer/MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
+theme_override_font_sizes/font_size = 48
+text = "Best Run"
+horizontal_alignment = 1
+
+[node name="Actions" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Start" type="Button" parent="MarginContainer/MainContainer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_jrun6")
+theme_override_font_sizes/font_size = 52
+text = "Restart"
+
+[node name="GoMain" type="Button" parent="MarginContainer/MainContainer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_jrun6")
+theme_override_font_sizes/font_size = 40
+text = "Menu"

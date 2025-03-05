@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://5j3nkd57dwpk"]
+[gd_scene load_steps=11 format=3 uid="uid://5j3nkd57dwpk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
 [ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
 [ext_resource type="PackedScene" uid="uid://depdfa24xcvji" path="res://scenes/prototype/tile.tscn" id="2_aevgb"]
+[ext_resource type="Script" path="res://scripts/fx/camera_shake.gd" id="2_yujpk"]
 [ext_resource type="Script" path="res://scripts/prototype/grid_movement_controller.gd" id="3_usuh6"]
 [ext_resource type="PackedScene" uid="uid://dfxnn5sgl8knh" path="res://scenes/player/player.tscn" id="5_sok4i"]
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
@@ -52,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, 0.587785, 0, -0.587785, 0.809017, 
 current = true
 fov = 35.0
 size = 5.0
+script = ExtResource("2_yujpk")
 
 [node name="Background" parent="Camera3D" instance=ExtResource("7_jw0xs")]
 unique_name_in_owner = true
@@ -73,7 +75,8 @@ script = ExtResource("3_usuh6")
 unique_name_in_owner = true
 
 [node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
-bpm = 80.0
+bpm = 160.0
+bar = 8
 sfx_on = false
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]

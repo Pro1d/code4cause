@@ -63,6 +63,8 @@ func find_player_path() -> void:
 		next_checked = false
 	
 func find_path(position_to_check: Vector3, change_direction : bool = false) -> Path3D:
+	if(!get_tree()): return
+	
 	for path in get_tree().get_nodes_in_group(Config.PATH_GROUP):
 		if path == path_follow.get_parent():
 			continue

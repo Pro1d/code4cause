@@ -305,6 +305,7 @@ flip_h = true
 
 [node name="FadePanel" parent="." instance=ExtResource("9_dfmno")]
 layout_mode = 2
+duration = 0.5
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_k7lvh")
