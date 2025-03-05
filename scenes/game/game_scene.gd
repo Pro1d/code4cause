@@ -30,6 +30,7 @@ func _ready() -> void:
 
 func on_tile_placed() -> void:
 	tile_placed.emit() 
+	(camera as ShakeableCamera).camera_tile_small_shake()
 	
 func on_death() -> void:
 	SceneManager.go_to_end_menu()

@@ -20,3 +20,21 @@ func camera_shake() -> void:
 		await get_tree().process_frame
 
 	self.transform = initial_transform
+
+func camera_tile_small_shake() -> void:
+	var initial_transform: = transform 
+	var elapsed_time := 0.0
+
+	while elapsed_time < 0.1:
+		var offset := Vector3(
+			0.0,
+			randf_range(-magnitude * 0.05, magnitude * 0.05),
+			0.0
+		)
+
+		self.transform.origin = initial_transform.origin + offset
+		elapsed_time += get_process_delta_time()
+		await get_tree().process_frame
+
+	self.transform = initial_transform
+	
