@@ -32,7 +32,7 @@ func on_tile_placed() -> void:
 	tile_placed.emit() 
 	
 func on_death() -> void:
-	get_tree().change_scene_to_file("res://scenes/menu/LooserMenu.tscn")
+	SceneManager.go_to_end_menu()
 
 func set_next_tile(nt: GameTile.Data) -> void:
 	grid.placing_tile_scene = nt.scene

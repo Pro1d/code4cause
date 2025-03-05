@@ -14,6 +14,7 @@ signal out
 @export var placeable := true
 var has_player := false : set = set_has_player
 var has_bomb := false
+var victory_cell := false
 var is_set := false
 var is_predrawn := false
 

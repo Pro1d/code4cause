@@ -29,6 +29,8 @@ func _input(event: InputEvent) -> void:
 			handle_reset()
 		elif(event.is_action_released("reset")):
 			current_reset_hold_time = 0.0
+		#elif(event.is_action_released("ui_end")):
+			#GameManager.end()
 
 func handle_reset() -> void:
 	current_reset_hold_time += get_process_delta_time()

@@ -73,7 +73,8 @@ script = ExtResource("3_usuh6")
 unique_name_in_owner = true
 
 [node name="Metronome" parent="." instance=ExtResource("6_ud3em")]
-bpm = 80.0
+bpm = 160.0
+bar = 8
 sfx_on = false
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]

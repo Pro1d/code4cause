@@ -22,7 +22,10 @@ func set_current_cell(c: PlacementCell) -> void:
 	if(current_cell.has_bomb):
 		current_cell.bomb.lit_up()
 		bomb_collected.emit()
-		
+	
+	if(current_cell.victory_cell):
+		SceneManager.go_to_victory_menu()
+	
 	cell_changed.emit(c)
 	current_cell.out.connect(on_death)
 	c.has_player = true
