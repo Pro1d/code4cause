@@ -12,7 +12,7 @@ var tween_pop_in : Tween
 
 @onready var props_front := $Props/Front as Node3D
 @onready var props_back := $Props/Back as Node3D
-@onready var props_center := $Props/Center as Node3D
+@onready var props_center := find_child("Props/Center", false) as Node3D
 
 func _ready() -> void:
 	# Initialize props:

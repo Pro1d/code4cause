@@ -104,8 +104,10 @@ func reset() -> void:
 
 	if(candidate_tile_holder.get_child_count() == 0):
 		return
-
-	candidate_tile_holder.remove_child(get_candidate_or_null())
+	
+	var candidate := get_candidate_or_null()
+	if candidate != null:
+		candidate_tile_holder.remove_child(candidate)
 	is_predrawn = false
 	cube_node.visible = true
 
