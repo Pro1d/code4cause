@@ -8,7 +8,7 @@ func camera_shake() -> void:
 	var initial_transform: = transform 
 	var elapsed_time := 0.0
 
-	while elapsed_time < period:
+	while elapsed_time < period and is_inside_tree():
 		var offset := Vector3(
 			randf_range(-magnitude, magnitude),
 			randf_range(-magnitude, magnitude),
