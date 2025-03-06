@@ -250,5 +250,5 @@ text = "Start Game"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
-text = "Game By"
+text = "Game By ValentinWB, Tarako Munster, Gautierenaud, LeDoubleSept, ProYd and Fbessou"
 horizontal_alignment = 1
