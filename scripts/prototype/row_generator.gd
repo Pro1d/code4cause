@@ -1,7 +1,7 @@
 class_name RowGenerator
 extends Node
 
-var initial_cells_length := 2
+var initial_cells_length := 3
 
 var total_rows := 0
 var consecutive_empty_lines := 0
@@ -26,7 +26,7 @@ func get_row(height: int) -> Array[PrefabTile]:
 		for row in len(tmp):
 			blocks[row] = tmp[row]
 		consecutive_empty_lines = 0
-	elif total_rows > 3 and(
+	elif total_rows > 5 and(
 		(consecutive_empty_lines >= 3)
 		or (total_rows > 15 and consecutive_empty_lines >= 2)
 		or (total_rows > 30 and consecutive_empty_lines >= 1)
