@@ -104,7 +104,7 @@ anim_speed_max = 11.87
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.039398, 0, 0, 0, 0.039398, 0, 0, 0, 0.039398, 0, 0.37078, 0)
-billboard = 2
+billboard = 1
 texture = ExtResource("2_y84e5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
