@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://binwvu3lbgfc"]
+[gd_scene load_steps=16 format=3 uid="uid://binwvu3lbgfc"]
 
 [ext_resource type="PackedScene" uid="uid://dpr3esbfg5ytd" path="res://resources/placeholder/tile_base.tscn" id="1_dtteg"]
 [ext_resource type="ArrayMesh" uid="uid://crc5bxi4ti1lw" path="res://assets/meshes/hole.obj" id="2_2s4d2"]
@@ -7,6 +7,38 @@
 [ext_resource type="Texture2D" uid="uid://ba6ahxgfmx23t" path="res://assets/textures/stone2.png" id="6_nap31"]
 [ext_resource type="Texture2D" uid="uid://cdcxpdgto8l6r" path="res://assets/textures/puddle_v0.png" id="13_ijs51"]
 [ext_resource type="Texture2D" uid="uid://40hs53kq82ub" path="res://assets/textures/barrel.png" id="13_nkg23"]
+
+[sub_resource type="Curve3D" id="Curve3D_q3sw4"]
+resource_name = "MarkerLeft"
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0, 0),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[sub_resource type="Curve3D" id="Curve3D_lw7bf"]
+resource_name = "MarkerUp"
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.5),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[sub_resource type="Curve3D" id="Curve3D_oqeqq"]
+resource_name = "MarkerRight"
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[sub_resource type="Curve3D" id="Curve3D_6pv6w"]
+resource_name = "MarkerUp"
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqttq"]
 albedo_texture = ExtResource("4_bke53")
@@ -27,6 +59,20 @@ emission_energy_multiplier = 0.5
 emission_texture = ExtResource("13_ijs51")
 
 [node name="TileBlock" instance=ExtResource("1_dtteg")]
+
+[node name="DeadEndMarkers" type="Node3D" parent="." index="0"]
+
+[node name="Left" type="Path3D" parent="DeadEndMarkers" index="0"]
+curve = SubResource("Curve3D_q3sw4")
+
+[node name="Back" type="Path3D" parent="DeadEndMarkers" index="1"]
+curve = SubResource("Curve3D_lw7bf")
+
+[node name="Right" type="Path3D" parent="DeadEndMarkers" index="2"]
+curve = SubResource("Curve3D_oqeqq")
+
+[node name="Front" type="Path3D" parent="DeadEndMarkers" index="3"]
+curve = SubResource("Curve3D_6pv6w")
 
 [node name="Road-angle" type="MeshInstance3D" parent="Mesh" index="0"]
 mesh = ExtResource("2_2s4d2")

@@ -55,40 +55,48 @@ func find_player_path() -> void:
 			next_parent.add_child(path_follow)
 		else:
 			path_follow.reparent(next_parent, false)
-			
+
 		path_follow.progress_ratio = 0 if current_direction == 1 else 1
 		player.global_rotation.y = 0
-		player.current_cell = next_parent .get_parent().get_parent().get_parent()
+		player.current_cell = next_parent.get_parent().get_parent().get_parent()
 		Config.score += 1
 		next_checked = false
-	
+
 func find_path(position_to_check: Vector3, change_direction : bool = false) -> Path3D:
 	if(!get_tree()): return
-	
+
 	for path in get_tree().get_nodes_in_group(Config.PATH_GROUP):
 		if path == path_follow.get_parent():
 			continue
-		
+
 		var position_in_tile := (path as Node3D).to_local(position_to_check)
 		var curve := (path as Path3D).curve
 
 		var next_parent : Path3D = null
-		
+
 		if false:
 			print("Distance:")
 			print("  0: %s" % curve.get_point_position(0).distance_squared_to(position_in_tile))
-			print("  1: %s" % curve.get_point_position(1).distance_squared_to(position_in_tile))  
+			print("  1: %s" % curve.get_point_position(1).distance_squared_to(position_in_tile))
+
+		if curve.point_count == 1 :
+			# Dead end marker
+			if curve.get_point_position(0).distance_squared_to(position_in_tile) < 0.1 and change_direction:
+				current_direction = -current_direction
+				return null
+
+		# Navigable Path
 
 		if curve.get_point_position(0).distance_squared_to(position_in_tile) < 0.1:
 			next_parent = path
 			if change_direction:
 				current_direction = 1
-			
+
 		if curve.get_point_position(curve.point_count-1).distance_squared_to(position_in_tile) < 0.1:
 			next_parent = path
 			if change_direction:
 				current_direction = -1
-			
+
 		if next_parent != null:
 			return next_parent
 	return null
