@@ -25,13 +25,13 @@ func _ready() -> void:
 	camera.global_position.x = camera_offset_x
 
 	grid.tile_placed.connect(on_tile_placed)
-	
+
 	player.died.connect(on_death)
 
 func on_tile_placed() -> void:
-	tile_placed.emit() 
+	tile_placed.emit()
 	(camera as ShakeableCamera).camera_tile_small_shake()
-	
+
 func on_death() -> void:
 	SceneManager.go_to_end_menu()
 
@@ -39,13 +39,13 @@ func set_next_tile(nt: GameTile.Data) -> void:
 	grid.placing_tile_scene = nt.scene
 	grid.grid_rotation = nt.angle()
 	grid.move(Vector2i.ZERO)
-	
+
 func add_row() -> void:
 	grid.add_row()
 
 func _process(_delta: float) -> void:
 	camera.global_position.x = camera_offset_x + metronome.time()
-	
+
 func damage_boss() -> void:
 	boss.take_damage()
 	(camera as ShakeableCamera).camera_shake()

@@ -29,19 +29,19 @@ func _ready() -> void:
 
 func start() -> void:
 	beat_timer.start()
-	
+
 func on_timeout() -> void:
 	on_pulse.emit()
 	is_bar = false
-	
+
 	if(pulse_count % bar == 0 and not first_beat):
 		on_bar_start.emit()
 		is_bar = true
-		
+
 	first_beat = false
 	pulse_count += 1
 	play_sfx()
-	
+
 func play_sfx() -> void:
 	if(!sfx_on):
 		return
@@ -51,7 +51,7 @@ func play_sfx() -> void:
 	else:
 		audio_stream_player.stream = beat_sfx
 		audio_stream_player.play()
-	
+
 func pause() -> void:
 	pass
 

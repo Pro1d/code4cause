@@ -6,15 +6,15 @@ var current_direction := 1
 @onready var player : Player = get_parent()
 var next_checked := false
 var max_edge_ratio := 0.2
-var speed_factor := 0.0065 
+var speed_factor := 0.0065
 func _ready() -> void:
-	
+
 	# $Player.global_position = transform * curve.get_point_position(0)
 	path_follow.loop = false
 	path_follow.rotation_mode = PathFollow3D.ROTATION_NONE
-	
+
 	player.global_position.x = -0.5
-	player.global_position.z = -1 
+	player.global_position.z = -1
 	find_player_path()
 
 func _process(delta: float) -> void:
@@ -22,16 +22,16 @@ func _process(delta: float) -> void:
 		print(path_follow.get_path())
 		player.reparent(path_follow)
 		path_follow.progress_ratio = 0.5
-		
+
 	if (
-		(current_direction == 1 and path_follow.progress_ratio >= 1) 
+		(current_direction == 1 and path_follow.progress_ratio >= 1)
 		or (current_direction == -1 and path_follow.progress_ratio <= 0)
 		):
 		find_player_path()
-		
+
 	# Check if next
 	var next_ratio := path_follow.progress_ratio + delta*current_direction*player.speed*speed_factor
-	   
+
 	if (not next_checked and (
 		(current_direction<0 and next_ratio < max_edge_ratio)
 		or  (current_direction>0 and next_ratio > (1-max_edge_ratio ))
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		var point_to_check := path.global_transform * curve.get_point_position(index_to_check)
 		var target := find_path(point_to_check)
 		if target != null:
-			next_checked = true 
+			next_checked = true
 			path_follow.progress_ratio = next_ratio
 	else:
 		path_follow.progress_ratio = next_ratio

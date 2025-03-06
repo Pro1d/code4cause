@@ -6,7 +6,7 @@ extends MarginContainer
 @onready var fade_panel: UIFader = $FadePanel
 
 
-var all_tiles_scene : Array[PackedScene] = [ 
+var all_tiles_scene : Array[PackedScene] = [
 	preload("res://resources/placeholder/tile_straight.tscn"),
 	preload("res://resources/placeholder/tile_turn.tscn"),
 	preload("res://resources/placeholder/tile_cross.tscn"),
@@ -21,8 +21,8 @@ var is_paused := false
 func _ready() -> void:
 	pause_menu.visible = false
 	for i in next_tiles_length:
-		add_next_tile() 
-	update_all_tiles()  
+		add_next_tile()
+	update_all_tiles()
 	game_scene.tile_placed.connect(_on_tile_placed)
 	game_scene.next_tile = next_tiles[0]
 	fade_panel.fade_in()
@@ -43,11 +43,11 @@ func add_next_tile() -> void:
 	tile.scene = inventory.pop_back()
 	tile.orientation = randi_range(0, 3)
 	next_tiles.append(tile)
-	
+
 func _on_tile_placed() -> void:
 	add_next_tile()
 	next_tiles.pop_front()
-	change_to_next_tiles() 
+	change_to_next_tiles()
 	game_scene.next_tile = next_tiles[0]
 
 func update_all_tiles() -> void:
@@ -60,9 +60,9 @@ func change_to_next_tiles() -> void:
 	var bottom_offset := %BottomOffset as Control
 	var last_holder : TileViewportContainer = next_tiles_holders.get_child(next_tiles_length - 1)
 	var next_holder : TileViewportContainer = next_tiles_holders.get_child(next_tiles_length - 2)
-	
+
 	last_holder.is_focus = false
-	
+
 	var tween := create_tween()
 	tween.tween_property(last_holder, "modulate:a", 0.0, 0.2) \
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
@@ -70,7 +70,7 @@ func change_to_next_tiles() -> void:
 		last_holder.new_tile(next_tiles[next_tiles_length - 1])
 		next_tiles_holders.move_child(last_holder, 0)
 		bottom_offset.custom_minimum_size.y = last_holder.custom_minimum_size.y
-	) 
+	)
 	tween.tween_callback(func() -> void:
 		next_holder.is_focus = true
 	)

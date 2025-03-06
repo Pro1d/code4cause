@@ -91,4 +91,3 @@ func get_victory_row(height: int) -> Array[PrefabTile]:
 
 	total_rows += 1
 	return blocks
-	

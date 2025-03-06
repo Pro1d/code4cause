@@ -121,22 +121,22 @@ static func bomb_hard() -> Array[Array]:
 		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn), null , null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
 	]
-	
+
 static func bomb_debug() -> Array[Array]:
 	return [
-		[PrefabTile.new(null, 0.0, true, true), 
+		[PrefabTile.new(null, 0.0, true, true),
 		PrefabTile.new(null, 0.0, true, true),
-		PrefabTile.new(null, 0.0, true, true), 
+		PrefabTile.new(null, 0.0, true, true),
 		PrefabTile.new(null, 0.0, true, true)]
 	]
-	
+
 static func bomb_top_corner() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	return randomly_flip([
 		[null, PrefabTile.new(tile_block), PrefabTile.new(tile_block)],
 		[null, PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block)],
 	], FlipAxis.VERTICAL)
-	
+
 static func bomb_super_hard() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
@@ -145,7 +145,7 @@ static func bomb_super_hard() -> Array[Array]:
 		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn, PI / 2.0), null, null],
 		[PrefabTile.new(tile_turn, 3.0 * PI / 2.0), null, null, null]
 	]
-	
+
 static func forced_jump() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	var tile_cross := preload("res://resources/placeholder/tile_cross.tscn")
@@ -155,7 +155,7 @@ static func forced_jump() -> Array[Array]:
 		[null, null, PrefabTile.new(tile_cross), null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_block)],
 	], FlipAxis.BOTH)
-	
+
 static func make_a_choice() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")

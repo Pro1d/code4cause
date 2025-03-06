@@ -112,7 +112,7 @@ func reset() -> void:
 
 	if(candidate_tile_holder.get_child_count() == 0):
 		return
-	
+
 	var candidate := get_candidate_or_null()
 	if candidate != null:
 		candidate_tile_holder.remove_child(candidate)
@@ -155,7 +155,7 @@ func place(show_animation: bool = true) -> bool:
 	candidate.position = Vector3.ZERO
 	candidate.reparent(current_tile_holder)
 	candidate.draw_props()
-	
+
 	var paths := candidate.find_children("*", "Path3D") as Array[Node]
 	for path in paths:
 		path.add_to_group(Config.PATH_GROUP)

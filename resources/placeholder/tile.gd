@@ -33,7 +33,7 @@ func draw_props() -> void:
 		tween_pop_in.kill()
 	tween_pop_in = create_tween()
 	tween_pop_in.tween_interval(randf_range(0.1, 0.4))
-	
+
 	if props_center != null:
 		var propCenter : int = randi_range(0, len(props_center.get_children())-1)
 		var prop := (props_center.get_child(propCenter) as Node3D)

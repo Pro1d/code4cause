@@ -65,7 +65,7 @@ func add_row()->void:
 		_spawn_victory_row()
 	else:
 		_generate_row(true)
-		
+
 	await get_tree().create_timer(0.5).timeout
 	_delete_first_row()
 	current_pos += Vector2i.LEFT
@@ -94,7 +94,7 @@ func _generate_row(appear_animation: bool = false)->void:
 			# Handle bomb
 			cell.has_bomb = rows_elements[j].has_bomb
 			cell.display_bomb()
-			
+
 			# Set other attributes
 			if(rows_elements[j].scene != null):
 				cell.predraw(rows_elements[j].scene, rows_elements[j].rad)
@@ -123,7 +123,7 @@ func _spawn_victory_row() -> void:
 
 		if(rows_elements[j] != null):
 			cell.victory_cell = rows_elements[j].trigger_victory_screen
-			
+
 			# Set other attributes
 			if(rows_elements[j].scene != null):
 				cell.predraw(rows_elements[j].scene, rows_elements[j].rad)
@@ -135,7 +135,7 @@ func _spawn_victory_row() -> void:
 
 		(cells[i] as Array).append(cell)
 	grid_offset.x += cell_size
-	
+
 
 # Currently unused
 func get_closest_available_cell(x:int, y:int) -> Vector2i:

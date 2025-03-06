@@ -18,9 +18,9 @@ func _ready() -> void:
 			new_node.global_position.x = source_node.global_position.x + (j+1)*size_x
 
 func _process(_delta: float) -> void:
-	var offset_middle := global_position.x * 0.5  
+	var offset_middle := global_position.x * 0.5
 	var offset_near := global_position.x * 0.8
-	
+
 	# Ne regarder pas plus bas j'ai honte
 	if offset_middle > middle_limit + size_x:
 		var source_node : Node3D =  middle_holder.get_child(0)
@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 		middle_holder.move_child(source_node, middle_holder.get_child_count() - 1)
 		middle_limit = offset_middle
 	middle_holder.position.x = -offset_middle
-	
+
 	if offset_near > near_limit + size_x:
 		var source_node : Node3D =  near_holder.get_child(0)
 		source_node.global_position.x += size_x * near_holder.get_child_count()
