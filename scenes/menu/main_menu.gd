@@ -9,11 +9,11 @@ func _ready() -> void:
 		best_run.text = "Best Run: %dkm" % Config.best_score
 	else:
 		best_run.visible = false
-	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		start()
-		
+
 func start() -> void:
 		Config.reset_game()
 		SceneManager.go_to_game()
