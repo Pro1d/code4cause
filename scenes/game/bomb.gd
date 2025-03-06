@@ -22,7 +22,7 @@ func lit_up() -> void:
 	animation_player.current_animation = "bomb_lit_up"
 	fuse_particles.emitting = true
 	base_position = position
-	
+
 func explode() -> void:
 	if(!is_lit):
 		return
