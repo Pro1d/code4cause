@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpr3esbfg5ytd"]
+[gd_scene load_steps=11 format=3 uid="uid://dpr3esbfg5ytd"]
 
 [ext_resource type="Script" path="res://resources/placeholder/tile.gd" id="1_i23u5"]
 [ext_resource type="Texture2D" uid="uid://bswotmgjikl1m" path="res://assets/textures/grass1.png" id="3_qqm4d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ryjvk7nsgqc1" path="res://assets/textures/tree1.png" id="8_or2yr"]
 [ext_resource type="Texture2D" uid="uid://d2deptcgwidwh" path="res://assets/textures/tree2.png" id="9_ljq4a"]
 [ext_resource type="Texture2D" uid="uid://dmd4qco70y8x4" path="res://assets/textures/tree3.png" id="10_nu5m0"]
+[ext_resource type="AudioStream" uid="uid://bges6h7nureim" path="res://assets/sounds/Tile/props.ogg" id="11_q2cl6"]
 
 [node name="TileBase" type="Node3D"]
 script = ExtResource("1_i23u5")
@@ -221,3 +222,9 @@ billboard = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource("10_nu5m0")
+
+[node name="PropsPopAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_q2cl6")
+volume_db = -20.0
+bus = &"SoundFx"

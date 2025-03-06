@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="Mulhouse"
-run/main_scene="res://scenes/main/GameMain.tscn"
+run/main_scene="res://scenes/menu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.png"
@@ -79,7 +79,7 @@ shader_language/warnings/treat_warnings_as_errors=true
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [filesystem]
 

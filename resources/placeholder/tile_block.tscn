@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://binwvu3lbgfc"]
 
-[ext_resource type="PackedScene" path="res://resources/placeholder/tile_base.tscn" id="1_dtteg"]
+[ext_resource type="PackedScene" uid="uid://dpr3esbfg5ytd" path="res://resources/placeholder/tile_base.tscn" id="1_dtteg"]
 [ext_resource type="ArrayMesh" uid="uid://crc5bxi4ti1lw" path="res://assets/meshes/hole.obj" id="2_2s4d2"]
 [ext_resource type="Texture2D" uid="uid://4l8e8cxjyqx1" path="res://assets/textures/tile_dirt.png" id="4_bke53"]
 [ext_resource type="Texture2D" uid="uid://d4dgnvnoj8rr5" path="res://assets/textures/stone1.png" id="5_4iemx"]
@@ -35,48 +35,67 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tqttq")
 surface_material_override/1 = SubResource("StandardMaterial3D_5sxe4")
 
 [node name="Grass1-1" parent="Props/Front" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.324866, 0.03, 0.386621)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.324866, -0.000989022, 0.386621)
 
 [node name="Grass1-2" parent="Props/Front" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2782, 0.03, -0.402639)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2782, -0.000989022, -0.402639)
 
 [node name="Grass2-1" parent="Props/Front" index="2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444359, 0.03, -0.33397)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444359, -0.000989022, -0.33397)
 
 [node name="Grass2-2" parent="Props/Front" index="3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.435388, 0.03, 0.200659)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.435388, -0.000989022, 0.200659)
 
 [node name="Stone1" parent="Props/Front" index="4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444411, 0.03, -0.079052)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.444411, -0.000989022, -0.079052)
 
 [node name="Stone2" parent="Props/Front" index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0770234, 0.03, -0.257674)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0770234, -0.000989022, -0.257674)
 
 [node name="Stone3" parent="Props/Front" index="6"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.168192, 0.03, 0.369537)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.168192, -0.000989022, 0.369537)
 
 [node name="Tree1" parent="Props/Front" index="7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349394, -0.000989022, -0.0552125)
 visible = false
 
 [node name="Tree2" parent="Props/Front" index="8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.349, -0.000989022, 0.0369906)
 visible = false
 
 [node name="Tree3" parent="Props/Front" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.352, -0.000989022, -0.0238916)
 visible = false
 
+[node name="Grass1-1" parent="Props/Back" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 6.37006e-05, 0.287093)
+
+[node name="Grass1-2" parent="Props/Back" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 6.37006e-05, -0.368304)
+
+[node name="Grass2-1" parent="Props/Back" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.337504, 6.37006e-05, -0.202501)
+
 [node name="Grass2-2" parent="Props/Back" index="3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.42713, 0.03, 0.0989426)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.42713, 6.37006e-05, 0.0989426)
 
 [node name="Stone1" parent="Props/Back" index="4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.392549, 0.03, -0.0898304)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.392549, 6.37006e-05, -0.0898304)
+
+[node name="Stone2" parent="Props/Back" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.344251, 6.37006e-05, -0.305365)
+
+[node name="Stone3" parent="Props/Back" index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 6.37006e-05, 0.219148)
 
 [node name="Tree1" parent="Props/Back" index="7"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.356306, 0.03, 0.340632)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.356306, 6.37006e-05, 0.340632)
 
 [node name="Tree2" parent="Props/Back" index="8"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.274601, 0.03, 0.434242)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.274601, 6.37006e-05, 0.434242)
 
 [node name="Tree3" parent="Props/Back" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319862, 6.37006e-05, -0.0044146)
 visible = false
 
 [node name="Center" type="Node3D" parent="Props" index="2"]
@@ -98,7 +117,7 @@ alpha_cut = 2
 texture = ExtResource("13_nkg23")
 
 [node name="BigStone" type="Sprite3D" parent="Props/Center" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.160314, 0.03, -0.0682935)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.160314, 0.00919762, -0.0682935)
 centered = false
 offset = Vector2(-512, -48)
 pixel_size = 0.0008
@@ -108,7 +127,7 @@ alpha_cut = 2
 texture = ExtResource("5_4iemx")
 
 [node name="BigStone2" type="Sprite3D" parent="Props/Center" index="2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.159656, 0.03, -0.0189027)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.159656, 0.00919762, -0.0189027)
 centered = false
 offset = Vector2(-512, -48)
 pixel_size = 0.001
