@@ -5,8 +5,8 @@
 # Run from project root
 # $> bash ./build/export.sh
 
-itch_project=hack-the-loop
-itch_user=proyd
+itch_project=mulhouse
+itch_user=fbessou
 itch_upload=1
 
 if [ ! -e project.godot ]; then
