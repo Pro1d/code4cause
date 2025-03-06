@@ -19,20 +19,82 @@ curve = SubResource("Curve3D_gby4l")
 mesh = ExtResource("2_iqjvb")
 skeleton = NodePath("../..")
 
+[node name="Grass1-1" parent="Props/Front" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.333791, 0.0522076, 0.331219)
+billboard = 1
+
+[node name="Grass1-2" parent="Props/Front" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.333791, 0.0522076, -0.324178)
+billboard = 1
+
 [node name="Grass2-1" parent="Props/Front" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353613, 0.03, -0.323502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353613, 0.0522076, -0.323502)
+billboard = 1
 
 [node name="Grass2-2" parent="Props/Front" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0844235, 0.03, 0.304424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0844235, 0.0522076, 0.304424)
+billboard = 1
 
 [node name="Stone1" parent="Props/Front" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10647, 0.0300001, 0.377598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10647, 0.0522077, 0.377598)
+billboard = 1
+
+[node name="Stone2" parent="Props/Front" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.32764, 0.0522076, -0.261239)
+billboard = 1
+
+[node name="Stone3" parent="Props/Front" index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.343327, 0.0522076, 0.263274)
+billboard = 1
 
 [node name="Tree1" parent="Props/Front" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155284, 0.0300001, 0.373351)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155284, 0.0593999, 0.373351)
+billboard = 1
 
 [node name="Tree2" parent="Props/Front" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204891, 0.0300001, 0.410748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204891, 0.0593999, 0.410748)
+billboard = 1
 
 [node name="Tree3" parent="Props/Front" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15323, 0.03, 0.34542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15323, 0.0593998, 0.34542)
+billboard = 1
+
+[node name="Grass1-1" parent="Props/Back" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.0584379, 0.287093)
+billboard = 1
+
+[node name="Grass1-2" parent="Props/Back" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.0584379, -0.368304)
+billboard = 1
+
+[node name="Grass2-1" parent="Props/Back" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.337504, 0.0584379, -0.202501)
+billboard = 1
+
+[node name="Grass2-2" parent="Props/Back" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3381, 0.0584379, 0.0616091)
+billboard = 1
+
+[node name="Stone1" parent="Props/Back" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 0.0584379, -0.0733366)
+billboard = 1
+
+[node name="Stone2" parent="Props/Back" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.344251, 0.0584379, -0.305365)
+billboard = 1
+
+[node name="Stone3" parent="Props/Back" index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.328564, 0.0584379, 0.219148)
+billboard = 1
+
+[node name="Tree1" parent="Props/Back" index="7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.322497, 0.072839, 0.0434079)
+billboard = 1
+
+[node name="Tree2" parent="Props/Back" index="8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.322497, 0.072839, 0.0434079)
+billboard = 1
+
+[node name="Tree3" parent="Props/Back" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319862, 0.072839, -0.0044146)
+billboard = 1
