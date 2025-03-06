@@ -79,7 +79,7 @@ shader_language/warnings/treat_warnings_as_errors=true
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [filesystem]
 
