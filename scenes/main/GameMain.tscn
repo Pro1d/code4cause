@@ -86,7 +86,6 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 layout_mode = 2
 script = ExtResource("4_osjqf")
 
@@ -315,3 +314,4 @@ parameters/looping = true
 
 [connection signal="pressed" from="PauseMenu/Panel/ResumeButton" to="." method="pause"]
 [connection signal="value_changed" from="PauseMenu/Panel/MusicSlider/HSlider" to="PauseMenu" method="set_music_volume"]
+[connection signal="value_changed" from="PauseMenu/Panel/SfxSlider/HSlider" to="PauseMenu" method="set_sfx_volume"]
