@@ -233,7 +233,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_mo1kf"]
 resource_name = "boss_death"
-length = 3.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -241,10 +241,10 @@ tracks/0/path = NodePath("Parts/LHand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.933333, 1.2, 1.43333, 2.26667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.933333, 1.2, 1.43333, 2.26667, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, -1.541), Vector3(-0.82408, 0.462094, -1.541), Vector3(-0.371326, 0.251574, -1.541), Vector3(-1.23544, -0.0900747, -1.541), Vector3(-0.709185, -0.0820128, -1.541), Vector3(-1.66848, -0.290362, -1.541), Vector3(-2.56205, -1.80369, -1.541), Vector3(-3.80175, -3.8047, -1.541)]
+"values": [Vector3(0, 0, -1.541), Vector3(-0.82408, 0.462094, -1.541), Vector3(-0.371326, 0.251574, -1.541), Vector3(-1.23544, -0.0900747, -1.541), Vector3(-0.709185, -0.0820128, -1.541), Vector3(-1.66848, -0.290362, -1.541), Vector3(-2.56205, -1.80369, -1.541), Vector3(-3.80175, -3.8047, -1.541), Vector3(-3.802, -7, -1.541)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -253,10 +253,10 @@ tracks/1/path = NodePath("Parts/Node3D/RHand:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.566667, 0.8, 1.16667, 1.76667, 2.63333, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.566667, 0.8, 1.16667, 1.76667, 2.63333, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0.685397), Vector3(-0.243819, 0.234358, 0.685397), Vector3(0.119073, 0.490085, 0.685397), Vector3(4.6134e-05, 0.18367, 0.685397), Vector3(-0.581057, 0.375118, 0.685397), Vector3(-1.55613, 0.086465, 0.685397), Vector3(-3.10054, -1.76639, 0.685397), Vector3(-3.81824, -2.99194, 0.685397)]
+"values": [Vector3(0, 0, 0.685397), Vector3(-0.243819, 0.234358, 0.685397), Vector3(0.119073, 0.490085, 0.685397), Vector3(4.6134e-05, 0.18367, 0.685397), Vector3(-0.581057, 0.375118, 0.685397), Vector3(-1.55613, 0.086465, 0.685397), Vector3(-3.10054, -1.76639, 0.685397), Vector3(-3.81824, -2.99194, 0.685397), Vector3(-3.818, -7, 0.685)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -265,10 +265,10 @@ tracks/2/path = NodePath("Parts/Head:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.266667, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.35673, -0.192525, 0), Vector3(-1.35673, -0.262746, 0), Vector3(-1.43265, -0.291337, 0), Vector3(-1.34895, -0.219952, 0), Vector3(-1.44026, -0.348395, 0), Vector3(-1.30266, -0.269878, 0), Vector3(-1.41625, -0.428118, 0), Vector3(-1.3701, -0.554932, 0), Vector3(-1.51827, -0.677187, 0), Vector3(-1.40796, -0.662047, 0), Vector3(-1.58902, -0.816358, 0), Vector3(-1.43012, -0.769476, 0), Vector3(-1.47877, -1.10963, 0), Vector3(-2.39308, -3.69918, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-1.35673, -0.192525, 0), Vector3(-1.35673, -0.262746, 0), Vector3(-1.43265, -0.291337, 0), Vector3(-1.34895, -0.219952, 0), Vector3(-1.44026, -0.348395, 0), Vector3(-1.30266, -0.269878, 0), Vector3(-1.41625, -0.428118, 0), Vector3(-1.3701, -0.554932, 0), Vector3(-1.51827, -0.677187, 0), Vector3(-1.40796, -0.662047, 0), Vector3(-1.58902, -0.816358, 0), Vector3(-1.43012, -0.769476, 0), Vector3(-1.47877, -1.10963, 0), Vector3(-2.39308, -3.69918, 0), Vector3(-2.393, -7, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
