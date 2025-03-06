@@ -23,6 +23,10 @@ func _process(delta: float) -> void:
 		player.reparent(path_follow)
 		path_follow.progress_ratio = 0.5
 
+	if (player.global_position.z > 0.5-max_edge_ratio - 0.1) or (player.global_position .z <= -3.5 + max_edge_ratio + 0.1 )  :
+		current_direction = -current_direction
+
+
 	if (
 		(current_direction == 1 and path_follow.progress_ratio >= 1)
 		or (current_direction == -1 and path_follow.progress_ratio <= 0)
