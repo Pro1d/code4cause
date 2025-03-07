@@ -7,6 +7,7 @@ extends Node
 # Audios
 @onready var damage_player: AudioStreamPlayer = $AudioPlayers/DamagePlayer
 @onready var death_player: AudioStreamPlayer = $AudioPlayers/DeathPlayer
+@onready var idle_player: AudioStreamPlayer = $AudioPlayers/IdlePlayer
 
 var is_dead := false
 

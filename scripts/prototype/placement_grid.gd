@@ -10,6 +10,11 @@ signal tile_placed
 @export var tile_scene: PackedScene
 
 @onready var row_generator : RowGenerator = RowGenerator.new()
+
+# Audios
+@onready var collapse_sfx_player: AudioStreamPlayer = $"../AudioStreamPlayers/CollapseSFXPlayer"
+
+
 var placing_tile_scene: PackedScene
 
 var cells: Array
@@ -74,6 +79,7 @@ func add_row()->void:
 		move(Vector2i.ZERO)
 
 func _delete_first_row() -> void:
+	collapse_sfx_player.play()
 	for i in (cells[0] as Array[PlacementCell]):
 		i.delete()
 	cells.pop_front()

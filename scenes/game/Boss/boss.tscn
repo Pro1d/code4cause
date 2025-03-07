@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cyds62x7xt74i"]
+[gd_scene load_steps=34 format=3 uid="uid://cyds62x7xt74i"]
 
 [ext_resource type="Script" path="res://scenes/game/Boss/boss.gd" id="1_rmxyp"]
 [ext_resource type="Texture2D" uid="uid://cdx2vso0rd1x2" path="res://assets/textures/boss/BossAnimation/frame0000.png" id="2_uoki7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cqh83mhqvg0fc" path="res://assets/textures/boss/BossParts/boss_bottom_hand.png" id="12_ctyqm"]
 [ext_resource type="Texture2D" uid="uid://cf5u2vxgfk7vf" path="res://assets/textures/boss/BossParts/boss_head.png" id="13_gylu7"]
 [ext_resource type="AudioStream" uid="uid://2x64eho54li3" path="res://assets/sounds/boss/boss_hurt1.mp3" id="15_ow26a"]
+[ext_resource type="AudioStream" uid="uid://bo51ky2vhtu0f" path="res://assets/sounds/boss/boss_idle_fire.mp3" id="15_yojhh"]
 [ext_resource type="AudioStream" uid="uid://b2kijpch3bys2" path="res://assets/sounds/boss/boss_death.mp3" id="16_wcf0w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmb52"]
@@ -414,6 +415,12 @@ libraries = {
 }
 
 [node name="AudioPlayers" type="Node" parent="."]
+
+[node name="IdlePlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("15_yojhh")
+volume_db = -6.0
+autoplay = true
+bus = &"SoundFx"
 
 [node name="DamagePlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource("15_ow26a")

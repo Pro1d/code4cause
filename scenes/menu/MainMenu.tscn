@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc305mxgud1hn"]
+[gd_scene load_steps=17 format=3 uid="uid://dc305mxgud1hn"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_ikplg"]
 [ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="2_3fahu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="4_7lb1f"]
 [ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="5_p04qy"]
 [ext_resource type="FontFile" uid="uid://dcgydtfdcjm86" path="res://assets/fonts/Blaka-Regular.ttf" id="5_vbptc"]
+[ext_resource type="AudioStream" uid="uid://by7hi4blu2pgp" path="res://assets/musics/Mulhouse_menu_loop.mp3" id="7_xqgk6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gelce"]
 shader = ExtResource("4_7lb1f")
@@ -252,3 +253,8 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
 text = "Game By ValentinWB, Tarako Munster, Gautierenaud, LeDoubleSept, ProYd and Fbessou"
 horizontal_alignment = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xqgk6")
+autoplay = true
+bus = &"Music"
