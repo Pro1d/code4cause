@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7ej6frsbhdc3"]
+[gd_scene load_steps=8 format=3 uid="uid://b7ej6frsbhdc3"]
 
 [ext_resource type="Script" path="res://scenes/menu/looser_menu.gd" id="1_j0ymg"]
 [ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="2_2hxwj"]
 [ext_resource type="Theme" uid="uid://e2qgxo4dwns7" path="res://resources/themes/hud.theme" id="3_ignfp"]
 [ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="4_qm30u"]
 [ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="5_i5150"]
+[ext_resource type="AudioStream" uid="uid://by7hi4blu2pgp" path="res://assets/musics/Mulhouse_menu_loop.mp3" id="6_abmxg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gelce"]
 shader = ExtResource("4_qm30u")
@@ -162,3 +163,8 @@ size_flags_horizontal = 4
 theme = ExtResource("3_ignfp")
 theme_override_font_sizes/font_size = 40
 text = "Menu"
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_abmxg")
+autoplay = true
+bus = &"Music"

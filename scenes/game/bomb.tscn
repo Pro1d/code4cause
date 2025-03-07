@@ -125,4 +125,5 @@ bus = &"SoundFx"
 
 [node name="ExplosionPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource("7_6h4d2")
+volume_db = -6.0
 bus = &"SoundFx"

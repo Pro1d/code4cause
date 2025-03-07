@@ -84,6 +84,7 @@ sfx_on = false
 
 [node name="CollapseSFXPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = ExtResource("10_piro1")
+volume_db = -3.0
 bus = &"SoundFx"
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]

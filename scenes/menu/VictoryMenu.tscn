@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkcp48fdgb16f"]
+[gd_scene load_steps=8 format=3 uid="uid://bkcp48fdgb16f"]
 
 [ext_resource type="Texture2D" uid="uid://dwdbutlom2p5e" path="res://assets/textures/paper_texture_512.jpg" id="2_n5ogn"]
 [ext_resource type="Shader" path="res://assets/shaders/ui/scrolling_texture.gdshader" id="3_2aph4"]
 [ext_resource type="Script" path="res://scenes/menu/victory_screen.gd" id="3_24joj"]
 [ext_resource type="Texture2D" uid="uid://081an0nbixyh" path="res://assets/textures/Shapes/Arrow_thick.png" id="4_g6sge"]
 [ext_resource type="Theme" uid="uid://e2qgxo4dwns7" path="res://resources/themes/hud.theme" id="5_jrun6"]
+[ext_resource type="AudioStream" uid="uid://cli3w502peu6s" path="res://assets/musics/Mulhouse_victory_loop.mp3" id="6_cifee"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gelce"]
 shader = ExtResource("3_2aph4")
@@ -163,3 +164,9 @@ size_flags_horizontal = 4
 theme = ExtResource("5_jrun6")
 theme_override_font_sizes/font_size = 40
 text = "Menu"
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cifee")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
