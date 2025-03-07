@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfxnn5sgl8knh"]
+[gd_scene load_steps=11 format=3 uid="uid://dfxnn5sgl8knh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0b1kw"]
 [ext_resource type="ArrayMesh" uid="uid://cu3jckjcmy5i6" path="res://assets/meshes/player.obj" id="2_i5hgk"]
 [ext_resource type="Script" path="res://scenes/player/player_movement.gd" id="3_42uji"]
 [ext_resource type="ArrayMesh" uid="uid://cd0gyn7u8pqwa" path="res://assets/meshes/player-stand.obj" id="3_d3hwm"]
+[ext_resource type="AudioStream" uid="uid://cd2cumux5up2g" path="res://assets/sounds/car/car_engine.mp3" id="5_tq286"]
+[ext_resource type="AudioStream" uid="uid://cwe16v2mpjkmh" path="res://assets/sounds/car/car_accelerate.mp3" id="6_7nwnm"]
 
 [sub_resource type="Gradient" id="Gradient_k8jj0"]
 colors = PackedColorArray(1, 1, 1, 1, 0.775063, 0.775063, 0.775063, 1)
@@ -47,3 +49,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lkhvx")
 
 [node name="player_movement" type="Node" parent="."]
 script = ExtResource("3_42uji")
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="CarEnginePlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("5_tq286")
+volume_db = -6.0
+autoplay = true
+bus = &"SoundFx"
+
+[node name="CarAcceleratePlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("6_7nwnm")
+volume_db = -6.0
+bus = &"SoundFx"

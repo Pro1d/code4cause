@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5j3nkd57dwpk"]
+[gd_scene load_steps=12 format=3 uid="uid://5j3nkd57dwpk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_scene.gd" id="1_x51h5"]
 [ext_resource type="Script" path="res://scripts/prototype/placement_grid.gd" id="1_xpw66"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xiiuhs2xgxi5" path="res://scenes/gameplay/metronome.tscn" id="6_ud3em"]
 [ext_resource type="PackedScene" uid="uid://c02g2aiybdtkw" path="res://scenes/game/background.tscn" id="7_jw0xs"]
 [ext_resource type="PackedScene" uid="uid://cyds62x7xt74i" path="res://scenes/game/Boss/boss.tscn" id="8_re5ud"]
+[ext_resource type="AudioStream" uid="uid://cskxeofpxaqd6" path="res://assets/sounds/Tile/tile_collapse.mp3" id="10_piro1"]
 
 [sub_resource type="Environment" id="Environment_f4h1w"]
 background_mode = 1
@@ -78,6 +79,12 @@ unique_name_in_owner = true
 bpm = 160.0
 bar = 8
 sfx_on = false
+
+[node name="AudioStreamPlayers" type="Node" parent="."]
+
+[node name="CollapseSFXPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = ExtResource("10_piro1")
+bus = &"SoundFx"
 
 [connection signal="on_bar_start" from="Metronome" to="." method="add_row"]
 [connection signal="on_pulse" from="Metronome" to="TileGrid" method="animate_predrawn_cell"]

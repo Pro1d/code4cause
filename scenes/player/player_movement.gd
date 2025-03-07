@@ -1,12 +1,18 @@
 class_name PlayerMovement
 extends Node
 
+# Audios
+@onready var car_engine_player: AudioStreamPlayer = $"../AudioPlayers/CarStartPlayer"
+@onready var car_accelerate_player: AudioStreamPlayer = $"../AudioPlayers/CarAcceleratePlayer"
+
+
 var path_follow := PathFollow3D.new()
 var current_direction := 1
 @onready var player : Player = get_parent()
 var next_checked := false
 var max_edge_ratio := 0.2
 var speed_factor := 0.0065
+
 func _ready() -> void:
 
 	# $Player.global_position = transform * curve.get_point_position(0)
@@ -24,8 +30,8 @@ func _process(delta: float) -> void:
 		path_follow.progress_ratio = 0.5
 
 	if (player.global_position.z > 0.5-max_edge_ratio - 0.1) or (player.global_position .z <= -3.5 + max_edge_ratio + 0.1 )  :
+		car_accelerate_player.play()
 		current_direction = -current_direction
-
 
 	if (
 		(current_direction == 1 and path_follow.progress_ratio >= 1)
