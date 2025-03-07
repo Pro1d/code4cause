@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://3nnbqg1hj8mj"]
+
+[ext_resource type="PackedScene" uid="uid://dpr3esbfg5ytd" path="res://resources/placeholder/tile_base.tscn" id="1_w5523"]
+[ext_resource type="ArrayMesh" uid="uid://b1nfgbo6p2rlc" path="res://assets/meshes/road-straight.obj" id="2_5nqfv"]
+
+[sub_resource type="Curve3D" id="Curve3D_8yl2k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_8ouyb"]
+resource_name = "MarkerUp"
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.5),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[sub_resource type="Curve3D" id="Curve3D_0rnf0"]
+resource_name = "MarkerUp"
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[node name="TileStraight" instance=ExtResource("1_w5523")]
+
+[node name="Path3D" type="Path3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+curve = SubResource("Curve3D_8yl2k")
+
+[node name="Road-straight" type="MeshInstance3D" parent="Mesh" index="0"]
+mesh = ExtResource("2_5nqfv")
+skeleton = NodePath("../..")
+
+[node name="Grass1-1" parent="Props/Front" index="0"]
+visible = false
+
+[node name="Grass1-2" parent="Props/Front" index="1"]
+visible = false
+
+[node name="Grass2-1" parent="Props/Front" index="2"]
+visible = false
+
+[node name="Grass2-2" parent="Props/Front" index="3"]
+visible = false
+
+[node name="Stone1" parent="Props/Front" index="4"]
+visible = false
+
+[node name="Stone2" parent="Props/Front" index="5"]
+visible = false
+
+[node name="Stone3" parent="Props/Front" index="6"]
+visible = false
+
+[node name="Tree1" parent="Props/Front" index="7"]
+visible = false
+
+[node name="Tree2" parent="Props/Front" index="8"]
+visible = false
+
+[node name="Tree3" parent="Props/Front" index="9"]
+visible = false
+
+[node name="Grass1-1" parent="Props/Back" index="0"]
+visible = false
+
+[node name="Grass1-2" parent="Props/Back" index="1"]
+visible = false
+
+[node name="Grass2-1" parent="Props/Back" index="2"]
+visible = false
+
+[node name="Grass2-2" parent="Props/Back" index="3"]
+visible = false
+
+[node name="Stone1" parent="Props/Back" index="4"]
+visible = false
+
+[node name="Stone2" parent="Props/Back" index="5"]
+visible = false
+
+[node name="Stone3" parent="Props/Back" index="6"]
+visible = false
+
+[node name="Tree1" parent="Props/Back" index="7"]
+visible = false
+
+[node name="Tree2" parent="Props/Back" index="8"]
+visible = false
+
+[node name="Tree3" parent="Props/Back" index="9"]
+visible = false
+
+[node name="DeadEndMarkers" type="Node3D" parent="." index="4"]
+
+[node name="Back" type="Path3D" parent="DeadEndMarkers" index="0"]
+curve = SubResource("Curve3D_8ouyb")
+
+[node name="Front" type="Path3D" parent="DeadEndMarkers" index="1"]
+curve = SubResource("Curve3D_0rnf0")

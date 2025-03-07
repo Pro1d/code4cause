@@ -15,8 +15,8 @@ func _init(s : PackedScene, r := 0., hb := false, p := false, trigger := false) 
 	trigger_victory_screen = trigger
 
 # you can use the following tiles to define your prefabs
-#var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
-#var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+#var tile_straight_blocking := preload("res://resources/placeholder/tile_straight_blocking.tscn")
+#var tile_turn_blocking := preload("res://resources/placeholder/tile_turn_blocking.tscn")
 #var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 enum FlipAxis {
 	HORIZONTAL = 1,
@@ -71,15 +71,15 @@ static func single_block() -> Array[Array]:
 	]
 
 static func single_turn() -> Array[Array]:
-	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	var tile_turn_blocking := preload("res://resources/placeholder/tile_turn_blocking.tscn")
 	return [
-		[PrefabTile.new(tile_turn, PI/2*randi_range(0, 3))],
+		[PrefabTile.new(tile_turn_blocking, PI/2*randi_range(0, 3))],
 	]
 
 static func single_straight() -> Array[Array]:
-	var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
+	var tile_straight_blocking := preload("res://resources/placeholder/tile_straight_blocking.tscn")
 	return [
-		[PrefabTile.new(tile_straight, PI/2*randi_range(0, 3))],
+		[PrefabTile.new(tile_straight_blocking, PI/2*randi_range(0, 3))],
 	]
 
 static func double_blocks() -> Array[Array]:
@@ -97,13 +97,13 @@ static func double_blocks_side() -> Array[Array]:
 
 static func uturn() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	var tile_turn_blocking := preload("res://resources/placeholder/tile_turn_blocking.tscn")
 	return [
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(tile_block), null],
 		[null, null, PrefabTile.new(tile_block), null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), PrefabTile.new(tile_block), null],
 		[null, null, null, null],
-		[null, null, PrefabTile.new(tile_turn, 3*PI/2), PrefabTile.new(tile_turn)],
+		[null, null, PrefabTile.new(tile_turn_blocking, 3*PI/2), PrefabTile.new(tile_turn_blocking)],
 	]
 
 static func corner_top() -> Array[Array]:
@@ -115,10 +115,10 @@ static func corner_top() -> Array[Array]:
 
 static func bomb_hard() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	var tile_turn_blocking := preload("res://resources/placeholder/tile_turn_blocking.tscn")
 	return [
-		[PrefabTile.new(tile_turn,PI), null, null, null],
-		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn), null , null],
+		[PrefabTile.new(tile_turn_blocking,PI), null, null, null],
+		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn_blocking), null , null],
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
 	]
 
@@ -139,11 +139,11 @@ static func bomb_top_corner() -> Array[Array]:
 
 static func bomb_super_hard() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	var tile_turn_blocking := preload("res://resources/placeholder/tile_turn_blocking.tscn")
 	return [
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, null],
-		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn, PI / 2.0), null, null],
-		[PrefabTile.new(tile_turn, 3.0 * PI / 2.0), null, null, null]
+		[PrefabTile.new(null, 0.0, true, true), PrefabTile.new(tile_turn_blocking, PI / 2.0), null, null],
+		[PrefabTile.new(tile_turn_blocking, 3.0 * PI / 2.0), null, null, null]
 	]
 
 static func bomb_dead_end() -> Array[Array]:
@@ -165,11 +165,11 @@ static func forced_jump() -> Array[Array]:
 
 static func make_a_choice() -> Array[Array]:
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
-	var tile_turn := preload("res://resources/placeholder/tile_turn.tscn")
+	var tile_turn_blocking := preload("res://resources/placeholder/tile_turn_blocking.tscn")
 	var rand_dir:float = randi_range(0 ,1) * (PI / 2.0)
 	return [
 		[PrefabTile.new(tile_block), PrefabTile.new(tile_block), null, PrefabTile.new(tile_block)],
-		[null, PrefabTile.new(tile_turn, PI + rand_dir), null, PrefabTile.new(tile_turn, rand_dir)],
+		[null, PrefabTile.new(tile_turn_blocking, PI + rand_dir), null, PrefabTile.new(tile_turn_blocking, rand_dir)],
 		[null, null, PrefabTile.new(tile_block), null]
 	]
 
@@ -183,14 +183,14 @@ static func not_so_dead_end() -> Array[Array]:
 	], FlipAxis.BOTH)
 
 static func victory_row() -> Array[Array]:
-	var tile_straight := preload("res://resources/placeholder/tile_straight.tscn")
+	var tile_straight_blocking := preload("res://resources/placeholder/tile_straight_blocking.tscn")
 	var tile_block := preload("res://resources/placeholder/tile_block.tscn")
 	return [
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight, 0.0, false, false, true), PrefabTile.new(tile_straight, 0.0, false, false, true), PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
-		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight), PrefabTile.new(tile_straight), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking, 0.0, false, false, true), PrefabTile.new(tile_straight_blocking, 0.0, false, false, true), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_block)],
+		[PrefabTile.new(tile_block), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_straight_blocking), PrefabTile.new(tile_block)],
 	]
