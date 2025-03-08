@@ -14,11 +14,13 @@ var is_dead := false
 signal on_death
 
 func take_damage(amount:int = 1) -> void:
+	Config.score_bomb()
 	if(is_dead):
 		return
 
-	print(health)
-	health = maxi(health - amount, 0)
+	if Config.game_mode == Config.Mode.Normal:
+		print(health)
+		health = maxi(health - amount, 0)
 
 	if(health <= 0):
 		GameManager.end()

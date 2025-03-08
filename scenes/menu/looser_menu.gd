@@ -6,7 +6,9 @@ extends Control
 @onready var best_run : Label = %BestRun
 
 func _ready() -> void:
+	Config.save_progression()
 	start_button.pressed.connect(restart)
+	start_button.grab_focus()
 	gomain_button.pressed.connect(SceneManager.go_to_main_menu)
 	score.text = "Score: %dkm" % Config.score
 	if Config.best_score > 0:
@@ -16,11 +18,8 @@ func _ready() -> void:
 			best_run.text = "Best Run: %dkm" % Config.best_score
 	else:
 		best_run.visible = false
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		restart()
-		
+
+
 func restart() -> void:
-		Config.reset_game()
-		SceneManager.go_to_game()
+	Config.reset_game(Config.game_mode)
+	SceneManager.go_to_game()

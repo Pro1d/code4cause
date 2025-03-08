@@ -69,7 +69,7 @@ func find_player_path() -> void:
 		path_follow.progress_ratio = 0 if current_direction == 1 else 1
 		player.global_rotation.y = 0
 		player.current_cell = next_parent.get_parent().get_parent().get_parent()
-		Config.score += 1
+		Config.score_km()
 		next_checked = false
 
 func find_path(position_to_check: Vector3, change_direction : bool = false) -> Path3D:

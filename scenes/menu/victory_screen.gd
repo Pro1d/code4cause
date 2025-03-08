@@ -4,9 +4,16 @@ extends Control
 @onready var gomain_button : Button = %GoMain
 @onready var score : Label = %Score
 @onready var best_run : Label = %BestRun
+@onready var toast : Control = %Toast
 
 func _ready() -> void:
-	start_button.pressed.connect(restart)
+	if not Config.endless_mode_unlocked:
+		Config.endless_mode_unlocked = true
+		_show_endless_mode_unlocked()
+	else:
+		toast.visible = false
+	Config.save_progression()
+	gomain_button.grab_focus()
 	gomain_button.pressed.connect(SceneManager.go_to_main_menu)
 	score.text = "Score: %dkm" % Config.score
 	if Config.best_score > 0:
@@ -16,11 +23,13 @@ func _ready() -> void:
 			best_run.text = "Best Run: %dkm" % Config.best_score
 	else:
 		best_run.visible = false
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		restart()
-		
-func restart() -> void:
-		Config.reset_game()
-		SceneManager.go_to_game()
+
+func _show_endless_mode_unlocked()->void:
+	var viewport_rect := get_viewport_rect().size
+	toast.position.y = viewport_rect.y + toast.get_rect().size.y
+	toast.position.x = viewport_rect.x/2 - toast.get_rect().size.x /2
+	var tween := get_tree().create_tween()
+	tween.tween_interval(0.25)
+	tween.tween_property(toast, "position:y", viewport_rect.y - toast.get_rect().size.y - 16, 0.25)
+	tween.tween_interval(4)
+	tween.tween_property(toast, "position:y", viewport_rect.y + toast.get_rect().size.y, 0.25)

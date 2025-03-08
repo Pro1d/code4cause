@@ -37,4 +37,5 @@ func handle_reset() -> void:
 	current_reset_hold_time += get_process_delta_time()
 	SceneManager.ui_fader.fade_out_hold(current_reset_hold_time / reset_hold_time)
 	if(current_reset_hold_time >= reset_hold_time):
-			SceneManager.reset_game_scene()
+		Config.reset_game(Config.game_mode)
+		SceneManager.reset_game_scene()

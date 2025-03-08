@@ -229,7 +229,49 @@ text = "Build"
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="BestRun" type="Label" parent="MarginContainer/MainContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MarginContainer/MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_j0b6e")
+theme_override_font_sizes/font_size = 52
+text = "Start Game"
+
+[node name="EndlessSection" type="VBoxContainer" parent="MarginContainer/MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/MainContainer/VBoxContainer/EndlessSection"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="NormalButton" type="Button" parent="MarginContainer/MainContainer/VBoxContainer/EndlessSection/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_right = NodePath("../EndlessButton")
+theme = ExtResource("3_j0b6e")
+theme_override_font_sizes/font_size = 52
+text = "Normal"
+
+[node name="EndlessButton" type="Button" parent="MarginContainer/MainContainer/VBoxContainer/EndlessSection/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../NormalButton")
+theme = ExtResource("3_j0b6e")
+theme_override_font_sizes/font_size = 52
+text = "Endless"
+
+[node name="BestRun" type="Label" parent="MarginContainer/MainContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -237,15 +279,6 @@ theme_override_colors/font_color = Color(0.996078, 0.960784, 0.901961, 1)
 theme_override_font_sizes/font_size = 32
 text = "Best Run: 100km"
 horizontal_alignment = 1
-
-[node name="StartButton" type="Button" parent="MarginContainer/MainContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("3_j0b6e")
-theme_override_font_sizes/font_size = 52
-text = "Start Game"
 
 [node name="GameBy" type="Label" parent="MarginContainer/MainContainer"]
 layout_mode = 2

@@ -19,7 +19,7 @@ func go_to_end_menu() -> void:
 	if ui_fader != null:
 		await ui_fader.fade_out()
 	get_tree().change_scene_to_file("res://scenes/menu/LooserMenu.tscn")
-	
+
 func go_to_victory_menu() -> void:
 	if ui_fader != null:
 		await ui_fader.fade_out()
