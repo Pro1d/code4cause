@@ -14,6 +14,7 @@ var tween_pop_in : Tween
 @onready var props_back := $Props/Back as Node3D
 @onready var props_center := $Props.find_child("Center", false) as Node3D
 @onready var props_audio := %PropsPopAudio as AudioStreamPlayer
+@onready var mesh_root := $Mesh
 
 func _ready() -> void:
 	# Initialize props:
@@ -57,3 +58,17 @@ func show_prop_animation(prop: Node3D) -> void:
 	tween_pop_in.tween_property(prop, "scale", Vector3.ONE, 0.3) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween_pop_in.parallel().tween_callback(props_audio.play)
+
+func set_locked() -> void:
+	for child in mesh_root.get_children():
+		var mi := child as MeshInstance3D
+		if mi == null:
+			continue
+		var mesh := mi.mesh as ArrayMesh
+		if mesh == null:
+			continue
+		for i in range(mesh.get_surface_count()):
+			if mesh.surface_get_material(i).resource_name == "Material.001":
+				var darker := mesh.surface_get_material(i).duplicate() as StandardMaterial3D
+				darker.albedo_color = Color(.7 , .6, .6)
+				mi.set_surface_override_material(i, darker)

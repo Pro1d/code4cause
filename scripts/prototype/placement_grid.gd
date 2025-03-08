@@ -107,6 +107,7 @@ func _generate_row(appear_animation: bool = false)->void:
 				cell.place(false)
 				cell.reset()
 				cell.placeable = rows_elements[j].placeable
+				cell.get_current_or_null().set_locked()
 
 
 		if appear_animation:
